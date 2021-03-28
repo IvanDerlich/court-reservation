@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :todos do
     resources :items
   end
+  namespace :v1 do
+    resources :contacts
+  end
 end

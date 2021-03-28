@@ -56,3 +56,126 @@ rubocop \
   --auto-correct
 
  (called from block (2 levels) in <main> at /home/divine/Dropbox/Documentos/Repos/Court Reservation/spec/factories/items.rb:5)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateContacts (20210328004528)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.5ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210328004528"]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-03-27 21:52:01 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.3ms | Allocations: 461)
+Completed 200 OK in 44ms (Views: 24.4ms | ActiveRecord: 0.0ms | Allocations: 3916)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-03-27 21:52:01 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-03-27 21:52:34 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/contacts_controller.rb:4: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+...ender json: @contacts, status :ok
+...                              ^
+):
+  
+app/controllers/v1/contacts_controller.rb:4: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+app/controllers/v1/contacts_controller.rb:4: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-03-27 21:53:17 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (2.9ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 2.9ms | Allocations: 1340)
+
+
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-03-27 21:53:50 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 619)
+
+
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-03-27 21:53:51 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 622)
+
+
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-03-27 21:53:52 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 618)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/contacts" for ::1 at 2021-03-28 20:36:15 -0300
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/contacts"):
+  
+Started GET "/favicon.ico" for ::1 at 2021-03-28 20:36:15 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:36:54 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+  render :json @contact, status: :created
+               ^~~~~~~~
+):
+  
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:40:42 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (2.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 2.4ms | Allocations: 1372)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:41:17 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+    render :json @contact, status: :created
+                 ^~~~~~~~
+):
+  
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:42:37 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected local variable or method, expecting `end'
+    render :json contact, status: :created
+                 ^~~~~~~
+):
+  
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:42:52 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+    render :json @contact, status: :created
+                 ^~~~~~~~
+):
+  
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+app/controllers/v1/contacts_controller.rb:11: syntax error, unexpected instance variable, expecting `end'
+Started GET "/v1/contacts" for ::1 at 2021-03-28 20:43:55 -0300
+Processing by V1::ContactsController#index as HTML
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1147)
+
+
