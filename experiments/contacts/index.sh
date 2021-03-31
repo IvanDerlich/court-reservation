@@ -17,12 +17,12 @@ if [ "$1" == 'ra' ]; then
 elif [ $1 == 'c' ]; then
   echo 'Create' 
   dir=$(dirname $0)
-  curl $URL\    
+  curl $URL\
     -v\
     -X POST\
     -d first_name=Ivan\
-    -d last_name=Derlich\
-    -d email=ivanderlich@gmail.com;
+    -d last_name=Drago
+    -d email=ivandrago@gmail.com;
 elif [ $1 == 'cj' ]; then
   echo 'Create a Json File' 
   dir=$(dirname $0)
@@ -31,4 +31,15 @@ elif [ $1 == 'cj' ]; then
     -v\
     -X POST\
     -d @$dir/contact1.json;    
+elif [ $1 ='d' ]; then
+  echo 'Delete Created posts'
+  curl $URL'/'$2\
+    -v\
+    -X DELETE;
+elif [ $1 == 'u' ]; then
+  echo 'Update' 
+  curl $URL'/'$2\
+    -v\
+    -X PUT\
+    -d last_name=DePineda
 fi

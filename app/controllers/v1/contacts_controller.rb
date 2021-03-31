@@ -5,14 +5,22 @@ class V1::ContactsController < ApplicationController
   end
   
   def create
-    p "PARAMS"
-    p params
     @contact = Contact.new(contact_params)
 
     @contact.save!
     render json: @contact, status: :created
   end
 
+
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update(contact_params)
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
+  end
+  
   def destroy
     @contact = Contact.where(id: params[:id]).first
     if @contact.destroy  
@@ -25,9 +33,13 @@ class V1::ContactsController < ApplicationController
 private
 
   def contact_params    
-    #params.require(:contact).permit(:first_name, :last_name, :email)
     params.permit(:first_name, :last_name, :email)
   end
+
+# Implement this after writting tests
+#  def set_contact
+#    @contact = Contact.find(params[:id])
+#  end
 
 end
 

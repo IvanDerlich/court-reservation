@@ -565,3 +565,198 @@ Processing by V1::ContactsController#index as */*
 Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 905)
 
 
+Started DELETE "/v1/contacts/1" for ::1 at 2021-03-30 10:44:01 -0300
+Processing by V1::ContactsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 ORDER BY "contacts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mContact Destroy (0.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+Completed 200 OK in 161ms (ActiveRecord: 33.0ms | Allocations: 5696)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 10:44:10 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.9ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.9ms | Allocations: 820)
+
+
+Started DELETE "/v1/contacts/2" for ::1 at 2021-03-30 10:44:27 -0300
+Processing by V1::ContactsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 ORDER BY "contacts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mContact Destroy (0.5ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+Completed 200 OK in 9ms (ActiveRecord: 1.9ms | Allocations: 1916)
+
+
+Started DELETE "/v1/contacts/2" for ::1 at 2021-03-30 10:44:38 -0300
+Processing by V1::ContactsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 ORDER BY "contacts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.5ms | Allocations: 1121)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/v1/contacts_controller.rb:18:in `destroy'
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:36:43 -0300
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (1.8ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 26ms (Views: 8.8ms | ActiveRecord: 10.8ms | Allocations: 6945)
+
+
+Started DELETE "/v1/contacts3" for ::1 at 2021-03-30 21:36:51 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/v1/contacts3"):
+  
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:36:54 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 734)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:38:11 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.6ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.6ms | Allocations: 733)
+
+
+Started DELETE "/v1/contacts/3" for ::1 at 2021-03-30 21:38:49 -0300
+Processing by V1::ContactsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 ORDER BY "contacts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mContact Destroy (1.4ms)[0m  [1m[31mDELETE FROM "contacts" WHERE "contacts"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/contacts_controller.rb:18:in `destroy'
+Completed 200 OK in 92ms (ActiveRecord: 4.1ms | Allocations: 3924)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:38:58 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (2.9ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 2.9ms | Allocations: 614)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:39:29 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 614)
+
+
+Started POST "/v1/contacts" for ::1 at 2021-03-30 21:40:21 -0300
+Processing by V1::ContactsController#create as */*
+  Parameters: {"first_name"=>"Ivan", "last_name"=>"Drago"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/contacts_controller.rb:12:in `create'
+  [1m[36mContact Create (1.5ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["first_name", "Ivan"], ["last_name", "Drago"], ["created_at", "2021-03-31 00:40:21.708839"], ["updated_at", "2021-03-31 00:40:21.708839"]]
+  ↳ app/controllers/v1/contacts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/contacts_controller.rb:12:in `create'
+Completed 201 Created in 10ms (Views: 0.5ms | ActiveRecord: 2.4ms | Allocations: 2241)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 21:40:37 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 711)
+
+
+Started PUT "/v1/contacts/4" for ::1 at 2021-03-30 22:42:03 -0300
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for V1::ContactsController
+Did you mean?  create
+               index
+               destroy
+               json_response):
+  
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started PUT "/v1/contacts/4" for ::1 at 2021-03-30 23:17:12 -0300
+Processing by V1::ContactsController#update as */*
+  Parameters: {"last_name"=>"DePineda", "id"=>"4"}
+  [1m[36mContact Load (0.7ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/contacts_controller.rb:16:in `update'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `update'
+  [1m[36mContact Update (0.4ms)[0m  [1m[33mUPDATE "contacts" SET "last_name" = $1, "updated_at" = $2 WHERE "contacts"."id" = $3[0m  [["last_name", "DePineda"], ["updated_at", "2021-03-31 02:17:12.579170"], ["id", 4]]
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/contacts_controller.rb:17:in `update'
+Completed 200 OK in 85ms (ActiveRecord: 40.4ms | Allocations: 7556)
+
+
+Started GET "/v1/contacts" for ::1 at 2021-03-30 23:17:20 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (0.4ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 781)
+
+
