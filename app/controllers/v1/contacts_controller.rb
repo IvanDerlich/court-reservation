@@ -1,7 +1,14 @@
 class V1::ContactsController < ApplicationController
+
+  before_action :set_contact, only: [:show, :update, :destroy]
+
   def index
     @contacts = Contact.all
     render json: @contacts, status: :ok
+  end
+
+  def show
+    json_response(@contact)
   end
   
   def create
@@ -13,16 +20,14 @@ class V1::ContactsController < ApplicationController
 
 
   def update
-    @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      head(:ok)
+      render json: @contact, status: 200
     else
       head(:unprocessable_entity)
     end
   end
   
   def destroy
-    @contact = Contact.where(id: params[:id]).first
     if @contact.destroy  
       head(:ok)  
     else
@@ -36,10 +41,9 @@ private
     params.permit(:first_name, :last_name, :email)
   end
 
-# Implement this after writting tests
-#  def set_contact
-#    @contact = Contact.find(params[:id])
-#  end
+ def set_contact
+   @contact = Contact.find(params[:id])
+ end
 
 end
 
