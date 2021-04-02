@@ -760,3 +760,296 @@ Processing by V1::ContactsController#index as */*
 Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 781)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (30.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (23.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_testing"[0m
+  [1m[35m (204.2ms)[0m  [1m[35mCREATE DATABASE "court_reservation_development" ENCODING = 'unicode'[0m
+  [1m[35m (67.8ms)[0m  [1m[35mCREATE DATABASE "court_reservation_testing" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "contacts" CASCADE[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "done" boolean, "todo_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos" CASCADE[0m
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "created_by" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "items" ADD CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210329000433)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210327210840),
+(20210327210849),
+(20210328004528);
+
+[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-02 00:16:09.211464"], ["updated_at", "2021-04-02 00:16:09.211464"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "8d41195db601286277093af36f448b5a66bccc60"], ["created_at", "2021-04-02 00:16:09.223175"], ["updated_at", "2021-04-02 00:16:09.223175"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "contacts" CASCADE[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "done" boolean, "todo_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE INDEX "index_items_on_todo_id" ON "items" ("todo_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos" CASCADE[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "created_by" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "items" ADD CONSTRAINT "fk_rails_c01e6b449d"
+FOREIGN KEY ("todo_id")
+  REFERENCES "todos" ("id")
+[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210329000433)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210327210840),
+(20210327210849),
+(20210328004528);
+
+[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-02 00:16:09.353532"], ["updated_at", "2021-04-02 00:16:09.353532"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-04-02 00:16:09.364739"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "8d41195db601286277093af36f448b5a66bccc60"], ["created_at", "2021-04-02 00:16:09.373668"], ["updated_at", "2021-04-02 00:16:09.373668"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/" for 127.0.0.1 at 2021-04-01 22:50:30 -0300
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/"):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 22:50:45 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 22:50:54 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started POST "/v1/s/contacts" for 127.0.0.1 at 2021-04-01 22:51:04 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/v1/s/contacts"):
+  
+Started GET "/v1/s/contacts" for 127.0.0.1 at 2021-04-01 22:51:15 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/v1/s/contacts"):
+  
+Started GET "/v1/contacts" for 127.0.0.1 at 2021-04-01 22:51:27 -0300
+Processing by V1::ContactsController#index as */*
+  [1m[36mContact Load (1.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+  ↳ app/controllers/v1/contacts_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 2.4ms | ActiveRecord: 1.5ms | Allocations: 3339)
+
+
+Started POST "/v1/sessiones" for 127.0.0.1 at 2021-04-01 22:52:02 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/v1/sessiones"):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 22:52:08 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 22:53:40 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started GET "/v1/sessions" for 127.0.0.1 at 2021-04-01 22:54:55 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started GET "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:24:43 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started GET "/v1/session" for 127.0.0.1 at 2021-04-01 23:26:05 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/v1/session"):
+  
+Started GET "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:26:10 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started GET "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:26:30 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started GET "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:28:51 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/v1/sessions"):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:29:06 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::SessionsController
+Did you mean?  V1::SessionController):
+  
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-01 23:30:57 -0300
+Processing by V1::SessionsController#create as */*
+Completed 204 No Content in 0ms (Allocations: 81)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lala@roro.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (6.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "lala@roro.com"], ["encrypted_password", "$2a$12$Rks.RlWYisS9scMw0nwOPOWEuhEemHA0SOMaeOMH57RKPWM1Behqa"], ["created_at", "2021-04-02 03:25:51.323457"], ["updated_at", "2021-04-02 03:25:51.323457"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:34:34 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:34:48 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:34:54 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:34:58 -0300
+  
+SyntaxError (/home/divine/Dropbox/Documentos/Repos/Court Reservation/app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/v1/sessions_controller.rb:18: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:35:44 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@roro.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@roro.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 201 Created in 354ms (Views: 0.2ms | ActiveRecord: 9.7ms | Allocations: 12501)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:36:31 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@roro.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@roro.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 271ms (ActiveRecord: 0.4ms | Allocations: 679)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:36:53 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@roro.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@roro.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 201 Created in 297ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 759)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:52:01 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@rorodd.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@rorodd.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.5ms | Allocations: 3247)
+
+
+  
+NoMethodError (undefined method `valid_password?' for nil:NilClass):
+  
+app/controllers/v1/sessions_controller.rb:9:in `create'
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:52:27 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@rorodd.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@rorodd.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 15ms (ActiveRecord: 7.4ms | Allocations: 2436)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:52:57 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@rorodd.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@rorodd.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 11ms (ActiveRecord: 3.9ms | Allocations: 2312)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:54:16 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::SessionsController#create as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 21ms (ActiveRecord: 4.1ms | Allocations: 8011)
+
+
+Started POST "/v1/sessions" for 127.0.0.1 at 2021-04-02 00:55:54 -0300
+Processing by V1::SessionsController#create as */*
+  Parameters: {"email"=>"lala@roro.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "lala@roro.com"], ["LIMIT", 1]]
+  ↳ app/controllers/v1/sessions_controller.rb:8:in `create'
+Completed 201 Created in 284ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 5124)
+
+

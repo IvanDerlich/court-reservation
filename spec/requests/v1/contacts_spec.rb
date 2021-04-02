@@ -86,7 +86,8 @@ RSpec.describe "V1::Contacts", type: :request do
         get '/v1/contacts'
         expect(json.length).to be(0)
       end
-    end    
+    end
+    
     context 'Three' do
       it 'Creates one contact and show it individually' do
         get '/v1/contacts'
