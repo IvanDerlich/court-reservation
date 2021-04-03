@@ -1,11 +1,10 @@
-Rails.application.routes.draw do
-  # devise_for :users
+Rails.application.routes.draw do  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to:"home#index"
   resources :todos do
     resources :items
-  end
+  end  
   namespace :v1 do
-    resources :contacts
-    resources :sessions, only: [:create, :destroy]
+    resources :contacts        
   end
 end
