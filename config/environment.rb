@@ -1,6 +1,6 @@
 # Load the Rails application.
 require_relative "application"
-require_relative 'omniauth'
+# require_relative 'omniauth'
 
 
 # Initialize the Rails application.
