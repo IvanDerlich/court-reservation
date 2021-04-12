@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
         devise  :database_authenticatable,                
                 # :validatable,
                 # :recoverable,
-                # :rememberable,
+                :rememberable,
                 # :trackable,             
                 # :confirmable,
                 # :omniauthable,
@@ -13,14 +13,16 @@ class User < ActiveRecord::Base
         
         # note that this include statement comes AFTER the devise block above
         include DeviseTokenAuth::Concerns::User
-        validates :name, presence: true, length: { in: 4..20 }
-        #   validates :email, uniqueness: true
-        #   validates_format_of :email, with: /@/
-        #   validates :password_digest, presence: true  
+        validates :first_name, presence: true, length: { in: 1..20 }
+        validates :last_name, presence: true, length: { in: 1..20 }
+        validates :email, uniqueness: true
+        validates_format_of :email, with: /@/
+        validates :password, presence: true, length: { in: 8..20 }, :on => :create
         private
 
         def format_input
-        self.name = name.downcase.titleize
+        self.first_name = first_name.downcase.titleize
+        self.last_name = last_name.downcase.titleize
         self.email = email.downcase
         end
 end
