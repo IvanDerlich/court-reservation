@@ -3,6 +3,7 @@ RSpec.describe "Login", type: :request do
   describe 'Login and logout' do
 
     it 'No sign in, no resource access' do
+      # No resource access
     end
 
     let(:user){ create :user }   
