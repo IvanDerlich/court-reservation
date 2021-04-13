@@ -2,10 +2,6 @@ require 'rails_helper'
 RSpec.describe "Login", type: :request do  
   describe 'Login and logout' do
 
-    it 'No sign in, no resource access' do
-      # No resource access
-    end
-
     let(:user){ create :user }   
 
     it 'User can be found inside the database' do
@@ -13,7 +9,7 @@ RSpec.describe "Login", type: :request do
       expect(user).to eq( saved_user)
     end
 
-    it 'Unsuccessful login and no resource access' do
+    it 'Unsuccessful login' do
       post '/api/v1/auth/sign_in',
         params: { 
           email: "asdfsad",
@@ -23,10 +19,7 @@ RSpec.describe "Login", type: :request do
       expect(json['success']).to eq(false)      
       expect(json['errors'][0]).to eq(
         "Invalid login credentials. Please try again."
-      )
-
-      # No access to resources
-      
+      )      
     end    
 
     it 'Successfull login and access to resource' do   
@@ -43,13 +36,11 @@ RSpec.describe "Login", type: :request do
       expect(data['first_name'])  .to eq(user[:first_name])
       expect(data['last_name'])   .to eq(user[:last_name])
       expect(data['uid'])         .to eq(user[:uid])
-      expect(data['provider'])    .to eq(user[:provider])  
-      
-      # User has access to resources
+      expect(data['provider'])    .to eq(user[:provider])   
 
     end
 
-    it 'Successful logout and no access to resources' do  
+    it 'Successful logout' do  
 
       post '/api/v1/auth/sign_in',
       params: { 
@@ -65,8 +56,6 @@ RSpec.describe "Login", type: :request do
         }
       expect(json['success']).to be(true)
       expect(response.status).to eq(200)
-
-      # No access to resources
     end 
   end
 end
