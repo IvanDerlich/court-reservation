@@ -1,7 +1,9 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::API  
   include DeviseTokenAuth::Concerns::SetUserByToken
   include Response
   include ExceptionHandler
+
+  #before_action :authenticate_api_v1_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
