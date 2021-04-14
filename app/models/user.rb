@@ -18,11 +18,14 @@ class User < ActiveRecord::Base
         validates :email, uniqueness: true
         validates_format_of :email, with: /@/
         validates :password, presence: true, length: { in: 8..20 }, :on => :create
+
+        has_many :courts, dependent: :destroy
+        
         private
 
         def format_input
-        self.first_name = first_name.downcase.titleize
-        self.last_name = last_name.downcase.titleize
-        self.email = email.downcase
+                self.first_name = first_name.downcase.titleize
+                self.last_name = last_name.downcase.titleize
+                self.email = email.downcase
         end
 end
