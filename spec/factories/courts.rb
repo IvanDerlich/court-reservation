@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :court do
-    name { Faker::Lorem.words(4) }
+    name { Faker::Lorem.characters(number:6) }
     address { Faker::Address.street_address  }
-    description { Faker::Lorem.sentences(1, true) }
+    description { Faker::Lorem.sentence }
     administrator { create(:user) }
   end
 end
