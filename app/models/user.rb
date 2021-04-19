@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
         validates :last_name, presence: true, length: { in: 1..20 }
         validates :email, uniqueness: true
         validates_format_of :email, with: /@/
-        validates :password, presence: true, length: { in: 8..20 }, :on => [:create, :update]
+        validates :password, presence: true, length: { in: 8..100 }, :on => [:create]
+        # If do: [:create, :update], the requests don't return client_token and access tokens
+        # Try to figure the cause of this behaviour
 
         has_many :courts, dependent: :destroy, foreign_key: :administrator_id
         

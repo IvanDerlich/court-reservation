@@ -2,46 +2,30 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
  
-  let(:user1){ create :user}
-  let(:user2){ create :user}
-  let(:court1) { create :court}
-  let(:court2) { create :court}
+  let!(:user){ create :user}
 
-  it 'Add one court to the user' do
-    
+  it "Delete one court when the user is deleted" do
+    court = Court.create(
+      name: Faker::Name.name,
+      address: Faker::Address.street_address,
+      description: Faker::Lorem.sentence,
+      administrator: user
+    )
+    expect(court.administrator).to be(user)
+    expect(user.courts.first).to eq(court)
+    expect(Court.exists?(court.id)).to be(true)
+    user.destroy
+    expect(Court.exists?(court.id)).to be(false)
+    expect(User.exists?(user.id)).to be(false)
   end
 
-  it "Can't delete user" do
-      
+  it 'Create courts through user' do
+    user.courts.create(
+      name: Faker::Name.name,
+      address: Faker::Address.street_address,
+      description: Faker::Lorem.sentence
+    )
+    expect(Court.first.administrator).to eq(user)
   end
 
-  it 'Change court administrator' do
-  end
-
-  it 'Shows user court' do
-  end
-
-  it 'Add two courts' do
-    
-  end
-
-  it 'Shows user courts' do
-  end
-
-  it 'Can\t delete user' do
-      
-  end
-
-  it 'Delete one court' do
-    
-  end
-
-  it 'Delete all courts of user' do
-    
-  end
-
-  it 'Can delete user' do
-    
-  end
-  
 end

@@ -130,12 +130,14 @@ RSpec.describe Court, type: :model do
 
     it 'Edit administrator' do
       user = create :user
-      p user
-      court.administrator = user    
-      p court
+      court.update(administrator: user)
+      expect(Court.first.administrator).to eq(user)
     end
 
     it 'Invalid edition: administrator empty' do
+      expect(
+        court.update(administrator: nil)
+      ).to eq(false)
     end
 
     it 'Invalid edition: name too long' do

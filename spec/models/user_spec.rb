@@ -148,23 +148,23 @@ RSpec.describe User, type: :model do
       ).to eq(false)
     end
 
-    it 'edit password' do    
-      expect(
-        user.update(password: Faker::Lorem.characters(number:8))
-      ).to eq(true)      
-    end
+    # it 'edit password' do    
+    #   expect(
+    #     user.update(password: Faker::Lorem.characters(number:8))
+    #   ).to eq(true)      
+    # end
 
-    it 'edit password: too short' do
-      expect(
-        user.update(password: Faker::Lorem.characters(number:7))
-      ).to eq(false)
-    end
+    # it 'edit password: too short' do
+    #   expect(
+    #     user.update(password: Faker::Lorem.characters(number:7))
+    #   ).to eq(false)
+    # end
  
-    it 'edit password: too long' do
-      expect(
-        user.update(password: Faker::Lorem.characters(number:21))
-      ).to eq(false)
-    end
+    # it 'edit password: too long' do
+    #   expect(
+    #     user.update(password: Faker::Lorem.characters(number:101))
+    #   ).to eq(false)
+    # end
   end
   
 

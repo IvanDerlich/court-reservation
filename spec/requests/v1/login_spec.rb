@@ -22,7 +22,7 @@ RSpec.describe "Login", type: :request do
       )      
     end    
 
-    it 'Successfull login and access to resource' do   
+    it 'Successfull login' do   
 
       post '/api/v1/auth/sign_in',
       params: { 
@@ -47,7 +47,9 @@ RSpec.describe "Login", type: :request do
         email: user.email,
         password: user.password
       }
-    
+
+      expect(response.status).to eq(200)    
+
       delete '/api/v1/auth/sign_out',
         headers: {
           'access-token': response.headers['access-token'],

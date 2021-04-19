@@ -6924,3 +6924,858 @@ FOREIGN KEY ("administrator_id")
   [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdfs@adsafsd.com"], ["LIMIT", 1]]
   [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "asdfs@adsafsd.com"], ["encrypted_password", "$2a$12$OZJXpZGF5mXRRtbQrv03iuF8yR5WvSpZZERI1xyHu20IsQZRdYH0q"], ["first_name", "Pepe"], ["last_name", "Honguito"], ["email", "asdfs@adsafsd.com"], ["created_at", "2021-04-14 00:32:33.550333"], ["updated_at", "2021-04-14 00:32:33.550333"]]
   [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-16 23:45:58 -0300
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 358ms (Views: 0.7ms | ActiveRecord: 6.6ms | Allocations: 217931)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-17 04:00:03 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 39ms (Views: 0.3ms | ActiveRecord: 26.4ms | Allocations: 3216)
+
+
+Started POST "/api/v1/auth?email=ivan2@ivan.com&password=[FILTERED]&first_name=Ivan&last_name=Derlich" for ::1 at 2021-04-17 04:01:59 -0300
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]", "first_name"=>"Ivan", "last_name"=>"Derlich"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "ivan2@ivan.com"], ["encrypted_password", "$2a$12$WxNx4vrr5esAOSfIZJC.ee.CDgvvpStV1gZF56H8D5ca090yucwOC"], ["first_name", "Ivan"], ["last_name", "Derlich"], ["email", "ivan2@ivan.com"], ["created_at", "2021-04-17 07:01:59.356589"], ["updated_at", "2021-04-17 07:01:59.356589"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (6.2ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"WWnkQn8j7rAQt_evrc-R4Q\\\":{\\\"token\\\":\\\"$2a$10$agaymisA1aHqrEpf4i5qdelN4uoci0IxH/eMvJtdC8kY7Lvjhv79i\\\",\\\"expiry\\\":1619852519}}\""], ["updated_at", "2021-04-17 07:01:59.445714"], ["id", 2]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 421ms (Views: 0.2ms | ActiveRecord: 27.5ms | Allocations: 16119)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-17 04:02:10 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 370ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 5148)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-17 04:07:40 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"WWnkQn8j7rAQt_evrc-R4Q\\\":{\\\"token\\\":\\\"$2a$10$agaymisA1aHqrEpf4i5qdelN4uoci0IxH/eMvJtdC8kY7Lvjhv79i\\\",\\\"expiry\\\":1619852519},\\\"C74Uir0A4B0pkQWBsOqCtQ\\\":{\\\"token\\\":\\\"$2a$10$E/rFfQDen/jp22XhNkTGfeb4uG07gLS3N637lY1nZpbyqMdOmss2O\\\",\\\"expiry\\\":1619852861}}\""], ["updated_at", "2021-04-17 07:07:41.278150"], ["id", 2]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 390ms (Views: 0.3ms | ActiveRecord: 11.3ms | Allocations: 13671)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-17 04:09:34 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 404ms (Views: 0.3ms | ActiveRecord: 10.8ms | Allocations: 10756)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (23.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (20.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_testing"[0m
+  [1m[35m (186.2ms)[0m  [1m[35mCREATE DATABASE "court_reservation_development" ENCODING = 'unicode'[0m
+  [1m[35m (65.0ms)[0m  [1m[35mCREATE DATABASE "court_reservation_testing" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-17 07:23:46.874339"], ["updated_at", "2021-04-17 07:23:46.874339"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-17 07:23:46.885261"], ["updated_at", "2021-04-17 07:23:46.885261"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-17 07:23:46.997073"], ["updated_at", "2021-04-17 07:23:46.997073"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-04-17 07:23:47.006431"], ["key", "environment"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-17 07:23:47.015927"], ["updated_at", "2021-04-17 07:23:47.015927"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "matthew.conn@hessel-okon.io"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matthew.conn@hessel-okon.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "matthew.conn@hessel-okon.io"], ["encrypted_password", "$2a$12$ASSGrwml85SqtXhxol3gYei8VJ/gau7XLLKQjf6S04d.fQTRKICzy"], ["first_name", "Joana"], ["last_name", "Heller"], ["email", "matthew.conn@hessel-okon.io"], ["created_at", "2021-04-17 07:23:47.477132"], ["updated_at", "2021-04-17 07:23:47.477132"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Maynard MacGyver"], ["LIMIT", 1]]
+  [1m[36mCourt Create (0.9ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Maynard MacGyver"], ["address", "670 Adrian Haven"], ["description", "Non animi omnis consequatur."], ["administrator_id", 1], ["created_at", "2021-04-17 07:23:47.498455"], ["updated_at", "2021-04-17 07:23:47.498455"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "ivan2@ivan.com"], ["encrypted_password", "$2a$12$A5IdkEZWz86qS1ASOuzE1ewMjj/OuTcytE27k9d2tpCC88qlkvTaG"], ["first_name", "Ivan"], ["last_name", "Derlich"], ["email", "ivan2@ivan.com"], ["created_at", "2021-04-17 07:23:47.772661"], ["updated_at", "2021-04-17 07:23:47.772661"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4810071396279237585)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4810071396279237585)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "anglea@okeefe.io"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "anglea@okeefe.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "anglea@okeefe.io"], ["encrypted_password", "$2a$12$vvo/w84bFdH32g5x10J1i.yG5Acsr6B1jSHvcDIqcA3tZKSsJQn0W"], ["first_name", "Dominick"], ["last_name", "Ebert"], ["email", "anglea@okeefe.io"], ["created_at", "2021-04-17 07:24:05.218678"], ["updated_at", "2021-04-17 07:24:05.218678"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Frederica Stracke"], ["LIMIT", 1]]
+  [1m[36mCourt Create (0.6ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Frederica Stracke"], ["address", "6004 Reinger Pike"], ["description", "Voluptatum nisi est quibusdam."], ["administrator_id", 3], ["created_at", "2021-04-17 07:24:05.241622"], ["updated_at", "2021-04-17 07:24:05.241622"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:29:03 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:34:37 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:35:37 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:40:00 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:42:11 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:42:30 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:42:45 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:42:56 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:43:41 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:46:15 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/courts"):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:46:46 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/api/v1/courts" for ::1 at 2021-04-17 04:56:43 -0300
+  
+ActionController::RoutingError (uninitialized constant Api):
+  
+Started GET "/courts" for ::1 at 2021-04-17 04:58:42 -0300
+  
+NameError (uninitialized constant Api):
+  
+app/controllers/courts_controller.rb:1:in `<main>'
+Started GET "/courts" for ::1 at 2021-04-17 04:59:08 -0300
+Processing by CourtsController#index as */*
+Completed 500 Internal Server Error in 9ms (Allocations: 4372)
+
+
+  
+NameError (uninitialized constant CourtsController::Courts):
+  
+app/controllers/courts_controller.rb:3:in `index'
+Started GET "/courts" for ::1 at 2021-04-17 05:00:32 -0300
+Processing by CourtsController#index as */*
+Completed 200 OK in 2ms (Views: 0.2ms | Allocations: 599)
+
+
+Started GET "/courts" for ::1 at 2021-04-17 05:02:00 -0300
+Processing by CourtsController#index as */*
+  [1m[36mCourt Load (0.5ms)[0m  [1m[34mSELECT "courts".* FROM "courts"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 8.6ms | Allocations: 8229)
+
+
+Started GET "/courts" for ::1 at 2021-04-17 05:02:53 -0300
+Processing by CourtsController#index as */*
+  [1m[36mCourt Load (0.2ms)[0m  [1m[34mSELECT "courts".* FROM "courts"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 18ms (Views: 9.5ms | ActiveRecord: 4.4ms | Allocations: 5419)
+
+
+Started GET "/courts" for ::1 at 2021-04-17 05:05:04 -0300
+Processing by CourtsController#index as */*
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2596)
+
+
+  
+NoMethodError (undefined method `authenticate_user!' for #<CourtsController:0x000000000227b8>
+Did you mean?  authenticate_api_user!):
+  
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+actionpack (6.1.3.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:512:in `block in invoke_before'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:512:in `each'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:512:in `invoke_before'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:105:in `run_callbacks'
+actionpack (6.1.3.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.3.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.3.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.3.1) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.3.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.3.1) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.3.1) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.3.1) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:165:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/courts" for ::1 at 2021-04-17 05:06:45 -0300
+Processing by CourtsController#index as */*
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 4.4ms | Allocations: 5401)
+
+
+Started GET "/courts" for ::1 at 2021-04-17 05:07:19 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CourtsController#index as */*
+  [1m[36mCourt Load (0.5ms)[0m  [1m[34mSELECT "courts".* FROM "courts"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 89ms (Views: 76.3ms | ActiveRecord: 4.8ms | Allocations: 8482)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-17 05:07:34 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 523ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 219912)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 14:23:04 -0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 609ms (Views: 0.5ms | ActiveRecord: 9.2ms | Allocations: 223145)
+
+
+Started POST "/api/v1/auth?email=ivan2@ivan.com&password=[FILTERED]&first_name=Ivan&last_name=Derlich" for ::1 at 2021-04-19 14:23:33 -0300
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]", "first_name"=>"Ivan", "last_name"=>"Derlich"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 306ms (Views: 0.4ms | ActiveRecord: 8.0ms | Allocations: 6073)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 14:29:56 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 283ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 3367)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 14:59:23 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 297ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 8280)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:00:59 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 280ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1256)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:01:35 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 290ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1264)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:01:45 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 277ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1257)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:03:03 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 281ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1256)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5018.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5009.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (29.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (22.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_testing"[0m
+  [1m[35m (217.7ms)[0m  [1m[35mCREATE DATABASE "court_reservation_development" ENCODING = 'unicode'[0m
+  [1m[35m (65.2ms)[0m  [1m[35mCREATE DATABASE "court_reservation_testing" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-19 18:04:08.652761"], ["updated_at", "2021-04-19 18:04:08.652761"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-19 18:04:08.666561"], ["updated_at", "2021-04-19 18:04:08.666561"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-19 18:04:08.779791"], ["updated_at", "2021-04-19 18:04:08.779791"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-04-19 18:04:08.789456"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-19 18:04:08.796563"], ["updated_at", "2021-04-19 18:04:08.796563"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "drew_rempel@lehner-hettinger.biz"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "drew_rempel@lehner-hettinger.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "drew_rempel@lehner-hettinger.biz"], ["encrypted_password", "$2a$12$Rbw1urjerC2JryBNMLfdReNOAYLc04wEUXMBWX8OZqolEBOJmxNge"], ["first_name", "Laquita"], ["last_name", "White"], ["email", "drew_rempel@lehner-hettinger.biz"], ["created_at", "2021-04-19 18:04:09.245070"], ["updated_at", "2021-04-19 18:04:09.245070"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Flo Willms"], ["LIMIT", 1]]
+  [1m[36mCourt Create (0.9ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Flo Willms"], ["address", "29574 Verdell Alley"], ["description", "Ratione nulla totam ut."], ["administrator_id", 1], ["created_at", "2021-04-19 18:04:09.268561"], ["updated_at", "2021-04-19 18:04:09.268561"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "ivan2@ivan.com"], ["encrypted_password", "$2a$12$TCvi9JunLLKdJknpwekYP.Mm2L.gyVvh8UmF0/XbppvvzfxBE9Ok2"], ["first_name", "Ivan"], ["last_name", "Derlich"], ["email", "ivan2@ivan.com"], ["created_at", "2021-04-19 18:04:09.538681"], ["updated_at", "2021-04-19 18:04:09.538681"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "shae_gibson@buckridge.biz"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shae_gibson@buckridge.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "shae_gibson@buckridge.biz"], ["encrypted_password", "$2a$12$LaeqqQ00ZmoG9QyJ/oVIceYCcTnDm2u6iAeR1uu4L2yQEohoMhVBS"], ["first_name", "Elmo"], ["last_name", "Emard"], ["email", "shae_gibson@buckridge.biz"], ["created_at", "2021-04-19 18:04:15.818842"], ["updated_at", "2021-04-19 18:04:15.818842"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Rosalie Marvin"], ["LIMIT", 1]]
+  [1m[36mCourt Create (0.7ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Rosalie Marvin"], ["address", "97712 Tana Ridges"], ["description", "Velit aut cumque veritatis."], ["administrator_id", 3], ["created_at", "2021-04-19 18:04:15.844089"], ["updated_at", "2021-04-19 18:04:15.844089"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:05:02 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"xYdUMtdZxHWLEd0tDk2Zrg\\\":{\\\"token\\\":\\\"$2a$10$FKFkpedoaBylWopJ11UxZegs4gAQMU22M8421JmDncTv85xnDkVNa\\\",\\\"expiry\\\":1620065102}}\""], ["updated_at", "2021-04-19 18:05:02.890133"], ["id", 2]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 498ms (Views: 0.3ms | ActiveRecord: 11.1ms | Allocations: 16983)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (37.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_development"[0m
+  [1m[35m (23.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "court_reservation_testing"[0m
+  [1m[35m (86.8ms)[0m  [1m[35mCREATE DATABASE "court_reservation_development" ENCODING = 'unicode'[0m
+  [1m[35m (66.7ms)[0m  [1m[35mCREATE DATABASE "court_reservation_testing" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-19 18:06:23.528313"], ["updated_at", "2021-04-19 18:06:23.528313"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-19 18:06:23.542160"], ["updated_at", "2021-04-19 18:06:23.542160"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "courts" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "courts" ("id" bigserial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "description" character varying, "administrator_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE INDEX "index_courts_on_administrator_id" ON "courts" ("administrator_id")[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_courts_on_name" ON "courts" ("name")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "email" character varying, "tokens" json, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "courts" ADD CONSTRAINT "fk_rails_960f40dccc"
+FOREIGN KEY ("administrator_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210413195856)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210408010003);
+
+[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-19 18:06:23.651090"], ["updated_at", "2021-04-19 18:06:23.651090"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-04-19 18:06:23.661944"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "3d95999e397c09b7aa89bc4cdb2a674d402feaa0"], ["created_at", "2021-04-19 18:06:23.668977"], ["updated_at", "2021-04-19 18:06:23.668977"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "katia@bahringer.info"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "katia@bahringer.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "katia@bahringer.info"], ["encrypted_password", "$2a$12$4UcOIQNJdE1P4A8IZEQd2e5qCw0l.NhHoBHTkCNrkUgZ51SqPDAme"], ["first_name", "Dwain"], ["last_name", "Heaney"], ["email", "katia@bahringer.info"], ["created_at", "2021-04-19 18:06:24.112299"], ["updated_at", "2021-04-19 18:06:24.112299"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Jill Dickinson"], ["LIMIT", 1]]
+  [1m[36mCourt Create (1.1ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jill Dickinson"], ["address", "5532 Schroeder Field"], ["description", "Minima autem illum possimus."], ["administrator_id", 1], ["created_at", "2021-04-19 18:06:24.134251"], ["updated_at", "2021-04-19 18:06:24.134251"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "ivan@ivan.com"], ["encrypted_password", "$2a$12$dy4pg4IXaQyfdMmLaPt6ReO7L2qcCxGrLOxQUI7QfigVaXzIgNLGu"], ["first_name", "Ivan"], ["last_name", "Derlich"], ["email", "ivan@ivan.com"], ["created_at", "2021-04-19 18:06:24.408295"], ["updated_at", "2021-04-19 18:06:24.408295"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "nicki@hettinger.name"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nicki@hettinger.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "nicki@hettinger.name"], ["encrypted_password", "$2a$12$5W0R3HIPFfjSyRnfuAn.FujARfXbqCrEl7YFTy.WjtMJXJHK6lHJy"], ["first_name", "Refugia"], ["last_name", "Cronin"], ["email", "nicki@hettinger.name"], ["created_at", "2021-04-19 18:06:32.241503"], ["updated_at", "2021-04-19 18:06:32.241503"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourt Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "Ruthe Schroeder"], ["LIMIT", 1]]
+  [1m[36mCourt Create (0.7ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ruthe Schroeder"], ["address", "4979 Elin Crossroad"], ["description", "Perspiciatis fuga dolor vitae."], ["administrator_id", 3], ["created_at", "2021-04-19 18:06:32.263468"], ["updated_at", "2021-04-19 18:06:32.263468"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:07:15 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 366ms (Views: 0.3ms | ActiveRecord: 3.6ms | Allocations: 218358)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:07:17 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 5ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 1123)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan2@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:07:19 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1118)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:07:23 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"HZCo0eV2QPLsUVs8KMP6AA\\\":{\\\"token\\\":\\\"$2a$10$ntVH9ij0EdTShxl/0QM3uuEvTSWuCYkYM09dZODvrJZbM9qqfp18i\\\",\\\"expiry\\\":1620065244}}\""], ["updated_at", "2021-04-19 18:07:24.235851"], ["id", 2]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 412ms (Views: 0.2ms | ActiveRecord: 7.9ms | Allocations: 11972)
+
+
+Started POST "/api/v1/auth?email=ivan2@ivan.com&password=[FILTERED]&first_name=Ivan&last_name=Derlich" for ::1 at 2021-04-19 15:08:06 -0300
+Processing by DeviseTokenAuth::RegistrationsController#create as */*
+  Parameters: {"email"=>"ivan2@ivan.com", "password"=>"[FILTERED]", "first_name"=>"Ivan", "last_name"=>"Derlich"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan2@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("uid", "encrypted_password", "first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["uid", "ivan2@ivan.com"], ["encrypted_password", "$2a$12$CFddrWKpKazynkV1/3QdM.F2hZPQOFXnfJsBg99TCROgkUZ4XZIrW"], ["first_name", "Ivan"], ["last_name", "Derlich"], ["email", "ivan2@ivan.com"], ["created_at", "2021-04-19 18:08:06.792022"], ["updated_at", "2021-04-19 18:08:06.792022"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan2@ivan.com"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"BmpdfD3FU9fu3aSKilErmA\\\":{\\\"token\\\":\\\"$2a$10$LCNybtWD4sP9nj800hMhKOoaFBicmyh//UwNBpyJiK05bjMuF3ZZy\\\",\\\"expiry\\\":1620065286}}\""], ["updated_at", "2021-04-19 18:08:06.887983"], ["id", 4]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 200 OK in 435ms (Views: 0.5ms | ActiveRecord: 9.5ms | Allocations: 10271)
+
+
+Started DELETE "/api/v1/auth/sign_out" for ::1 at 2021-04-19 15:12:17 -0300
+Processing by DeviseTokenAuth::SessionsController#destroy as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", nil], ["updated_at", "2021-04-19 18:12:17.681666"], ["id", 2]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 102ms (Views: 0.3ms | ActiveRecord: 3.4ms | Allocations: 6177)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:12:54 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574}}\""], ["updated_at", "2021-04-19 18:12:54.755601"], ["id", 2]]
+  [1m[36mTRANSACTION (24.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 440ms (Views: 0.4ms | ActiveRecord: 26.9ms | Allocations: 6068)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:14:05 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646}}\""], ["updated_at", "2021-04-19 18:14:06.278606"], ["id", 2]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 369ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 6154)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:15:04 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704}}\""], ["updated_at", "2021-04-19 18:15:04.385422"], ["id", 2]]
+  [1m[36mTRANSACTION (26.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 415ms (Views: 0.4ms | ActiveRecord: 28.3ms | Allocations: 6227)
+
+
+Started GET "/courts" for ::1 at 2021-04-19 15:15:55 -0300
+Processing by CourtsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 90ms (Views: 8.0ms | ActiveRecord: 4.0ms | Allocations: 7112)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:40 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801}}\""], ["updated_at", "2021-04-19 18:16:41.163888"], ["id", 2]]
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 387ms (Views: 0.3ms | ActiveRecord: 32.8ms | Allocations: 6291)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:43 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803}}\""], ["updated_at", "2021-04-19 18:16:43.900527"], ["id", 2]]
+  [1m[36mTRANSACTION (28.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 391ms (Views: 0.4ms | ActiveRecord: 29.7ms | Allocations: 6359)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:45 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805}}\""], ["updated_at", "2021-04-19 18:16:45.824004"], ["id", 2]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 362ms (Views: 0.4ms | ActiveRecord: 2.3ms | Allocations: 6430)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:46 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805},\\\"ypxsHQICzkEfMGMPGqY1jQ\\\":{\\\"token\\\":\\\"$2a$10$xFqeIXpHSgh/mYdoXpUH0eOh2TCF0z5wg7L1Eo9ahMG7tpSTGCnKi\\\",\\\"expiry\\\":1620065807}}\""], ["updated_at", "2021-04-19 18:16:47.095232"], ["id", 2]]
+  [1m[36mTRANSACTION (31.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 389ms (Views: 0.5ms | ActiveRecord: 32.6ms | Allocations: 6500)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:47 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805},\\\"ypxsHQICzkEfMGMPGqY1jQ\\\":{\\\"token\\\":\\\"$2a$10$xFqeIXpHSgh/mYdoXpUH0eOh2TCF0z5wg7L1Eo9ahMG7tpSTGCnKi\\\",\\\"expiry\\\":1620065807},\\\"c4flMdphCcXzU2RgAtgopQ\\\":{\\\"token\\\":\\\"$2a$10$bKqMXOeRKVE0jfi9ALdFyeFoW/ONjSvF8yNsbcyCKlaZa4a4F2ksC\\\",\\\"expiry\\\":1620065808}}\""], ["updated_at", "2021-04-19 18:16:48.319900"], ["id", 2]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 373ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 6563)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:49 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805},\\\"ypxsHQICzkEfMGMPGqY1jQ\\\":{\\\"token\\\":\\\"$2a$10$xFqeIXpHSgh/mYdoXpUH0eOh2TCF0z5wg7L1Eo9ahMG7tpSTGCnKi\\\",\\\"expiry\\\":1620065807},\\\"c4flMdphCcXzU2RgAtgopQ\\\":{\\\"token\\\":\\\"$2a$10$bKqMXOeRKVE0jfi9ALdFyeFoW/ONjSvF8yNsbcyCKlaZa4a4F2ksC\\\",\\\"expiry\\\":1620065808},\\\"DPHsYDqtYbmjnB-Aj3FSWQ\\\":{\\\"token\\\":\\\"$2a$10$3MBHEwVK0jBDzEUh9vXSN.4f4ff8NKZcPeko99s/kqJxu586dW9WC\\\",\\\"expiry\\\":1620065809}}\""], ["updated_at", "2021-04-19 18:16:49.422633"], ["id", 2]]
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 394ms (Views: 0.3ms | ActiveRecord: 33.0ms | Allocations: 6631)
+
+
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-19 15:16:50 -0300
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"snuUiR4rRiL4eG4TyKgdEg\\\":{\\\"token\\\":\\\"$2a$10$QskidX3U282.MXY13m1uEeFsDqmVGS.ViTk7VS7x/fELnkQCGCrUS\\\",\\\"expiry\\\":1620065574},\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805},\\\"ypxsHQICzkEfMGMPGqY1jQ\\\":{\\\"token\\\":\\\"$2a$10$xFqeIXpHSgh/mYdoXpUH0eOh2TCF0z5wg7L1Eo9ahMG7tpSTGCnKi\\\",\\\"expiry\\\":1620065807},\\\"c4flMdphCcXzU2RgAtgopQ\\\":{\\\"token\\\":\\\"$2a$10$bKqMXOeRKVE0jfi9ALdFyeFoW/ONjSvF8yNsbcyCKlaZa4a4F2ksC\\\",\\\"expiry\\\":1620065808},\\\"DPHsYDqtYbmjnB-Aj3FSWQ\\\":{\\\"token\\\":\\\"$2a$10$3MBHEwVK0jBDzEUh9vXSN.4f4ff8NKZcPeko99s/kqJxu586dW9WC\\\",\\\"expiry\\\":1620065809},\\\"rafFO7UYN2y3YwSNqXC6zw\\\":{\\\"token\\\":\\\"$2a$10$jzSyXzcpLEobMoQJP3K6ReUnUFxcxCe/dbs967DKMMHSFh6KNzXre\\\",\\\"expiry\\\":1620065810}}\""], ["updated_at", "2021-04-19 18:16:50.749201"], ["id", 2]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 372ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 6698)
+
+
