@@ -72,7 +72,10 @@ RSpec.describe "Courts", type: :request do
       end
 
       it 'returns the court' do
-        p json
+        expect(json['name']).to eq(courts.first.name)
+        expect(json['description']).to eq(courts.first.description)
+        expect(json['address']).to eq(courts.first.address)
+        expect(json['administrator_id']).to eq(courts.first.administrator_id)
       end
     end
 
@@ -118,107 +121,48 @@ RSpec.describe "Courts", type: :request do
       
     end
     context 'when the request is invalid' do
-      it 'Blank name' do
-        params = {
-          name: "",
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:20),
-          administrator_id: user.id
-        }
-        
+
+      let(:params) {{
+        name: Faker::Lorem.characters(number:6),
+        address: Faker::Address.street_address,
+        description: Faker::Lorem.characters(number:20),
+        administrator_id: user.id
+      }}
+
+      after(:each){
         post "/courts",
           params: params,
           headers: headers
 
         expect(response).to have_http_status(422)
+      }      
+      
+      it 'Blank name' do
+        params[:name] = ""        
       end
 
       it 'Name not present' do
-        params = {
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:20),
-          administrator_id: user.id
-        }
-        
-        post "/courts",
-          params: params,
-          headers: headers
-
-        expect(response).to have_http_status(422)
-      end
-
-      it 'Empty administrator' do
-        params = {
-          name: Faker::Lorem.characters(number:6),
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:20),
-          administrator_id: ""
-        }
-        
-        post "/courts",
-          params: params,
-          headers: headers
-
-        expect(response).to have_http_status(422)
+        params.delete(:name)    
       end
 
       it 'Blank administrator' do
-        params = {
-          name: Faker::Lorem.characters(number:6),
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:20),
-        }
-        
-        post "/courts",
-          params: params,
-          headers: headers
+        params[:administrator_id] = ""
+      end
 
-        expect(response).to have_http_status(422)
+      it 'Empty administrator' do
+        params.delete(:administrator_id) 
       end
 
       it 'Name too long' do
-        params = {
-          name: Faker::Lorem.characters(number:41),
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:20),
-          administrator_id: user.id
-        }
-        
-        post "/courts",
-          params: params,
-          headers: headers
-
-        expect(response).to have_http_status(422)
+        params[:name] = Faker::Lorem.characters(number:41) 
       end
 
       it 'Description too long' do
-        params = {
-          name: Faker::Lorem.characters(number:10),
-          address: Faker::Address.street_address,
-          description: Faker::Lorem.characters(number:101),
-          administrator_id: user.id
-        }
-        
-        post "/courts",
-          params: params,
-          headers: headers
-
-        expect(response).to have_http_status(422)
+        params[:description] = Faker::Lorem.characters(number:101)
       end
 
       it 'Address too long' do
-        params = {
-          name: Faker::Lorem.characters(number:10),
-          address: Faker::Lorem.characters(number:51),
-          description: Faker::Lorem.characters(number:10),
-          administrator_id: user.id
-        }     
-
-        post "/courts",
-          params: params,
-          headers: headers
-
-        expect(response).to have_http_status(422)
+        params[:address] = Faker::Lorem.characters(number:101)
       end
     end
   end
