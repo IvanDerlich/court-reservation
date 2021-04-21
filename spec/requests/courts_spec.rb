@@ -203,24 +203,42 @@ RSpec.describe "Courts", type: :request do
       end
     end
 
-    context 'when the record exist and the edition is invalid' do    
+    context 'when the record exist and the edition is invalid - ' do    
       let(:valid_attributes){{}}
       after {
-        p "valid_attributes"
-        p valid_attributes
         put "/courts/#{court_id}",
           headers: headers,
           params: valid_attributes
-        p response.body
-        expect(response).to have_http_status(402)
+        expect(response).to have_http_status(:unprocessable_entity)
       }
 
-      it 'Name already taken', focus: true do
-        p "courts.first"
-        p courts.first
-        
-        valid_attributes[:name] = courts.first.name        
+      it 'No parameters' do   
       end
+
+      it 'Name already taken' do           
+        valid_attributes[:name] = courts.second.name        
+      end    
+
+      it 'Blank name' do
+        valid_attributes[:name] = ""        
+      end  
+
+      it 'Blank administrator' do
+        valid_attributes[:administrator_id] = ""
+      end   
+
+      it 'Name too long' do
+        valid_attributes[:name] = Faker::Lorem.characters(number:41) 
+      end  
+
+      it 'Description too long' do
+        valid_attributes[:description] = Faker::Lorem.characters(number:101)
+      end
+
+      it 'Address too long' do
+        valid_attributes[:address] = Faker::Lorem.characters(number:101)
+      end
+      
     end
   end
 end

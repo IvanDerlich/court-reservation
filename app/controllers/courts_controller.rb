@@ -16,12 +16,14 @@ class CourtsController < ApplicationController
   end
 
   def update
-    @court.update(court_params)
-    if @court
+    unless params[:name] || params[:address] || params[:description] || params[:administrator_id]
+      head :unprocessable_entity # nothing to do, no editable parameters, send error
+      return 0
+    end
+    if @court.update(court_params) 
       head :accepted
     else
-      # raise "Can't update court"
-      head :unprocessable_entity
+      head :unprocessable_entity # validation errors
     end
   end
 

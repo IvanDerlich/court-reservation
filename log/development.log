@@ -7779,3 +7779,17 @@ DEPRECATION WARNING: connection_config is deprecated and will be removed from Ra
 Completed 200 OK in 372ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 6698)
 
 
+Started POST "/api/v1/auth/sign_in?email=ivan@ivan.com&password=[FILTERED]" for ::1 at 2021-04-21 17:15:12 -0300
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"oJ3MDjUryyTEpNqpD7NWJg\\\":{\\\"token\\\":\\\"$2a$10$GRWBG1s.w8ble/SfdvJhjetZZ3bbnBu746KAR45wC5R4uZ1YUXlme\\\",\\\"expiry\\\":1620065646},\\\"qL8yK78ATMamooYTSpG_8w\\\":{\\\"token\\\":\\\"$2a$10$RXt7duDDr5ICbasoxGHIyuV02Fxv.iL.K4XDbxhfeQp8XYiuYee4u\\\",\\\"expiry\\\":1620065704},\\\"vSveSrYzgy6_4OMicnHvhA\\\":{\\\"token\\\":\\\"$2a$10$B5u80VqIL7jc8Nooezwr5.jlr./8ZSiEvQ4CmRA6ryxobrXleamO6\\\",\\\"expiry\\\":1620065801},\\\"V1FmAfmNpI8QvBVSahvNJg\\\":{\\\"token\\\":\\\"$2a$10$yKREECZPARk8doe3X8zPIO5e8gEi7jRVsOlFycvX6DC3jBkCy5MMO\\\",\\\"expiry\\\":1620065803},\\\"CZy2bDPazX7fYn_EhZPsfA\\\":{\\\"token\\\":\\\"$2a$10$NEY5gMSsQU6LmZzTY3wM2ur6IJ8zKR91U3oOY30ClP6S6VmdNtDey\\\",\\\"expiry\\\":1620065805},\\\"ypxsHQICzkEfMGMPGqY1jQ\\\":{\\\"token\\\":\\\"$2a$10$xFqeIXpHSgh/mYdoXpUH0eOh2TCF0z5wg7L1Eo9ahMG7tpSTGCnKi\\\",\\\"expiry\\\":1620065807},\\\"c4flMdphCcXzU2RgAtgopQ\\\":{\\\"token\\\":\\\"$2a$10$bKqMXOeRKVE0jfi9ALdFyeFoW/ONjSvF8yNsbcyCKlaZa4a4F2ksC\\\",\\\"expiry\\\":1620065808},\\\"DPHsYDqtYbmjnB-Aj3FSWQ\\\":{\\\"token\\\":\\\"$2a$10$3MBHEwVK0jBDzEUh9vXSN.4f4ff8NKZcPeko99s/kqJxu586dW9WC\\\",\\\"expiry\\\":1620065809},\\\"rafFO7UYN2y3YwSNqXC6zw\\\":{\\\"token\\\":\\\"$2a$10$jzSyXzcpLEobMoQJP3K6ReUnUFxcxCe/dbs967DKMMHSFh6KNzXre\\\",\\\"expiry\\\":1620065810},\\\"Xw2NH8cxyVImA6ZObhEy0Q\\\":{\\\"token\\\":\\\"$2a$10$GpbrXbZsQpWa2gOAlLloGOJNlxu4kAB6ot09dJ6h.0PKSnRJl10x2\\\",\\\"expiry\\\":1620245712}}\""], ["updated_at", "2021-04-21 20:15:13.031429"], ["id", 2]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 492ms (Views: 0.5ms | ActiveRecord: 13.3ms | Allocations: 17752)
+
+
