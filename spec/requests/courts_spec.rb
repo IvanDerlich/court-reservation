@@ -56,7 +56,7 @@ RSpec.describe "Courts", type: :request do
       expect(response.status).to eq(200)     
     end
 
-    it 'returns todo' do
+    it 'returns court' do
       expect(json).not_to be_empty
       expect(json.size).to eq(12)
     end
@@ -93,7 +93,7 @@ RSpec.describe "Courts", type: :request do
     end
   end
 
-  describe 'POST /todos' do
+  describe 'POST /courts' do
     let(:valid_attributes) { { 
       name: Faker::Lorem.characters(number:6),
       address: Faker::Address.street_address,
@@ -157,12 +157,69 @@ RSpec.describe "Courts", type: :request do
         params[:name] = Faker::Lorem.characters(number:41) 
       end
 
+      it 'Name already taken' do
+        params[:name] = courts.first.name
+      end
+
       it 'Description too long' do
         params[:description] = Faker::Lorem.characters(number:101)
       end
 
       it 'Address too long' do
         params[:address] = Faker::Lorem.characters(number:101)
+      end
+    end
+  end
+  describe 'PUT /courts/:id' do
+    
+
+    context 'when the record exists' do
+      let(:valid_attributes){{}}
+      
+      after { 
+        put "/courts/#{court_id}",
+          headers: headers,
+          params: valid_attributes
+        expect(response).to have_http_status(202)
+      }
+
+      it 'returns status code 204' do
+        valid_attributes[:name] = Faker::Lorem.characters(number:10)        
+      end
+      
+    end
+
+    context 'when the record does not exist' do
+      let(:valid_attributes){{}}
+      let(:court_id){99992}
+      after { 
+        put "/courts/#{court_id}",
+          headers: headers,
+          params: valid_attributes
+        expect(response).to have_http_status(404)
+      }
+      it 'Code for court not found' do
+        valid_attributes[:name] = Faker::Lorem.characters(number:10)         
+      end
+    end
+
+    context 'when the record exist and the edition is invalid' do    
+      let(:valid_attributes){{}}
+      after {
+        p "valid_attributes"
+        p valid_attributes
+        put "/courts/#{court_id}",
+          headers: headers,
+          params: valid_attributes
+        p response.body
+        expect(response).to have_http_status(402)
+      }
+
+      it 'Name already taken', focus: true do
+        p "courts.first"
+        p courts.first
+        
+        valid_attributes[:name] = courts.first.name        
       end
     end
   end

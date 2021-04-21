@@ -15,10 +15,15 @@ class CourtsController < ApplicationController
     json_response(@court, :created)
   end
 
-  # def update
-  #   @court.update(court_params)
-  #   head :accepted  
-  # end
+  def update
+    @court.update(court_params)
+    if @court
+      head :accepted
+    else
+      # raise "Can't update court"
+      head :unprocessable_entity
+    end
+  end
 
   private
 
