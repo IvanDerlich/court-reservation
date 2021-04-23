@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
         # Try to figure the cause of this behaviour
 
         has_many :courts, dependent: :destroy, foreign_key: :administrator_id
+
         
         private
 

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Courts", type: :request do
-  # initialize test data
   let!(:user) { create(:user)}
   let!(:courts) { create_list(:court, 10) }
   let(:court_id) { courts.first.id }
@@ -239,6 +238,22 @@ RSpec.describe "Courts", type: :request do
         valid_attributes[:address] = Faker::Lorem.characters(number:101)
       end
       
+    end
+  end
+  describe 'DELETE /courts/' do  
+    before {
+      delete "/courts/#{court_id}",
+        headers: headers      
+    }
+    it 'Record exists' do    
+      expect(response).to have_http_status(204)            
+    end
+
+    context "Record doesn't exist" do   
+      let(:court_id){99992}          
+      it "" do     
+        expect(response).to have_http_status(404)    
+      end
     end
   end
 end

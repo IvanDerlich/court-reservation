@@ -27,6 +27,12 @@ class CourtsController < ApplicationController
     end
   end
 
+  # DELETE /todos/:id
+  def destroy
+    @court.destroy
+    head :no_content
+  end
+
   private
 
   def court_params    
