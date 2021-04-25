@@ -132,10 +132,10 @@ RSpec.describe Booking, type: :model do
       end    
     end    
   end
-  describe 'Delete' do
-    xit 'Record Exists' do
-    end
-    xit 'Record doesn/t exist' do
-    end
+  describe 'Delete'do
+    let!(:booking){ create :booking}
+    it 'Record Exists' do
+      expect(booking.destroy).to eq(booking)
+    end 
   end
 end

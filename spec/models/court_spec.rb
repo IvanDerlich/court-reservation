@@ -95,7 +95,7 @@ RSpec.describe Court, type: :model do
     it 'Delete court' do
       court = create :court    
       expect(
-        Court.find_by(name:court.name) 
+        Court.find_by(name:court.name).destroy
       ).to eq(court)
     end    
   end

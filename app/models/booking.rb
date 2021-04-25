@@ -23,23 +23,23 @@ class Booking < ApplicationRecord
 
   def o_clock_time?
     if (date.min != 0)
-      errors.add(:date, "date can't have minutes different from zero")
+      errors.add(:date, "Date can't have minutes different from zero")
     elsif (date.sec != 0)
-      errors.add(:date, "date can't have seconds different from zero")
+      errors.add(:date, "Date can't have seconds different from zero")
     elsif (date.usec != 0)
-      errors.add(:date, "date can't have miliseconds different from zero")
+      errors.add(:date, "Date can't have miliseconds different from zero")
     end
   end
 
   def court_read_only
     if self.court_id_changed?
-      errors.add(:court,"cant change court")
+      errors.add(:court,"Can't change court")
     end
   end
 
   def booker_read_only
     if self.booker_id_changed?
-      errors.add(:booker,"cant change booking")
+      errors.add(:booker,"Can't change booking")
     end
   end
 
