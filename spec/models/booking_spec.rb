@@ -83,21 +83,40 @@ RSpec.describe Booking, type: :model do
       create :booking      
     }
     context 'Valid update' do
-      it 'Change hour', :focus do
+      it 'Change date' do
         expect(Booking.all.first).to eq(booking)
-        # p "Day"
-        # p Time.now.day
-        # p create(:booking)
+        prev_date = booking.date
+        booking.update(date: DateTime.new(
+          Time.now.year , # year
+          Time.now.month, # month
+          rand(1..29), # day
+          rand(19..23), # hour
+          0, # minutes
+          0 # seconds
+        ))  
+        expect(prev_date).not_to be(booking.date)
+        expect(booking.valid?).to be(true)
+      end
+      it 'Change description', :focus do
+        new_description = Faker::Lorem.characters(number:50)
+        booking.update(description: new_description)
+        expect(Booking.all.first.description).to eq(new_description)
       end
     end
     context 'Invalid update' do
       xit 'Change to an hour that is already taken' do
+      end      
+      xit 'Change court forbiden' do
+      end
+      xit 'Change booker forbiden' do
       end
       xit 'Remove court' do
       end
       xit 'Remove booker' do
       end
       xit 'Long description' do
+      end
+      xit 'Change date to a date already taken' do
       end
     end    
   end
