@@ -79,9 +79,9 @@ RSpec.describe Booking, type: :model do
     end
   end
   describe 'Update' do
-    let!(:booking){ 
-      create :booking      
-    }
+    let!(:booking){ create :booking}
+    let!(:court){ create :court}
+    let!(:user) {create :user}
     context 'Valid update' do
       it 'Change date' do
         expect(Booking.all.first).to eq(booking)
@@ -97,27 +97,39 @@ RSpec.describe Booking, type: :model do
         expect(prev_date).not_to be(booking.date)
         expect(booking.valid?).to be(true)
       end
-      it 'Change description', :focus do
+      it 'Change description' do
         new_description = Faker::Lorem.characters(number:50)
         booking.update(description: new_description)
         expect(Booking.all.first.description).to eq(new_description)
       end
     end
     context 'Invalid update' do
-      xit 'Change to an hour that is already taken' do
+      it 'Change to an date and court that is already taken' do
+        booking2 = Booking.create(
+          booker: user,
+          court: booking.court,
+          date: DateTime.new(2021,05,02,16,0,0),
+        )    
+        expect(booking.update(date: booking2.date)).to eq(false)
       end      
-      xit 'Change court forbiden' do
+      it 'Change court forbiden' do
+        expect(booking.update(court: court)).to eq(false)
       end
-      xit 'Change booker forbiden' do
+      it 'Change booker forbiden' do
+        expect(booking.update(booker: user)).to eq(false)
       end
-      xit 'Remove court' do
+      it 'Remove court' do
+        expect(booking.update(court: nil)).to eq(false)
       end
-      xit 'Remove booker' do
+      it 'Remove booker' do
+        expect(booking.update(booker: nil)).to eq(false)
       end
-      xit 'Long description' do
-      end
-      xit 'Change date to a date already taken' do
-      end
+      it 'Long description' do
+        expect(
+          booking.update(
+            description: Faker::Lorem.characters(number:101)
+          )).to eq(false)
+      end    
     end    
   end
   describe 'Delete' do
