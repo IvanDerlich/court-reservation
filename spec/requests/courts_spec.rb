@@ -49,7 +49,8 @@ RSpec.describe "Courts", type: :request do
   }}
   describe "GET /courts" do
     before {
-      get '/courts', headers: headers }    
+      get '/courts', headers: headers
+    }    
 
     it 'Code 200' do      
       expect(response.status).to eq(200)     

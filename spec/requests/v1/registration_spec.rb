@@ -57,7 +57,6 @@ RSpec.describe "Registrations", type: :request do
     it 'Unsuccessfully: empty password' do
       Pepe[:password] = ''
       post '/api/v1/auth', params: Pepe   
-      p Pepe    
       expect(response.status).to eq(422)
       expect(json['status']).to eq('error')
       expect(json['errors']['full_messages']).to eq([

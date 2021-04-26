@@ -23,9 +23,9 @@ RSpec.describe "Authorization", type: :request do
     expect(response.status).to eq(401)
   end
 
-  xit 'No sign, no booking  access' do
-    get "api/v1/booking"    
-    expect(response.status).to eq(401)    
+  it 'No sign, no booking access' do
+    get "/courts/#{$court1.id}/bookings"
+    expect(response.status).to eq(401)
   end
 
   it 'Sign in and resource access' do
