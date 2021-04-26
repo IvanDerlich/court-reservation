@@ -7,7 +7,7 @@ RSpec.describe Court, type: :model do
   let!(:booking3) { create :booking, :court => court}
   let!(:booking4) { create :booking, :court => court}
 
-  it 'Show all the bookings that a court has' do
+  it 'Show all the bookings the court has' do
     expect(court.bookings.size).to eq(4)
     expect(court.bookings.first).to eq(booking1)
     expect(court.bookings.second).to eq(booking2)
