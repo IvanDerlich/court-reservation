@@ -36,20 +36,14 @@ RSpec.describe "Bookings", type: :request do
 
   describe 'GET' do    
     context 'Show Bookings' do
-      it 'Show one Booking', :focus do
+      it 'Show one Booking' do
         court1 = create(:court)
-        # p court1
         booking1 = create(:booking, :court => court1)
-        # get "/courts/#{court1.id}/bookings/#{booking1.id}", headers: headers
         get "/courts/#{court1.id}/bookings/#{booking1.id}", headers: headers
         expect(json['description']).to eq(booking1.description)
         expect(
           DateTime.parse(json['created_at']).strftime("%c")
         ).to eq(booking1.created_at.strftime("%c"))
-        # p DateTime.parse(json['created_at']).strftime("%c")
-        # p booking1.created_at.strftime("%c")
-        # p booking1
-        # expect(json['description']).to eq(booking1.description)
       end
       it 'Show many Bookings' do
         get "/courts/#{court.id}/bookings", headers: headers        
@@ -59,19 +53,102 @@ RSpec.describe "Bookings", type: :request do
       end
     end
   end
-  describe 'POST' do    
-    context 'Invalid' do
-      it 'No Parameters' do
-
+  describe 'POST -> Create Bookings' do
+    let(:valid_params){{
+      booker_id: user.id,
+      description: Faker::Lorem.characters(number:30),
+      date: DateTime.new(2021,05,02,16,0,0)
+    }}
+    context 'Happy path' do
+      after{
+        post "/courts/#{court.id}/bookings",
+          headers: headers,
+          params: valid_params 
+          expect(json).not_to be(nil)
+        expect(json.description)
+        .to eq(valid_params[:description])
+        expect(
+          DateTime.parse(json.date).strftime("%c")
+        ).to eq(
+          valid_params[:date].strftime("%c")
+        )
+      }
+      it 'With description' do   
       end
+      it 'With no description' do 
+        valid_params.delete(:description)
+      end
+    end
+    context 'Invalid entity'   do
+      after{
+        post "/courts/#{court.id}/bookings",
+          headers: headers,
+          params: valid_params 
+        expect(response).to have_http_status(422)
+      }
+      it 'Blank date' do        
+        valid_params[:date] = ""                
+      end
+      it 'No date parameter' do
+        valid_params.delete(:date)
+      end
+      it 'Blank booker' do        
+        valid_params[:booker_id] = ""      
+      end
+      it 'No booker parameter' do
+        valid_params.delete(:booker_id)
+      end
+      it 'Booker not existent' do        
+        user.id = 69876967
+      end  
+      it 'No required parameters' do
+        valid_params.delete(:booker_id)
+        valid_params.delete(:date)
+      end
+      it 'Long description' do
+        valid_params[:description] = Faker::Lorem.characters(number:101)
+      end
+    end
+    context 'Invalid Routing' do      
+      it 'No court' do
+        court.id = nil
+        expect{
+          post "/courts/#{court.id}/bookings",
+          headers: headers,
+          params: valid_params 
+        }.to raise_error
+      end
+    end
+    context 'Not found'  do 
+      it 'Court not existent' do        
+        court.id = 69876967
+        post "/courts/#{court.id}/bookings",
+          headers: headers,
+          params: valid_params 
+        expect(response).to have_http_status(404)
+      end     
     end
   end
   describe 'PUT' do
+    context 'Valid' do
+      it 'Happy path for edition' do
+      end
+    end
     context 'Invalid' do
+      it 'One validation error' do
+      end
       it 'No parameters' do
       end
     end
   end
   describe 'DELETE' do
+    context 'Valid' do
+      it 'Happy path' do
+      end
+    end
+    context 'Invalid' do
+      it "Booking doesn't exist" do
+      end
+    end
   end
 end

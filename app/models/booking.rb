@@ -21,14 +21,19 @@ class Booking < ApplicationRecord
 
   private
 
-  def o_clock_time?
-    if (date.min != 0)
-      errors.add(:date, "Date can't have minutes different from zero")
-    elsif (date.sec != 0)
-      errors.add(:date, "Date can't have seconds different from zero")
-    elsif (date.usec != 0)
-      errors.add(:date, "Date can't have miliseconds different from zero")
-    end
+  def o_clock_time? 
+    
+    if (date.class != ActiveSupport::TimeWithZone && date.class != DateTime)
+      errors.add(:date, "Input not in datetime format")
+      return
+    end   
+    
+    errors.add(:date, "Date can't have minutes different from zero") if (date.min != 0)
+
+    errors.add(:date, "Date can't have seconds different from zero") if (date.sec != 0) if (date.sec != 0)
+    
+    errors.add(:date, "Date can't have miliseconds different from zero") if (date.usec != 0)
+    
   end
 
   def court_read_only

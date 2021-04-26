@@ -40,6 +40,6 @@ class CourtsController < ApplicationController
   end
 
   def set_court
-    @court = Court.find(params[:id])
+    @court = Court.find(params[:court_id])
   end
 end
