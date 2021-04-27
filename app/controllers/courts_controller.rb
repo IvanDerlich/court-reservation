@@ -43,10 +43,6 @@ class CourtsController < ApplicationController
   end
 
   def set_court
-    #p "Params"
-    #p params
-    #p Court.find(1)
     @court = Court.find(params[:id])
-    #p "Does it reaches here?"
   end
 end
