@@ -4,6 +4,7 @@ RSpec.describe "Bookings", type: :request do
   let!(:user) { create(:user)}
   let!(:court) { create( :court, :administrator => user)}
   let!(:bookings) { create_list :booking, 10, :court => court}
+  
   # let(:booking_id) { bookings.first.id }
 
   it 'Bookings can be found inside the database and properly accessed' do
@@ -161,7 +162,7 @@ RSpec.describe "Bookings", type: :request do
         ) 
       end
     end
-    context 'Invalid', :focus  do
+    context 'Invalid' do
       let(:params){{}}
       after{
         put "/courts/#{booking.court.id}/bookings/#{booking.id}",
@@ -191,14 +192,20 @@ RSpec.describe "Bookings", type: :request do
       
     end
   end
-  describe 'DELETE' do
-    context 'Valid' do
-      it 'Happy path' do
-      end
+  describe 'DELETE'  do
+    let!(:booking) {create(:booking)}
+
+    it 'Happy path' do
+      delete "/courts/#{booking.court.id}/bookings/#{booking.id}",
+        headers: headers
+      expect(response).to have_http_status(:ok)
     end
-    context 'Invalid' do
-      it "Booking doesn't exist" do
-      end
+
+    it "Booking doesn't exist" do
+      delete "/courts/#{booking.court.id}/bookings/132412423",
+        headers: headers
+      expect(response).to have_http_status(:not_found)
     end
+  
   end
 end
