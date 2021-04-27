@@ -66,18 +66,15 @@ RSpec.describe "Courts", type: :request do
     before {
       get "/courts/#{court_id}", headers: headers
     }
-    context 'when the record exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
-      end
+    
+    it 'Success' do
+      expect(response).to have_http_status(200)
+      expect(json['name']).to eq(courts.first.name)
+      expect(json['description']).to eq(courts.first.description)
+      expect(json['address']).to eq(courts.first.address)
+      expect(json['administrator_id']).to eq(courts.first.administrator_id)
+    end     
 
-      it 'returns the court' do
-        expect(json['name']).to eq(courts.first.name)
-        expect(json['description']).to eq(courts.first.description)
-        expect(json['address']).to eq(courts.first.address)
-        expect(json['administrator_id']).to eq(courts.first.administrator_id)
-      end
-    end
 
     context 'when the record does not exist' do
       let!(:court_id) { 500 }

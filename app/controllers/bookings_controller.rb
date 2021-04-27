@@ -25,8 +25,25 @@ class BookingsController < ApplicationController
     end
   end
 
+  # PUT /court/:court_id/booking/:id
+  def update
+    p params
+    unless params[:description] || params[:date]
+      head :unprocessable_entity # nothing to do, no editable parameters, send error
+      return 0
+    end
+
+    if @booking.update(booking_params.permit(:description, :date))
+      @booking.save
+      json_response(@booking, 200)
+    else
+      head :unprocessable_entity # validation errors
+    end    
+  end
+
   private
 
+ 
   def booking_params
     params.permit(:booker_id, :description, :date)
   end

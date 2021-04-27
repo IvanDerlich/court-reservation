@@ -1,3 +1,5 @@
+# require '../support/request_spec_helper.rb'
+
 FactoryBot.define do
   factory :booking do
     booker { create(:user) }
@@ -16,7 +18,7 @@ FactoryBot.define do
       DateTime.new(year,month,day,hour,
         0, # minutes
         0 # seconds            
-      )
+      )      
   }
     description { Faker::Lorem.characters(number:15) }
   end

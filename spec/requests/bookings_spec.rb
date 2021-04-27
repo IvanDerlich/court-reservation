@@ -129,16 +129,66 @@ RSpec.describe "Bookings", type: :request do
       end     
     end
   end
-  describe 'PUT' do
-    context 'Valid' do
-      it 'Happy path for edition' do
+  describe 'PUT -> Update Bookings' do    
+    let(:booking){create :booking}
+    context 'Valid editions' do     
+      it 'Update Description' do 
+        description = Faker::Lorem.characters(number:15)
+        put "/courts/#{booking.court.id}/bookings/#{booking.id}",
+          headers: headers,
+          params: {
+            description: description
+          }
+        expect(response).to have_http_status(200)
+        expect(json).not_to be(nil)
+        expect(json.description).to eq(description)
+        expect(Booking.find(booking.id).description).to eq(description)
+         
+      end
+      it 'Update Date' do 
+        date = random_date
+        put "/courts/#{booking.court.id}/bookings/#{booking.id}",
+          headers: headers,
+          params: {
+            date: date
+          }
+        expect(response).to have_http_status(200)
+        expect(json).not_to be(nil)
+        expect(
+          DateTime.parse(json.date).strftime("%c")
+        ).to eq(
+          Booking.find(booking.id).date.strftime("%c")
+        ) 
       end
     end
-    context 'Invalid' do
-      it 'One validation error' do
-      end
+    context 'Invalid', :focus  do
+      let(:params){{}}
+      after{
+        put "/courts/#{booking.court.id}/bookings/#{booking.id}",
+          headers: headers,
+          params: params   
+        expect(response).to have_http_status(:unprocessable_entity)
+      }
+
       it 'No parameters' do
       end
+
+      it 'Change Booker' do        
+        params[:booker_id] = user.id
+      end   
+      # There's no point in changing court because court_id will end up being
+      # The one sent in the url. The one over the params will endup being overwritten
+      it 'Long Description' do
+        params[:description] = Faker::Lorem.characters(number:101)
+      end
+
+      it 'Invalid Date' do
+        params[:date] = "adsfasdfasd"
+      end
+      it 'nil Date' do
+        params[:date] = nil
+      end
+      
     end
   end
   describe 'DELETE' do

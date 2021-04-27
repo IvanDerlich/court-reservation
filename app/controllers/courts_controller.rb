@@ -20,7 +20,10 @@ class CourtsController < ApplicationController
       head :unprocessable_entity # nothing to do, no editable parameters, send error
       return 0
     end
-    if @court.update(court_params) 
+    p "Params"
+    p params
+    if @court.update(court_params)
+      p @court.save
       head :accepted
     else
       head :unprocessable_entity # validation errors
@@ -40,6 +43,10 @@ class CourtsController < ApplicationController
   end
 
   def set_court
-    @court = Court.find(params[:court_id])
+    #p "Params"
+    #p params
+    #p Court.find(1)
+    @court = Court.find(params[:id])
+    #p "Does it reaches here?"
   end
 end
