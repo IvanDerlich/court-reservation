@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'Authorization', type: :request do
-  let!(:user){create :user}
-  let!(:court1){create :court}
-  let!(:court2){create :court}  
+  let!(:user) { create :user }
+  let!(:court1) { create :court }
+  let!(:court2) { create :court }
 
   it 'User can be found inside the database' do
     saved_user = User.find_by(email: user.email)
