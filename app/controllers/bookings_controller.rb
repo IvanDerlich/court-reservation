@@ -42,7 +42,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    p @booking.destroy
+    @booking.destroy
     json_response(@booking, 200)
   end
 

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :courts do
     resources :bookings
   end
+
+
+  # get 'users/:id/', :to => 'users#bookings', :as => 'user_bookings'
+  get 'users/:id/courts', :to => 'users#courts', :as => 'user_courts'
   
   namespace :api do
     namespace :v1 do

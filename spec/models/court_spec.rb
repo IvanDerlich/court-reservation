@@ -128,10 +128,9 @@ RSpec.describe Court, type: :model do
       ).to eq(false)      
     end
 
-    it 'Edit administrator' do
-      user = create :user
-      court.update(administrator: user)
-      expect(Court.first.administrator).to eq(user)
+    it 'Invalid edition: edit administrator' do
+      user = create :user      
+      expect(court.update(administrator: user)).to eq(false)
     end
 
     it 'Invalid edition: administrator empty' do

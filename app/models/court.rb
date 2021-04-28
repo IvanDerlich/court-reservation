@@ -8,4 +8,12 @@ class Court < ApplicationRecord
   validates :description, length: { maximum: 100 }
 
   has_many :bookings, dependent: :destroy
+
+  validate :administrator_read_only, :on => :update
+
+  def administrator_read_only
+    if self.administrator_id_changed?
+      errors.add(:court,"Can't change administrator")
+    end
+  end
 end

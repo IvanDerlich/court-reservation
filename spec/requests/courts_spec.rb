@@ -90,14 +90,14 @@ RSpec.describe "Courts", type: :request do
     end
   end
 
-  describe 'POST /courts' do
+  describe 'POST /courts ->' do
     let(:valid_attributes) { { 
       name: Faker::Lorem.characters(number:6),
       address: Faker::Address.street_address,
       description: Faker::Lorem.sentence,
       administrator_id: user.id
     } }
-    context 'when the request is valid' do
+    context 'When the request is valid' do
       
       before { 
         post "/courts",
@@ -117,7 +117,9 @@ RSpec.describe "Courts", type: :request do
       end
       
     end
-    context 'when the request is invalid' do
+    
+
+    context 'when the request is invalid ->' do
 
       let(:params) {{
         name: Faker::Lorem.characters(number:6),
@@ -165,23 +167,24 @@ RSpec.describe "Courts", type: :request do
       it 'Address too long' do
         params[:address] = Faker::Lorem.characters(number:101)
       end
-    end
+    end   
   end
-  describe 'PUT /courts/:id' do
-    
-
-    context 'when the record exists' do
-      let(:valid_attributes){{}}
-      
-      after { 
-        put "/courts/#{court_id}",
-          headers: headers,
-          params: valid_attributes
-        expect(response).to have_http_status(202)
-      }
-
+  describe 'PUT /courts/:id -> ' do   
+    context 'when the record exists -> ' do
+      let!(:court_put){ create(:court, :administrator_id => user.id)}
       it 'returns status code 204' do
-        valid_attributes[:name] = Faker::Lorem.characters(number:10)        
+        name = Faker::Lorem.characters(number:10) 
+        # p "court_put"
+        # p court_put
+        # p "user"
+        # p user
+        put "/courts/#{court_put.id}",
+          headers: headers,
+          params: {
+            name: name
+          }
+        expect(response).to have_http_status(202)
+               
       end
       
     end
@@ -202,8 +205,11 @@ RSpec.describe "Courts", type: :request do
 
     context 'when the record exist and the edition is invalid - ' do    
       let(:valid_attributes){{}}
+      let!(:court_put2){ create(:court, :administrator_id => user.id)}
       after {
-        put "/courts/#{court_id}",
+        # p "valid_attributes"
+        # p valid_attributes
+        put "/courts/#{court_put2.id}",
           headers: headers,
           params: valid_attributes
         expect(response).to have_http_status(:unprocessable_entity)
@@ -239,19 +245,18 @@ RSpec.describe "Courts", type: :request do
     end
   end
   describe 'DELETE /courts/' do  
-    before {
-      delete "/courts/#{court_id}",
-        headers: headers      
-    }
+    let!(:court_delete){ create(:court, :administrator_id => user.id)} 
     it 'Record exists' do    
+      delete "/courts/#{court_delete.id}",
+        headers: headers  
       expect(response).to have_http_status(204)            
+    end    
+            
+    it "Record doesn't exist" do   
+      delete "/courts/12341234123",
+        headers: headers    
+      expect(response).to have_http_status(404)    
     end
-
-    context "Record doesn't exist" do   
-      let(:court_id){99992}          
-      it "" do     
-        expect(response).to have_http_status(404)    
-      end
-    end
+   
   end
 end
