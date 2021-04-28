@@ -25,10 +25,8 @@ RSpec.describe User, type: :request do
 
   describe 'User-Booking Integration' do    
     let!(:bookings) { create_list :booking, 10, :booker => user }
-
     after {
       get "/users/#{user_id}/bookings", headers: headers
-      # p response.body
       expect(json.length).to be(10)    
       for i in 0..9 do
         expect(json[i].description).to eq(bookings[i].description)
