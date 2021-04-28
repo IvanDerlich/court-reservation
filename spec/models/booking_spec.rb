@@ -23,6 +23,7 @@ RSpec.describe Booking, type: :model do
         expect(Booking.all.first).to eq(booking)
       end
     end
+    # rubocop:disable Metrics/BlockLength
     context 'Invalid Creation' do
       it 'Minutes are not zero' do
         booking = Booking.create(
@@ -77,6 +78,7 @@ RSpec.describe Booking, type: :model do
         expect(booking.valid?).to be(false)
       end
     end
+    # rubocop:enable Metrics/BlockLength
   end
   describe 'Update' do
     let!(:booking) { create :booking }

@@ -3,11 +3,11 @@ module Response
     render json: object, status: status
   end
 
-  def has_value?(param)
+  def _has_value?(param)
     return false if
       param.nil? ||
       param == '' ||
-      param.to_i == 0 # param is a string
+      param.to_i.zero? # param is a string
 
     true
   end

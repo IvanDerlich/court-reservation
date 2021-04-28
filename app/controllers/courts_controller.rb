@@ -45,7 +45,7 @@ class CourtsController < ApplicationController
   end
 
   def set_court
-    return head :unprocessable_entity unless has_value? params[:id]
+    return head :unprocessable_entity unless _has_value? params[:id]
 
     @court = Court.find(params[:id])
   end
@@ -56,9 +56,9 @@ class CourtsController < ApplicationController
 
   def authorized_create?
     return head :unprocessable_entity unless
-      has_value? params[:administrator_id]
+      _has_value? params[:administrator_id]
     return head :unauthorized if
-      current_api_v1_user.id != params[:administrator_id].to_i
+  current_api_v1_user.id != params[:administrator_id].to_i
   end
 
   def useful_content?

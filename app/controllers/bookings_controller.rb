@@ -26,7 +26,6 @@ class BookingsController < ApplicationController
 
   # PUT /court/:court_id/booking/:id
   def update
-    p params
     unless params[:description] || params[:date]
       head :unprocessable_entity # nothing to do, no editable parameters, send error
       return 0
