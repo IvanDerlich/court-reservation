@@ -12,14 +12,14 @@ user = User.create(
   last_name: Faker::Name.last_name
 )
 
-court = Court.create(
+Court.create(
   name: Faker::Name.name,
   address: Faker::Address.street_address,
   description: Faker::Lorem.sentence,
   administrator: user
 )
 
-ivan = User.create(
+User.create(
   email: 'ivan@ivan.com',
   password: '12345678',
   first_name: 'Ivan',
