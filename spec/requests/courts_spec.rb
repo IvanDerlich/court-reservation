@@ -1,3 +1,4 @@
+# rubocop:disable Lint/EmptyBlock
 require 'rails_helper'
 
 RSpec.describe 'Courts', type: :request do
@@ -31,10 +32,8 @@ RSpec.describe 'Courts', type: :request do
            email: user.email,
            password: user.password
          }
-
-    response_global = response
-    login_data = json['data']
     expect(response.status).to eq(200)
+    login_data = json.data
     expect(login_data['email']).to eq(user[:email])
     expect(login_data['first_name']).to eq(user[:first_name])
     expect(login_data['last_name']).to eq(user[:last_name])
@@ -116,7 +115,7 @@ RSpec.describe 'Courts', type: :request do
         expect(json['administrator_id']).to eq(valid_attributes[:administrator_id])
       end
     end
-
+    # rubocop:disable Metrics/BlockLength
     context 'when the request is invalid ->' do
       let(:params) do
         {
@@ -168,6 +167,7 @@ RSpec.describe 'Courts', type: :request do
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
   describe 'PUT /courts/:id -> ' do
     context 'when the record exists -> ' do
       let!(:court_put) { create(:court, administrator_id: user.id) }
@@ -258,3 +258,4 @@ RSpec.describe 'Courts', type: :request do
     end
   end
 end
+# rubocop:enable Lint/EmptyBlock

@@ -9,8 +9,6 @@ RSpec.describe User, type: :request do
            email: user.email,
            password: user.password
          }
-    response_global = response
-    login_data = json['data']
     expect(response.status).to eq(200)
   end
 

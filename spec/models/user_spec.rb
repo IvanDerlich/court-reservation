@@ -79,7 +79,6 @@ RSpec.describe User, type: :model do
   describe 'User deletion' do
     let(:user) { create(:user) }
     it '' do
-      id = user.id
       expect(user.destroy).to eq(user)
     end
   end

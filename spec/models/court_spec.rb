@@ -82,7 +82,7 @@ RSpec.describe Court, type: :model do
     end
 
     it 'Create invalid court: address too long' do
-      court = Court.create!(
+      Court.create!(
         name: Faker::Name.name,
         address: Faker::Address.street_address,
         description: Faker::Lorem.characters(number: 51),

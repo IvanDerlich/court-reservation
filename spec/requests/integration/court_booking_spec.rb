@@ -1,3 +1,4 @@
+# rubocop:disable Lint/EmptyBlock
 require 'rails_helper'
 
 RSpec.describe Court, type: :request do
@@ -10,8 +11,6 @@ RSpec.describe Court, type: :request do
            email: user.email,
            password: user.password
          }
-    response_global = response
-    login_data = json['data']
     expect(response.status).to eq(200)
   end
 
@@ -53,3 +52,4 @@ RSpec.describe Court, type: :request do
   it 'Show all the bookings a court has with another loged in user' do
   end
 end
+# rubocop:enable Lint/EmptyBlock

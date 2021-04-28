@@ -1,3 +1,4 @@
+# rubocop:disable Lint/EmptyBlock
 require 'rails_helper'
 
 RSpec.describe 'Bookings', type: :request do
@@ -205,3 +206,4 @@ RSpec.describe 'Bookings', type: :request do
     end
   end
 end
+# rubocop:enable Lint/EmptyBlock
