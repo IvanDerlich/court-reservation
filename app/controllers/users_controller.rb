@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_api_v1_user!
-  before_action :set_user, only: [:bookings,:courts]
+  before_action :set_user, only: %i[bookings courts]
 
   # GET /user/:id/bookings
   def bookings

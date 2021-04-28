@@ -1,5 +1,4 @@
 class Court < ApplicationRecord
-  
   validates :administrator, presence: true
   belongs_to :administrator, class_name: :User
 
@@ -9,11 +8,9 @@ class Court < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
 
-  validate :administrator_read_only, :on => :update
+  validate :administrator_read_only, on: :update
 
   def administrator_read_only
-    if self.administrator_id_changed?
-      errors.add(:court,"Can't change administrator")
-    end
+    errors.add(:court, "Can't change administrator") if administrator_id_changed?
   end
 end

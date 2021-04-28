@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :model do
- 
-  let!(:user){ create :user}
+  let!(:user) { create :user }
 
-  it "Delete one court when the user is deleted" do
+  it 'Delete one court when the user is deleted' do
     court = Court.create(
       name: Faker::Name.name,
       address: Faker::Address.street_address,
@@ -26,6 +25,5 @@ RSpec.describe 'User', type: :model do
       description: Faker::Lorem.sentence
     )
     expect(Court.first.administrator).to eq(user)
-  end  
-
+  end
 end

@@ -1,50 +1,50 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do  
+RSpec.describe User, type: :model do
   describe 'User creation' do
     it 'Valid user' do
       user = User.create(
-        email:'asdfs@adsafsd.com',
-        password:'testtest',
+        email: 'asdfs@adsafsd.com',
+        password: 'testtest',
         first_name: 'Pepe',
         last_name: 'Honguito'
-      )      
-      expect(user.valid?).to be(true)      
-    end  
+      )
+      expect(user.valid?).to be(true)
+    end
 
     it 'Invalid user: invalid email' do
       user = User.create(
-        email:'asdfsadsafsd.com',
-        password:'test',
+        email: 'asdfsadsafsd.com',
+        password: 'test',
         first_name: 'Pepe',
         last_name: 'Honguito'
-      )      
+      )
       expect(user.valid?).to be(false)
       expect(user.errors.objects.first.full_message)
-        .to eq("Email is not an email")
+        .to eq('Email is not an email')
     end
     it 'Invalid user: duplicate email' do
-      email = "asdfasdfas@asdfasd.com"
+      email = 'asdfasdfas@asdfasd.com'
       user1 = User.create(
-        email:email,
-        password:'testtest',
+        email: email,
+        password: 'testtest',
         first_name: 'Pepe',
         last_name: 'Honguito'
       )
       expect(user1.valid?).to be(true)
       user2 = User.create(
         email: email,
-        password:'testtest2',
+        password: 'testtest2',
         first_name: 'Pablo',
         last_name: 'Gimenez'
       )
       expect(user2.valid?).to be(false)
       expect(user2.errors.objects.first.full_message)
-        .to eq("Email has already been taken")
+        .to eq('Email has already been taken')
     end
     it 'Invalid user: Password not present ' do
       user = User.create(
-        email:'asdfsadsafsd@asdfds.com',
+        email: 'asdfsadsafsd@asdfds.com',
         password: '',
         first_name: 'Pepe',
         last_name: 'Honguito'
@@ -55,53 +55,52 @@ RSpec.describe User, type: :model do
     end
     it 'Invalid user: First Name not present ' do
       user = User.create(
-        email:'asdfsadsafsd@asdfds.com',
-        password:'testtest',
+        email: 'asdfsadsafsd@asdfds.com',
+        password: 'testtest',
         first_name: '',
         last_name: 'Honguito'
       )
       expect(user.errors.objects.first.full_message)
-      .to eq("First name can't be blank")      
+        .to eq("First name can't be blank")
     end
 
     it 'Invalid user: Last Name not present ' do
       user = User.create(
-        email:'asdfsadsafsd@asdfds.com',
-        password:'testtest',
+        email: 'asdfsadsafsd@asdfds.com',
+        password: 'testtest',
         first_name: 'Pepe',
         last_name: ''
       )
       expect(user.errors.objects.first.full_message)
-      .to eq("Last name can't be blank")      
+        .to eq("Last name can't be blank")
     end
   end
 
   describe 'User deletion' do
-    let(:user){create(:user)}
-    it '' do      
+    let(:user) { create(:user) }
+    it '' do
       id = user.id
       expect(user.destroy).to eq(user)
-    end 
-  end  
+    end
+  end
 
   describe 'User edition' do
+    let(:user) { create(:user) }
 
-    let(:user){create(:user)}
-
-    it 'edit first name' do         
+    it 'edit first name' do
       user.update(first_name: 'José')
-      expect(User.all.first.first_name).to eq('José')      
+      expect(User.all.first.first_name).to eq('José')
     end
 
-    it 'edit invalid first name' do            
+    it 'edit invalid first name' do
       expect(
         user.update(first_name: '')
-      ).to eq(false)      
+      ).to eq(false)
     end
 
     it 'edit invalid first name: too long' do
       expect(
-        user.update(first_name: Faker::Lorem.characters(number:21))
+        user.update(first_name: Faker::Lorem.characters(number: 21))
       ).to eq(false)
     end
 
@@ -118,7 +117,7 @@ RSpec.describe User, type: :model do
 
     it 'edit invalid last name: too long' do
       expect(
-        user.update(last_name: Faker::Lorem.characters(number:21))
+        user.update(last_name: Faker::Lorem.characters(number: 21))
       ).to eq(false)
     end
 
@@ -138,9 +137,9 @@ RSpec.describe User, type: :model do
       expect(
         user.update(email: 'asdfasd.')
       ).to eq(false)
-    end  
+    end
 
-    let(:user2){create(:user)}
+    let(:user2) { create(:user) }
     it 'edit email with conflict: other user has the same email' do
       email = user.email
       expect(
@@ -148,10 +147,10 @@ RSpec.describe User, type: :model do
       ).to eq(false)
     end
 
-    # it 'edit password' do    
+    # it 'edit password' do
     #   expect(
     #     user.update(password: Faker::Lorem.characters(number:8))
-    #   ).to eq(true)      
+    #   ).to eq(true)
     # end
 
     # it 'edit password: too short' do
@@ -159,24 +158,22 @@ RSpec.describe User, type: :model do
     #     user.update(password: Faker::Lorem.characters(number:7))
     #   ).to eq(false)
     # end
- 
+
     # it 'edit password: too long' do
     #   expect(
     #     user.update(password: Faker::Lorem.characters(number:101))
     #   ).to eq(false)
     # end
   end
-  
 
   describe 'Read User/s' do
-
-    let!(:user1){create(:user)}
-    let!(:user2){create(:user)}
+    let!(:user1) { create(:user) }
+    let!(:user2) { create(:user) }
 
     it 'Reads one user' do
-      expect(User.find_by(email:user1.email)).to eq(user1)
+      expect(User.find_by(email: user1.email)).to eq(user1)
     end
-   
+
     it 'Reads many users' do
       expect(User.all.length).to be(2)
     end

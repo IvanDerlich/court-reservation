@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_court
-  before_action :set_court_booking, only: [:show, :update, :destroy]
+  before_action :set_court_booking, only: %i[show update destroy]
 
   # GET /courts/:court_id/bookings
   def index
@@ -15,9 +15,8 @@ class BookingsController < ApplicationController
 
   # POST /courts/:court_id/bookings
   def create
+    booking = @court.bookings.create(booking_params)
 
-    booking =  @court.bookings.create(booking_params)
- 
     if booking.save
       json_response(booking, :created)
     else
@@ -38,7 +37,7 @@ class BookingsController < ApplicationController
       json_response(@booking, 200)
     else
       head :unprocessable_entity # validation errors
-    end    
+    end
   end
 
   def destroy
@@ -48,7 +47,6 @@ class BookingsController < ApplicationController
 
   private
 
- 
   def booking_params
     params.permit(:booker_id, :description, :date)
   end

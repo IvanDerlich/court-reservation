@@ -1,6 +1,5 @@
-class Booking < ApplicationRecord  
-
-  attr_readonly :booker 
+class Booking < ApplicationRecord
+  attr_readonly :booker
   attr_readonly :court
 
   validates :booker, presence: true
@@ -11,42 +10,34 @@ class Booking < ApplicationRecord
 
   validate :o_clock_time?
 
-  validate :booker_read_only, :on => :update
+  validate :booker_read_only, on: :update
 
-  validate :court_read_only, :on => :update
+  validate :court_read_only, on: :update
 
   validates :description, length: { maximum: 100 }
-  
-  validates_uniqueness_of :court, :scope => :date
+
+  validates_uniqueness_of :court, scope: :date
 
   private
 
-  def o_clock_time? 
-    
-    if (date.class != ActiveSupport::TimeWithZone && date.class != DateTime)
-      errors.add(:date, "Input not in datetime format")
+  def o_clock_time?
+    if date.class != ActiveSupport::TimeWithZone && date.class != DateTime
+      errors.add(:date, 'Input not in datetime format')
       return
-    end   
-    
-    errors.add(:date, "Date can't have minutes different from zero") if (date.min != 0)
+    end
 
-    errors.add(:date, "Date can't have seconds different from zero") if (date.sec != 0) if (date.sec != 0)
-    
-    errors.add(:date, "Date can't have miliseconds different from zero") if (date.usec != 0)
-    
+    errors.add(:date, "Date can't have minutes different from zero") if date.min != 0
+
+    errors.add(:date, "Date can't have seconds different from zero") if date.sec != (0) && (date.sec != 0)
+
+    errors.add(:date, "Date can't have miliseconds different from zero") if date.usec != 0
   end
 
   def court_read_only
-    if self.court_id_changed?
-      errors.add(:court,"Can't change court")
-    end
+    errors.add(:court, "Can't change court") if court_id_changed?
   end
 
   def booker_read_only
-    if self.booker_id_changed?
-      errors.add(:booker,"Can't change booking")
-    end
+    errors.add(:booker, "Can't change booking") if booker_id_changed?
   end
-
-
 end
