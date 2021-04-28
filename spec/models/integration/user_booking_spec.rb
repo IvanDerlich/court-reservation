@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:user) {create :user}
-  let!(:court) { create :court, :administrator => user}
-  let!(:booking) { create :booking, :court => court}
+  # let!(:court) { create :court, :administrator => user}
+  let!(:booking) { create :booking, :booker => user}
 
-  it 'Show all the bookings the user has' do
+  it 'Show all the bookings the user has as booker' do
     expect(user.bookings.size).to eq(1)
     expect(user.bookings.first).to eq(booking)
   end

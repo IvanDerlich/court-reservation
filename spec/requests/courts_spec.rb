@@ -189,26 +189,30 @@ RSpec.describe "Courts", type: :request do
       
     end
 
-    context 'when the record does not exist' do
-      let(:valid_attributes){{}}
-      let(:court_id){99992}
-      after { 
-        put "/courts/#{court_id}",
+    context 'when the record does not exist' do     
+          
+      it 'Code for court not found' do  
+        put "/courts/999939",
           headers: headers,
-          params: valid_attributes
-        expect(response).to have_http_status(404)
-      }
-      it 'Code for court not found' do
-        valid_attributes[:name] = Faker::Lorem.characters(number:10)         
+          params: {
+            name: Faker::Lorem.characters(number:10) 
+          }
+        expect(response).to have_http_status(404)     
+      end
+      it 'When the id is a string' do
+        put "/courts/dfghdfghfdg",
+          headers: headers,
+          params: {
+            name: Faker::Lorem.characters(number:10) 
+          }
+        expect(response).to have_http_status(422)        
       end
     end
 
     context 'when the record exist and the edition is invalid - ' do    
       let(:valid_attributes){{}}
       let!(:court_put2){ create(:court, :administrator_id => user.id)}
-      after {
-        # p "valid_attributes"
-        # p valid_attributes
+      after {     
         put "/courts/#{court_put2.id}",
           headers: headers,
           params: valid_attributes

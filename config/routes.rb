@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   end
 
 
-  # get 'users/:id/', :to => 'users#bookings', :as => 'user_bookings'
+  get 'users/:id/bookings', :to => 'users#bookings', :as => 'user_bookings'
   get 'users/:id/courts', :to => 'users#courts', :as => 'user_courts'
+  get 'courts/:id/bookings', :to => 'courts#bookings', :as => 'courts_bookings'
   
   namespace :api do
     namespace :v1 do

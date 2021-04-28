@@ -3,13 +3,11 @@ require 'rails_helper'
 RSpec.describe "Bookings", type: :request do
   let!(:user) { create(:user)}
   let!(:court) { create( :court, :administrator => user)}
-  let!(:bookings) { create_list :booking, 10, :court => court}
+  let!(:bookings) { create_list :booking, 10, :court => court}  
   
-  # let(:booking_id) { bookings.first.id }
 
   it 'Bookings can be found inside the database and properly accessed' do
     expect(Booking.all.size).to be(10)
-    expect(user.bookings.size).to be(10)
     expect(court.bookings.size).to be(10)
   end
 

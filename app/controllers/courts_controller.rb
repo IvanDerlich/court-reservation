@@ -1,8 +1,9 @@
 class CourtsController < ApplicationController
   before_action :authenticate_api_v1_user!
-  before_action :set_court, only: [:show, :update, :destroy]
-  before_action :authorized?, only: [:update, :destroy]
+  before_action :set_court, only: [:show, :bookings, :update, :destroy]  
   before_action :authorized_create?, only: [:create]
+  before_action :authorized?, only: [:update, :destroy]
+  before_action :useful_content?, only: [:create, :update]
   
 
   def index    
@@ -13,34 +14,17 @@ class CourtsController < ApplicationController
     json_response(@court)
   end
 
-  def create  
-    unless params[:name] ||
-      params[:address] ||
-      params[:description] ||
-      params[:administrator_id].to_i ||
-      params[:administrator_id] == ""
-      head :unprocessable_entity # nothing to do, no editable parameters, send error
-      return
-    end
-   
+  def create   
     @court = Court.create!(court_params)
     json_response(@court, :created)
   end
 
   def update
-
-    unless params[:name] ||
-        params[:address] ||
-        params[:description]
-      head :unprocessable_entity # nothing to do, no editable parameters, send error
-      return 0
-    end
-
     if @court.update(court_params)
       @court.save
       head :accepted
     else
-      head :unprocessable_entity # validation errors
+      head :unprocessable_entity
     end
   end
 
@@ -50,6 +34,11 @@ class CourtsController < ApplicationController
     head :no_content
   end
 
+  # GET /court/:id/bookings
+  def bookings
+    json_response(@court.bookings)
+  end
+
   private
 
   def court_params    
@@ -57,23 +46,28 @@ class CourtsController < ApplicationController
   end
 
   def set_court 
-    return head :unprocessable_entity if 
-      params[:id] == "" ||
-      params[:id] == nil
+    return head :unprocessable_entity unless has_value? params[:id]
     @court = Court.find(params[:id]) 
   end
 
   def authorized?
-    return head :unprocessable_entity if 
-      params[:id] == nil ||
-      params[:id] == ""
     return head :unauthorized if current_api_v1_user.id != @court.administrator_id
   end
 
   def authorized_create? 
-    return head :unprocessable_entity if 
-      params[:administrator_id] == nil ||
-      params[:administrator_id] == ""
-    return head :unauthorized if current_api_v1_user.id != params[:administrator_id].to_i
+    return head :unprocessable_entity unless 
+      has_value? params[:administrator_id]
+    return head :unauthorized if 
+      current_api_v1_user.id != params[:administrator_id].to_i
+  end 
+
+  def useful_content?
+    unless params[:name] ||
+      params[:address] ||
+      params[:description]
+      head :unprocessable_entity # nothing to do, no editable parameters, send error
+      return
+    end
   end
+
 end
