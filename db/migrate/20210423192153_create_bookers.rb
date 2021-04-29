@@ -8,6 +8,6 @@ class CreateBookers < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :bookings, %i[court date], unique: true
+    add_index :bookings, %i[court_id date], unique: true
   end
 end
