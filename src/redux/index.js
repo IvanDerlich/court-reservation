@@ -2,13 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
-// import loadState from './dispatchers/loadState';
-// import {
-  // eslint-disable-next-line no-unused-vars
-  // offlineFetching,
-  // eslint-disable-next-line no-unused-vars
-  //  apiFetching,
-// } from './dispatchers/actionCreators';
 
 const options = {
   trace: true,

@@ -1,7 +1,7 @@
-import { 
+import {
   LOGGED_IN,
-  LOGGED_OUT,  
-} from './actionTypes';
+  LOGGED_OUT,
+} from '../actionTypes';
 
 const loguinStatus = (state = '', action) => {
   switch (action.type) {

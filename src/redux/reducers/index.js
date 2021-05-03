@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import loguinStatus from './loginStatus'
+import loguinStatus from './loginStatus';
 
 const rootReducer = combineReducers({
-  loguinStatus  
+  loguinStatus,
 });
 
 export default rootReducer;
