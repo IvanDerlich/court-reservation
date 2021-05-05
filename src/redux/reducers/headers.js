@@ -3,15 +3,15 @@ import {
   LOGGED_OUT,
 } from '../actionTypes';
 
-const loguinStatus = (state = '', action) => {
+const headers = (state = null, action) => {
   switch (action.type) {
     case LOGGED_IN:
-      return 'logged in';
+      return action.payload.headers;
     case LOGGED_OUT:
-      return 'logged out';
+      return null;
     default:
       return state;
   }
 };
 
-export default loguinStatus;
+export default headers;
