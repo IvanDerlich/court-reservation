@@ -1,0 +1,36 @@
+/* eslint-disable no-console */
+// Test all exports from the get file
+import login from '../login';
+import {
+  getAllCourts,
+  // getOneCourt,
+  // getAllUserSCourts,
+} from './get';
+
+describe('Test Court Get methods', () => {
+  let headers;
+  beforeAll(done => {
+    const email = 'ivan@ivan.com';
+    const password = '12345678';
+    try {
+      login(email, password)
+        .then(response => {
+          headers = response.headers;
+          done();
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  });
+  describe('getAllCourts', () => {
+    it('Returns 10 courts', async () => {
+      try {
+        const response = await getAllCourts(headers);
+        expect(response.status).toBe(200);
+        expect(response.data.length).toBe(10);
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  });
+});
