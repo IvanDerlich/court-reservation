@@ -37,15 +37,15 @@ module CourtReservation
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    Rails.application.config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource(
-          '*',
-          headers: :any,
-          methods: %i[get post patch put delete options]
-        )
-      end
-    end
+    # Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource(
+    #       '*',
+    #       headers: :any,
+    #       methods: %i[get post patch put delete options]
+    #     )
+    #   end
+    # end
   end
 end
