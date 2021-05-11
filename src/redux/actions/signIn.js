@@ -1,37 +1,35 @@
 import signInService from '../services/auth/signIn';
-import { loginActionCreator, logoutActionCreator } from './creators';
+import {
+  loginActionCreator,
+  errorMessageActionCreator,
+  errorCleanUpActionCreator,
+} from './creators';
 
 const signInAction = async (dispatch, user, password) => {
-  // calls axios to login
-  // in the .then section, set the variable success and dispatch actions
-  // all code bellow goes tinside the .then procedure
-  // clears the error messages in the store state
-  console.log('a');
-  const response = await signInService(user, password)
-  console.log(response);
-  const headers = {
-    'access-token': response.headers['access-token'],
-  };
-  console.log(headers);
-
-
-  // const success = true;
-  // let headers = {};
-  // switch (success) {
-  //   case true:
-  //     headers = { asdf: 'adsfdas' };
-  //     return dispatch({
-  //       type: LOGGED_IN,
-  //       payload: { headers },
-  //     });
-  //   case false:
-  //     return dispatch({
-  //       type: LOGGED_OUT,
-  //       payload: {},
-  //     });
-  //   default:
-  //     return false;
-  // }
+  dispatch(errorCleanUpActionCreator());
+  try {
+    const response = await signInService(user, password);
+    if (response.status === 200) {
+      const headers = {
+        'access-token': response.headers['access-token'],
+        client: response.headers.client,
+        uid: response.headers.uid,
+      };
+      dispatch(loginActionCreator(headers));
+    } else {
+      throw new Error(['Server should return status OK, status 200']);
+    }
+  } catch (e) {
+    let message = '';
+    if (e.response.status === 401) {
+      message = 'Wrong credentials';
+    } else {
+      message = e.message;
+    }
+    dispatch(
+      errorMessageActionCreator(message),
+    );
+  }
 };
 
 export default signInAction;

@@ -27,7 +27,7 @@ describe('Test Court Get methods', () => {
       try {
         const response = await getAllCourts(headers);
         expect(response.status).toBe(200);
-        expect(response.data.length).toBe(10);
+        expect(response.data.length).toBe(18);
       } catch (e) {
         console.log(e);
       }

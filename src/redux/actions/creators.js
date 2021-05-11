@@ -1,4 +1,9 @@
-import { LOGGED_IN, LOGGED_OUT } from '../actionTypes';
+import {
+  LOGGED_IN,
+  LOGGED_OUT,
+  ADD_ERROR,
+  CLEAN_ERRORS,
+} from '../actionTypes';
 
 export const loginActionCreator = headers => ({
   type: LOGGED_IN,
@@ -7,7 +12,15 @@ export const loginActionCreator = headers => ({
 
 export const logoutActionCreator = () => ({
   type: LOGGED_OUT,
+});
+
+export const errorMessageActionCreator = errorMessage => ({
+  type: ADD_ERROR,
   payload: {
-    headers: null,
+    errorMessage,
   },
+});
+
+export const errorCleanUpActionCreator = () => ({
+  type: CLEAN_ERRORS,
 });

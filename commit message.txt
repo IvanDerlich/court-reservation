@@ -1,0 +1,1 @@
+Sign in actions cleaning errors and sending login errors to redux state

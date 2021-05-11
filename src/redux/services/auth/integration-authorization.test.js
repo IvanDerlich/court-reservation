@@ -20,6 +20,7 @@ describe('Authorization', () => {
       client: response.headers.client,
       uid: response.headers.uid,
     };
+    // console.log(response.headers);
     const response2 = await getAllCourts(headers);
     expect(response2.data.length).toBe(18);
   });
