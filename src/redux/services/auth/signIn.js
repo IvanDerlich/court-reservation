@@ -7,7 +7,6 @@ const signInService = (email, password) => {
     email,
     password,
   };
-  // console.log(SIGN_IN_ENDPOINT);
   return axios.post(SIGN_IN_ENDPOINT, data);
 };
 
