@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import './SignUpForm.scss';
+import { connect } from 'react-redux';
 
 function SignUpForm() {
   const handleSubmit = () => {
@@ -14,23 +15,23 @@ function SignUpForm() {
       <h2>Sign Up</h2>
       <form>
         <div className="user-box">
-          <input type="text" name="first_name" id="first_name" />
+          <input type="text" name="first_name" id="sign-up-first_name" />
           <label htmlFor="first_name">First Name</label>
         </div>
         <div className="user-box">
-          <input type="text" name="last_name" id="last_name" />
+          <input type="text" name="last_name" id="sign-up-last_name" />
           <label htmlFor="last_name">Last Name</label>
         </div>
         <div className="user-box">
-          <input type="text" name="email" id="email" />
+          <input type="text" name="email" id="sign-up-email" />
           <label htmlFor="email">Email</label>
         </div>
         <div className="user-box">
-          <input type="text" name="password" id="name" />
+          <input type="text" name="password" id="sign-up-name" />
           <label htmlFor="password">Name</label>
         </div>
         <div className="user-box">
-          <input type="text" name="confirm_password" id="confirm_password" />
+          <input type="text" name="confirm_password" id="sign-up-confirm_password" />
           <label htmlFor="confirm_password">Confirm Password</label>
         </div>
         <div className="submit">
@@ -46,4 +47,4 @@ function SignUpForm() {
     </div>
   );
 }
-export default SignUpForm;
+export default connect()(SignUpForm);

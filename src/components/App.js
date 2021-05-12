@@ -3,6 +3,7 @@ import Home from '../containers/Home';
 import Navbar from './Navbar';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
+import Messages from './Messages';
 import './App.scss';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="main-section">
+        <Messages />
         <Switch>
           <Route exact path="/" component={() => <Home />} />
           <Route exact path="/signin" component={() => <SignInForm />} />
