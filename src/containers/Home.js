@@ -1,7 +1,14 @@
+import './Home.scss';
+
 function Home() {
   return (
-    <div>
-      Court Reservation
+    <div className="home">
+      <h1>
+        Court Reservation
+      </h1>
+      <p>
+        Reserve your court before anyone else!
+      </p>
     </div>
   );
 }
