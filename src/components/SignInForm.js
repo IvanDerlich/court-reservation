@@ -1,8 +1,15 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './SignInForm.scss';
 
 function SignInForm() {
+  const handleSubmit = () => {
+    console.log('Submit');
+  };
+
   return (
     <div className="login-box">
       <h2>Sign In</h2>
@@ -16,7 +23,7 @@ function SignInForm() {
           <label htmlFor="password">Password</label>
         </div>
         <div className="submit">
-          <a href="#">
+          <a onClick={handleSubmit}>
             <span />
             <span />
             <span />
