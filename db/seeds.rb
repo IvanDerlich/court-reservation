@@ -6,15 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# <> If you change this user do and you want
-#  to test the front-end, you will have to change those tests too
+# Developer note:
+# If you change this file you will have to also change the fron-end tests
 user = User.create!(
   email: 'ivan@ivan.com',
   password: '12345678',
   first_name: 'Ivan',
   last_name: 'Derlich'
 )
-# </>
 
 10.times do
   User.create!(
@@ -34,11 +33,20 @@ end
   )
 end
 
-50.times do
+5.times do
   Court.create!(
     name: Faker::Name.name,
     address: Faker::Address.street_address,
     description: Faker::Lorem.sentence,
-    administrator_id: rand(2..11)
+    administrator_id: 2
+  )
+end
+
+3.times do
+  Court.create!(
+    name: Faker::Name.name,
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.sentence,
+    administrator_id: 3
   )
 end
