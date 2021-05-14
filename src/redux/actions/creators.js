@@ -3,6 +3,7 @@ import {
   LOGGED_OUT,
   ADD_ERROR,
   CLEAN_ERRORS,
+  ADD_MESSAGE,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -23,4 +24,11 @@ export const errorMessageActionCreator = errorMessage => ({
 
 export const errorCleanUpActionCreator = () => ({
   type: CLEAN_ERRORS,
+});
+
+export const messageActionCreator = message => ({
+  type: ADD_MESSAGE,
+  payload: {
+    message,
+  },
 });

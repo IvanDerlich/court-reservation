@@ -5,16 +5,25 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+
 import './SignInForm.scss';
 import signInAction from '../redux/actions/signIn';
 
-function SignInForm({ signIn }) {
+function SignInForm(props) {
+  const { signIn, logged } = props;
+  const history = useHistory();
+
+  useEffect(() => {
+    if (logged) {
+      history.push('/', { from: 'Sign In' });
+    }
+  }, [logged]);
+
   const handleSubmit = () => {
-    // console.log('Submit');
     const email = document.querySelector('#sign-in-email').value;
-    // console.log(email);
     const password = document.querySelector('#sign-in-password').value;
-    // console.log(password);
     signIn(email, password);
   };
 
@@ -27,7 +36,7 @@ function SignInForm({ signIn }) {
           <label htmlFor="email">Email</label>
         </div>
         <div className="user-box">
-          <input type="text" name="password" id="sign-in-password" />
+          <input type="password" name="password" id="sign-in-password" />
           <label htmlFor="password">Password</label>
         </div>
         <div className="submit">
@@ -46,13 +55,18 @@ function SignInForm({ signIn }) {
 
 SignInForm.propTypes = {
   signIn: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   signIn: (email, password) => signInAction(dispatch, email, password),
 });
 
+const mapStateToProps = state => ({
+  logged: !!state.headers,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(SignInForm);

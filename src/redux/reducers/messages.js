@@ -5,7 +5,7 @@ const messages = (state = [], action) => {
     case ADD_MESSAGE:
       return [
         ...state,
-        action.payload.errorMessage,
+        action.payload.message,
       ];
     case CLEAN_MESSAGES:
       return [];

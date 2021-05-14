@@ -17,11 +17,13 @@ const signInAction = async (dispatch, user, password) => {
       };
       dispatch(loginActionCreator(headers));
     } else {
-      throw new Error(['Server should return status OK, status 200']);
+      throw new Error(['Server returned something different from status OK or code 200']);
     }
   } catch (e) {
     let message = '';
-    if (e.response.status === 401) {
+    if (e.response === undefined) {
+      message = 'No response from server in Sign In';
+    } else if (e.response.status === 401) {
       message = 'Wrong credentials';
     } else {
       message = e.message;

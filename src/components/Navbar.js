@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
+import signOutAction from '../redux/actions/signOut';
 
-function Navbar({ logged = true }) {
+function Navbar({ logged, signOut }) {
   function handleSignOut() {
-    // eslint-disable-next-line no-console
-    console.log('Sign Out');
+    signOut();
   }
-  const signOut = (
+  const signOutHTML = (
     <div className="navbar-item">
       <div onClick={handleSignOut}>Sign Out</div>
     </div>
@@ -36,6 +36,7 @@ function Navbar({ logged = true }) {
       <Link to="/bookings">Bookings</Link>
     </div>
   );
+
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -46,7 +47,7 @@ function Navbar({ logged = true }) {
         { logged && bookings}
       </div>
       <div className="navbar-right">
-        { logged && signOut}
+        { logged && signOutHTML}
         { !logged && signIn }
         { !logged && signUp }
       </div>
@@ -56,12 +57,18 @@ function Navbar({ logged = true }) {
 
 Navbar.propTypes = {
   logged: PropTypes.bool.isRequired,
+  signOut: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   logged: !!state.headers,
 });
 
+const mapDispatchToProps = dispatch => ({
+  signOut: () => signOutAction(dispatch),
+});
+
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Navbar);
