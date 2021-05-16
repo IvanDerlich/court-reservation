@@ -4,6 +4,7 @@ import {
   ADD_ERROR,
   CLEAN_ERRORS,
   ADD_MESSAGE,
+  CLEAN_MESSAGES,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -31,4 +32,8 @@ export const messageActionCreator = message => ({
   payload: {
     message,
   },
+});
+
+export const messagesCleanUpActionCreator = () => ({
+  type: CLEAN_MESSAGES,
 });

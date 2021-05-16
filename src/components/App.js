@@ -18,8 +18,8 @@ function App() {
           <Route exact path="/" component={() => <Home />} />
           <Route exact path="/signin" component={() => <SignInForm />} />
           <Route exact path="/signup" component={() => <SignUpForm />} />
-          <Route exact path="/courts" component={() => <Courts />} />
-          <Route exact path="/bookings" component={() => <Bookings />} />
+          <Route path="/courts" component={() => <Courts />} />
+          <Route path="/bookings" component={() => <Bookings />} />
         </Switch>
       </div>
     </div>

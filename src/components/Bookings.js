@@ -1,15 +1,30 @@
 import './Bookings.scss';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import BookingsMenu from './BookingsMenu';
+import BookingsContent from './BookingsContent';
 
-function Bookings() {
+function Bookings({ logged }) {
+  if (!logged) {
+    return <div className="courts-error-message"> Unauthorized. Please Log In </div>;
+  }
   return (
-    <div>
+    <div className="bookings-section">
+      <h1 className="bookings-title">Bookings</h1>
       <BookingsMenu />
-      <h1> Bookings </h1>
-      <h2> Book a court </h2>
-      <h2> See your bookings</h2>
+      <BookingsContent />
     </div>
   );
 }
 
-export default Bookings;
+Bookings.propTypes = {
+  logged: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  logged: !!state.headers,
+});
+
+export default connect(
+  mapStateToProps,
+)(Bookings);

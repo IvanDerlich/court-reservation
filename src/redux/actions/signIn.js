@@ -3,9 +3,11 @@ import {
   loginActionCreator,
   errorMessageActionCreator,
   errorCleanUpActionCreator,
+  messagesCleanUpActionCreator,
 } from './creators';
 
 const signInAction = async (dispatch, user, password) => {
+  dispatch(errorCleanUpActionCreator());
   dispatch(errorCleanUpActionCreator());
   try {
     const response = await signInService(user, password);
@@ -16,6 +18,8 @@ const signInAction = async (dispatch, user, password) => {
         uid: response.headers.uid,
       };
       dispatch(loginActionCreator(headers));
+      dispatch(errorCleanUpActionCreator());
+      dispatch(messagesCleanUpActionCreator());
     } else {
       throw new Error(['Server returned something different from status OK or code 200']);
     }

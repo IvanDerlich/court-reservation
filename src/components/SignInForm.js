@@ -7,13 +7,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-
 import './SignInForm.scss';
 import signInAction from '../redux/actions/signIn';
 
-function SignInForm(props) {
-  const { signIn, logged } = props;
+function SignInForm({ signIn, logged }) {
   const history = useHistory();
+
+  useEffect(() => {
+    // Your code here
+  }, []);
 
   useEffect(() => {
     if (logged) {
@@ -21,7 +23,7 @@ function SignInForm(props) {
     }
   }, [logged]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const email = document.querySelector('#sign-in-email').value;
     const password = document.querySelector('#sign-in-password').value;
     signIn(email, password);

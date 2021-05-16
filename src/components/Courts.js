@@ -1,6 +1,8 @@
 import './Courts.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import CourtMenu from './CourtsMenu';
+import CourtsContent from './CourtsContent';
 
 function Courts({ logged }) {
   // if it's not logged ask the user to log or that he's got access forbiden
@@ -8,11 +10,10 @@ function Courts({ logged }) {
     return <div className="courts-error-message"> Unauthorized. Please Log In </div>;
   }
   return (
-    <div>
-      <h1> Courts </h1>
-      <h2> See all courts from all users</h2>
-      <h2> See your own courts</h2>
-      <h2> Create a court </h2>
+    <div className="courts-section">
+      <h1 className="courts-title">Courts</h1>
+      <CourtMenu />
+      <CourtsContent />
     </div>
   );
 }

@@ -4,30 +4,33 @@ import {
   errorCleanUpActionCreator,
   errorMessageActionCreator,
   messageActionCreator,
+  messagesCleanUpActionCreator,
 } from './creators';
 
 const signUpAction = async (dispatch, user, password, first_name, last_name) => {
   dispatch(errorCleanUpActionCreator());
+  dispatch(messagesCleanUpActionCreator());
   try {
     const response = await signUpService(user, password, first_name, last_name);
     if (response.status === 200) {
       dispatch(
         messageActionCreator('Sign Up successful. Now sign In.'),
       );
-    } else {
-      throw new Error(['Server returned something different from status OK or code 200']);
+      return response.status;
     }
+    throw new Error(['Server returned something different from status OK or code 200']);
   } catch (e) {
-    console.log(e.response);
+    // console.log(e.response);
     let message = '';
     if (e.response === undefined) {
       message = 'No response from server in Sign Up';
-    } else {
-      message = e.message;
+      return e.response.status;
     }
+    message = e.message;
     dispatch(
       errorMessageActionCreator(message),
     );
+    return e;
   }
 };
 
