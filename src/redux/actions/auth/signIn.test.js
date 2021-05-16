@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import signInAction from './signIn';
-import store from '../index';
+import store from '../../index';
 
 describe('Sign In', () => {
   const email = 'ivan@ivan.com';

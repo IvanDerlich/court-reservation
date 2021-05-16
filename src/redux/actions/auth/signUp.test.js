@@ -1,5 +1,5 @@
 import faker from 'faker';
-import store from '../index';
+import store from '../../index';
 import signUpAction from './signUp';
 
 describe('', () => {

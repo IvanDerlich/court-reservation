@@ -1,7 +1,7 @@
 import {
   logoutActionCreator,
   errorCleanUpActionCreator,
-} from './creators';
+} from '../creators';
 
 const signOutAction = dispatch => {
   dispatch(logoutActionCreator());

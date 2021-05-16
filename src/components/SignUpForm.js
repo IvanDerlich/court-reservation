@@ -18,15 +18,15 @@ function SignUpForm({ signUp, dispatch }) {
 
   const handleSubmit = async () => {
     const email = document.querySelector('#sign-up-email').value;
-    console.log(email, 'email');
+    // console.log(email, 'email');
     const password = document.querySelector('#sign-up-password').value;
-    console.log(password, 'password');
+    // console.log(password, 'password');
     const confirmPassword = document.querySelector('#sign-up-confirm-password').value;
-    console.log(confirmPassword, 'confirm password');
+    // console.log(confirmPassword, 'confirm password');
     const firstName = document.querySelector('#sign-up-first-name').value;
-    console.log(firstName, 'first name');
+    // console.log(firstName, 'first name');
     const lastName = document.querySelector('#sign-up-last-name').value;
-    console.log(lastName, 'last name');
+    // console.log(lastName, 'last name');
     if (password !== confirmPassword) {
       await dispatch(errorMessageActionCreator("Password and confirm password doesn't match"));
     }

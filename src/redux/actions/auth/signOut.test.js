@@ -1,8 +1,8 @@
 import faker from 'faker';
-import store from '../index';
+import store from '../../index';
 import signOutAction from './signOut';
 import signInAction from './signIn';
-import { errorMessageActionCreator } from './creators';
+import { errorMessageActionCreator } from '../creators';
 
 describe('Sign out Action', () => {
   const email = 'ivan@ivan.com';

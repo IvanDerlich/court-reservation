@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-// Test all exports from the get file
 import signInService from '../auth/signIn';
 import {
   getAllCourts,

@@ -1,10 +1,10 @@
-import signInService from '../services/auth/signIn';
+import signInService from '../../services/auth/signIn';
 import {
   loginActionCreator,
   errorMessageActionCreator,
   errorCleanUpActionCreator,
   messagesCleanUpActionCreator,
-} from './creators';
+} from '../creators';
 
 const signInAction = async (dispatch, user, password) => {
   dispatch(errorCleanUpActionCreator());

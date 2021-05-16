@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import signUpService from '../services/auth/signUp';
+import signUpService from '../../services/auth/signUp';
 import {
   errorCleanUpActionCreator,
   errorMessageActionCreator,
   messageActionCreator,
   messagesCleanUpActionCreator,
-} from './creators';
+} from '../creators';
 
 const signUpAction = async (dispatch, user, password, first_name, last_name) => {
   dispatch(errorCleanUpActionCreator());
