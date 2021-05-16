@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import './BookingsMenu.scss';
 
 function BookingsMenu() {
   return (
     <div className="vertical-menu">
-      <h2> See your bookings</h2>
-      <h2> Book a court </h2>
+      <Link to="/bookings/mine"><h2> My bookings</h2></Link>
+      <Link to="/bookings/ofmycourts"><h2> Bookings on my courts </h2></Link>
     </div>
   );
 }
