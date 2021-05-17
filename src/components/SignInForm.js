@@ -30,7 +30,9 @@ function SignInForm({ signIn, logged }) {
   };
 
   return (
-    <div className="login-box">
+    <div
+      className="login-box"
+    >
       <h2>Sign In</h2>
       <form>
         <div className="user-box">
