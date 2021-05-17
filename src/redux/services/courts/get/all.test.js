@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
-import signInService from '../auth/signIn';
-import {
-  getAllCourts,
-  // getOneCourt,
-  // getAllUserSCourts,
-} from './get';
+import signInService from '../../auth/signIn';
+import getAllCourtsService from './all';
 
 describe('Test Court Get methods', () => {
   let headers;
@@ -24,7 +20,7 @@ describe('Test Court Get methods', () => {
   describe('getAllCourts', () => {
     it('Returns 10 courts', async () => {
       try {
-        const response = await getAllCourts(headers);
+        const response = await getAllCourtsService(headers);
         expect(response.status).toBe(200);
         expect(response.data.length).toBe(18);
       } catch (e) {

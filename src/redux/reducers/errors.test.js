@@ -1,6 +1,9 @@
 import faker from 'faker';
 import store from '../index';
-import { errorMessageActionCreator, errorCleanUpActionCreator } from '../actions/creators';
+import {
+  errorMessageActionCreator,
+  errorCleanUpActionCreator,
+} from '../actions/creators';
 // import errors from './errors';
 
 describe('Errors', () => {

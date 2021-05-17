@@ -1,10 +1,10 @@
 import signInService from './signIn';
-import { getAllCourts } from '../courts/get';
+import getAllCourtsService from '../courts/get/all';
 
 describe('Authorization', () => {
   it('No login, no access', async () => {
     try {
-      await getAllCourts();
+      await getAllCourtsService();
       // should never reach this section
       expect(1).toBe(2);
     } catch (e) {
@@ -21,7 +21,7 @@ describe('Authorization', () => {
       uid: response.headers.uid,
     };
     // console.log(response.headers);
-    const response2 = await getAllCourts(headers);
+    const response2 = await getAllCourtsService(headers);
     expect(response2.data.length).toBe(18);
   });
 });

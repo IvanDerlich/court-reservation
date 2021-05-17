@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
-import signOutAction from '../redux/actions/signOut';
+import signOutAction from '../redux/actions/auth/signOut';
 
 function Navbar({ logged, signOut }) {
   function handleSignOut() {

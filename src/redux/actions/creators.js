@@ -5,6 +5,7 @@ import {
   CLEAN_ERRORS,
   ADD_MESSAGE,
   CLEAN_MESSAGES,
+  LOAD_ALL_COURTS,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -18,9 +19,7 @@ export const logoutActionCreator = () => ({
 
 export const errorMessageActionCreator = errorMessage => ({
   type: ADD_ERROR,
-  payload: {
-    errorMessage,
-  },
+  payload: { errorMessage },
 });
 
 export const errorCleanUpActionCreator = () => ({
@@ -29,11 +28,14 @@ export const errorCleanUpActionCreator = () => ({
 
 export const messageActionCreator = message => ({
   type: ADD_MESSAGE,
-  payload: {
-    message,
-  },
+  payload: { message },
 });
 
 export const messagesCleanUpActionCreator = () => ({
   type: CLEAN_MESSAGES,
+});
+
+export const loadAllCourts = allCourts => ({
+  type: LOAD_ALL_COURTS,
+  payload: { allCourts },
 });

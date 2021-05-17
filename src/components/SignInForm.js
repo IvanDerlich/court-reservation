@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import './SignInForm.scss';
-import signInAction from '../redux/actions/signIn';
+import signInAction from '../redux/actions/auth/signIn';
 
 function SignInForm({ signIn, logged }) {
   const history = useHistory();

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './SignUpForm.scss';
 import { useHistory } from 'react-router-dom';
-import signUpAction from '../redux/actions/signUp';
+import signUpAction from '../redux/actions/auth/signUp';
 import {
   errorMessageActionCreator,
 } from '../redux/actions/creators';
