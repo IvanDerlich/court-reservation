@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unescaped-entities */
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,6 +14,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import signInAction from '../redux/actions/auth/signIn';
 
 const useStyles = makeStyles(theme => ({
@@ -36,11 +41,15 @@ const useStyles = makeStyles(theme => ({
   ivanderlich: {
     cursor: 'pointer',
   },
+  hide: {
+    display: 'none',
+  },
 }));
 
 function SignInForm({ signIn, logged }) {
   const classes = useStyles();
   const history = useHistory();
+  const [showSpinner, setShowSpinner] = useState(false);
 
   useEffect(() => {
     if (logged) {
@@ -48,12 +57,36 @@ function SignInForm({ signIn, logged }) {
     }
   }, [logged]);
 
-  const handleSubmit = async event => {
+  const onSubmit = async event => {
     event.preventDefault();
+    setShowSpinner(true);
     const email = document.querySelector('#sign-in-email').value;
     const password = document.querySelector('#sign-in-password').value;
-    signIn(email, password);
+    const response = await signIn(email, password);
+    console.log(response);
   };
+
+  const maxEmailLength = 30;
+  const schema = yup.object().shape({
+    'sign-in-email': yup
+      .string()
+      .required('Please, type your user email')
+      .email('Please type something in the shape of an email')
+      .max(
+        maxEmailLength,
+        `The email can't be longuer than ${maxEmailLength} characters`,
+      ),
+    'sign-in-password': yup.string().required('Please, type your password'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    // setError,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -66,7 +99,7 @@ function SignInForm({ signIn, logged }) {
           Sign in
         </Typography>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className={classes.form}
           noValidate
         >
@@ -75,11 +108,16 @@ function SignInForm({ signIn, logged }) {
             margin="normal"
             required
             fullWidth
-            id="sign-in-email"
             label="Email Address"
-            name="email"
             autoComplete="email"
             autoFocus
+            name="email"
+            id="sign-in-email"
+            {...register('sign-in-email')}
+            error={errors['sign-in-email'] !== undefined}
+            helperText={
+              errors['sign-in-email'] !== undefined && errors['sign-in-email'].message
+            }
           />
           <TextField
             variant="outlined"
@@ -91,6 +129,11 @@ function SignInForm({ signIn, logged }) {
             type="password"
             id="sign-in-password"
             autoComplete="current-password"
+            {...register('sign-in-password')}
+            error={errors['sign-in-password'] !== undefined}
+            helperText={
+              errors['sign-in-password'] !== undefined && errors['sign-in-password'].message
+            }
           />
           <Button
             type="submit"
@@ -101,6 +144,10 @@ function SignInForm({ signIn, logged }) {
           >
             Sign In
           </Button>
+          <LinearProgress
+            id="sign-in-spinner"
+            className={showSpinner === false ? classes.hide : null}
+          />
           <Grid container>
             <Grid item>
               Don't have an account?
