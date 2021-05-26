@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import signOutAction from '../redux/actions/auth/signOut';
 
@@ -23,12 +23,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Navbar({ logged, signOut }) {
-  // eslint-disable-next-line no-param-reassign
-  // logged = true;
   const classes = useStyles();
+  const history = useHistory();
 
   function handleSignOut() {
     signOut();
+    history.push('/');
   }
   return (
     <AppBar position="static">

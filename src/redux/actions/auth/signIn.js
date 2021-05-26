@@ -1,14 +1,8 @@
 import signInService from '../../services/auth/signIn';
-import {
-  loginActionCreator,
-  errorMessageActionCreator,
-  errorCleanUpActionCreator,
-  messagesCleanUpActionCreator,
-} from '../creators';
+import { loginActionCreator } from '../creators';
 
+// eslint-disable-next-line consistent-return
 const signInAction = async (dispatch, user, password) => {
-  dispatch(errorCleanUpActionCreator());
-  dispatch(errorCleanUpActionCreator());
   try {
     const response = await signInService(user, password);
     if (response.status === 200) {
@@ -18,8 +12,6 @@ const signInAction = async (dispatch, user, password) => {
         uid: response.headers.uid,
       };
       dispatch(loginActionCreator(headers));
-      dispatch(errorCleanUpActionCreator());
-      dispatch(messagesCleanUpActionCreator());
     } else {
       throw new Error(['Server returned something different from status OK or code 200']);
     }
@@ -32,10 +24,9 @@ const signInAction = async (dispatch, user, password) => {
     } else {
       message = e.message;
     }
-    dispatch(
-      errorMessageActionCreator(message),
-    );
+    return message;
   }
+  // return null;
 };
 
 export default signInAction;

@@ -18,6 +18,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
 import signInAction from '../redux/actions/auth/signIn';
 
 const useStyles = makeStyles(theme => ({
@@ -51,42 +52,51 @@ function SignInForm({ signIn, logged }) {
   const history = useHistory();
   const [showSpinner, setShowSpinner] = useState(false);
 
-  useEffect(() => {
-    if (logged) {
-      history.push('/', { from: 'Sign In' });
-    }
-  }, [logged]);
-
-  const onSubmit = async event => {
-    event.preventDefault();
-    setShowSpinner(true);
-    const email = document.querySelector('#sign-in-email').value;
-    const password = document.querySelector('#sign-in-password').value;
-    const response = await signIn(email, password);
-    console.log(response);
-  };
-
   const maxEmailLength = 30;
   const schema = yup.object().shape({
     'sign-in-email': yup
-      .string()
+      .string('Please enter a string')
       .required('Please, type your user email')
       .email('Please type something in the shape of an email')
       .max(
         maxEmailLength,
         `The email can't be longuer than ${maxEmailLength} characters`,
       ),
-    'sign-in-password': yup.string().required('Please, type your password'),
+    'sign-in-password': yup
+      .string('Please enter a string')
+      .required('Please, type your password'),
   });
 
   const {
     register,
     handleSubmit,
-    // setError,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (logged) {
+      history.push('/', { from: 'Sign In' });
+    }
+  }, [logged]);
+
+  const onSubmit = async () => {
+    const email = document.querySelector('#sign-in-email').value;
+    const password = document.querySelector('#sign-in-password').value;
+    setShowSpinner(true);
+    const errorMessage = await signIn(email, password);
+    setShowSpinner(false);
+    if (errorMessage) {
+      setError('serverError', {
+        type: 'serverError',
+        message: errorMessage,
+      });
+    } else {
+      history.push('/');
+    }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -144,10 +154,6 @@ function SignInForm({ signIn, logged }) {
           >
             Sign In
           </Button>
-          <LinearProgress
-            id="sign-in-spinner"
-            className={showSpinner === false ? classes.hide : null}
-          />
           <Grid container>
             <Grid item>
               Don't have an account?
@@ -157,6 +163,15 @@ function SignInForm({ signIn, logged }) {
           </Grid>
         </form>
       </div>
+      <LinearProgress
+        id="sign-in-spinner"
+        className={showSpinner === false ? classes.hide : null}
+      />
+      {errors.serverError !== undefined && (
+        <Alert severity="error">
+          {errors.serverError.message}
+        </Alert>
+      )}
       <Box mt={8}>
         <Typography variant="body2" color="textSecondary" align="center">
           {'Copyright © '}
