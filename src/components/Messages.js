@@ -1,25 +1,38 @@
-import './Messages.scss';
+// import './Messages.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Alert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  centerText: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+}));
 
 function Messages({ errors, messages }) {
+  const classes = useStyles();
   return (
     <div>
       {messages.map(message => (
-        <div
-          className="message"
+        <Alert
+          severity="success"
+          className={classes.centerText}
+          // className="message"
           key={message}
         >
           {message}
-        </div>
+        </Alert>
       ))}
       {errors.map(errorMessage => (
-        <div
-          className="error-message"
+        <Alert
+          severity="error"
+          // className="error-message"
           key={errorMessage}
         >
           {errorMessage}
-        </div>
+        </Alert>
       ))}
     </div>
   );

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,10 +16,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@material-ui/core/Typography';
 import { useForm } from 'react-hook-form';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import signUpAction from '../redux/actions/auth/signUp';
-import {
-  errorMessageActionCreator,
-} from '../redux/actions/creators';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -44,9 +43,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SignUpForm({ signUp, dispatch }) {
+function SignUpForm({ signUp }) {
   const classes = useStyles();
-  const [registered, setRegistered] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
   const history = useHistory();
 
   const maxEmailLength = 30;
@@ -78,6 +77,10 @@ function SignUpForm({ signUp, dispatch }) {
     password: yup
       .string('Please enter a string')
       .required('Please, type your password'),
+    confirmEmail: yup
+      .string('Please enter a string')
+      .required('Please, type your user email')
+      .oneOf([yup.ref('email'), null], 'Email must match'),
     confirmPassword: yup
       .string('Please enter a string')
       .required('Please, type your password')
@@ -87,37 +90,31 @@ function SignUpForm({ signUp, dispatch }) {
   const {
     register,
     handleSubmit,
-    // setError,
-    // formState: { errors },
+    setError,
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async () => {
-    const email = document.querySelector('#sign-up-email').value;
-    // console.log(email, 'email');
-    const password = document.querySelector('#sign-up-password').value;
-    // console.log(password, 'password');
-    const confirmPassword = document.querySelector('#sign-up-confirm-password').value;
-    // console.log(confirmPassword, 'confirm password');
-    const firstName = document.querySelector('#sign-up-first-name').value;
-    // console.log(firstName, 'first name');
-    const lastName = document.querySelector('#sign-up-last-name').value;
-    // console.log(lastName, 'last name');
-    if (password !== confirmPassword) {
-      await dispatch(errorMessageActionCreator("Password and confirm password doesn't match"));
-    }
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+    const firstName = document.querySelector('#firstName').value;
+    const lastName = document.querySelector('#lastName').value;
 
-    if (await signUp(email, password, firstName, lastName) === 200) {
-      setRegistered(true);
+    setShowSpinner(true);
+    const errorMessage = await signUp(email, password, firstName, lastName);
+    setShowSpinner(false);
+    if (errorMessage) {
+      setError('serverError', {
+        type: 'serverError',
+        message: errorMessage,
+      });
+    } else {
+      history.push('/signin');
     }
   };
 
-  useEffect(() => {
-    if (registered) {
-      history.push('/signin', { from: 'Sign Up' });
-    }
-  }, [registered]);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -144,6 +141,10 @@ function SignUpForm({ signUp, dispatch }) {
                 id="firstName"
                 label="First Name"
                 {...register('firstName')}
+                error={errors.firstName !== undefined}
+                helperText={
+                  errors.firstName !== undefined && errors.firstName.message
+                }
                 autoFocus
               />
             </Grid>
@@ -156,6 +157,10 @@ function SignUpForm({ signUp, dispatch }) {
                 label="Last Name"
                 name="lastName"
                 {...register('lastName')}
+                error={errors.lastName !== undefined}
+                helperText={
+                  errors.lastName !== undefined && errors.lastName.message
+                }
                 // autoComplete="lname"
               />
             </Grid>
@@ -168,6 +173,10 @@ function SignUpForm({ signUp, dispatch }) {
                 label="Email Address"
                 name="email"
                 {...register('email')}
+                error={errors.email !== undefined}
+                helperText={
+                  errors.email !== undefined && errors.email.message
+                }
                 // autoComplete="email"
               />
             </Grid>
@@ -180,6 +189,10 @@ function SignUpForm({ signUp, dispatch }) {
                 label="Confirm Email Address"
                 name="email"
                 {...register('confirmEmail')}
+                error={errors.confirmEmail !== undefined}
+                helperText={
+                  errors.confirmEmail !== undefined && errors.confirmEmail.message
+                }
                 // autoComplete="email"
               />
             </Grid>
@@ -193,6 +206,10 @@ function SignUpForm({ signUp, dispatch }) {
                 type="password"
                 id="password"
                 {...register('password')}
+                error={errors.password !== undefined}
+                helperText={
+                  errors.password !== undefined && errors.password.message
+                }
                 // autoComplete="current-password"
               />
             </Grid>
@@ -206,15 +223,13 @@ function SignUpForm({ signUp, dispatch }) {
                 type="password"
                 id="confirm-password"
                 {...register('confirmPassword')}
+                error={errors.confirmPassword !== undefined}
+                helperText={
+                  errors.confirmPassword !== undefined && errors.confirmPassword.message
+                }
                 // autoComplete="current-password"
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button
             type="submit"
@@ -234,6 +249,10 @@ function SignUpForm({ signUp, dispatch }) {
           </Grid>
         </form>
       </div>
+      <LinearProgress
+        id="sign-in-spinner"
+        className={showSpinner === false ? classes.hide : null}
+      />
       <Box mt={5}>
         <Typography variant="body2" color="textSecondary" align="center">
           {'Copyright © '}
@@ -243,40 +262,6 @@ function SignUpForm({ signUp, dispatch }) {
           {'.'}
         </Typography>
       </Box>
-      {/* <div className="login-box">
-        <h2>Sign Up</h2>
-        <form>
-          <div className="user-box">
-            <input type="text" name="first_name" id="sign-up-first-name" />
-            <label htmlFor="first_name">First Name</label>
-          </div>
-          <div className="user-box">
-            <input type="text" name="last_name" id="sign-up-last-name" />
-            <label htmlFor="last_name">Last Name</label>
-          </div>
-          <div className="user-box">
-            <input type="" name="email" id="sign-up-email" />
-            <label htmlFor="email">Email</label>
-          </div>
-          <div className="user-box">
-            <input type="password" name="password" id="sign-up-password" />
-            <label htmlFor="password">Password</label>
-          </div>
-          <div className="user-box">
-            <input type="password" name="confirm_password" id="sign-up-password-confirmation" />
-            <label htmlFor="confirm_password">Confirm Password</label>
-          </div>
-          <div className="submit">
-            <a onClick={onSubmit}>
-              <span />
-              <span />
-              <span />
-              <span />
-              Submit
-            </a>
-          </div>
-        </form>
-      </div> */}
     </Container>
   );
 }

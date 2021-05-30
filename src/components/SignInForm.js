@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SignInForm({ signIn, logged }) {
+function SignInForm({ signIn }) {
   const classes = useStyles();
   const history = useHistory();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -75,12 +75,6 @@ function SignInForm({ signIn, logged }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  useEffect(() => {
-    if (logged) {
-      history.push('/', { from: 'Sign In' });
-    }
-  }, [logged]);
 
   const onSubmit = async () => {
     const email = document.querySelector('#sign-in-email').value;
@@ -187,7 +181,6 @@ function SignInForm({ signIn, logged }) {
 
 SignInForm.propTypes = {
   signIn: PropTypes.func.isRequired,
-  logged: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

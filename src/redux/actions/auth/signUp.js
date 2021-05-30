@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import signUpService from '../../services/auth/signUp';
 import {
-  errorCleanUpActionCreator,
-  errorMessageActionCreator,
   messageActionCreator,
+  errorCleanUpActionCreator,
   messagesCleanUpActionCreator,
 } from '../creators';
 
@@ -12,26 +11,25 @@ const signUpAction = async (dispatch, user, password, first_name, last_name) => 
   dispatch(messagesCleanUpActionCreator());
   try {
     const response = await signUpService(user, password, first_name, last_name);
+    // console.log(response);
     if (response.status === 200) {
       dispatch(
         messageActionCreator('Sign Up successful. Now sign In.'),
       );
-      return response.status;
+    } else {
+      throw new Error(['Server returned something different from status OK or code 200']);
     }
-    throw new Error(['Server returned something different from status OK or code 200']);
   } catch (e) {
-    // console.log(e.response);
+    // console.log(e);
     let message = '';
     if (e.response === undefined) {
       message = 'No response from server in Sign Up';
-      return e.response.status;
+    } else {
+      message = e.message;
     }
-    message = e.message;
-    dispatch(
-      errorMessageActionCreator(message),
-    );
-    return e;
+    return message;
   }
+  return null;
 };
 
 export default signUpAction;

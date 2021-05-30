@@ -1,8 +1,14 @@
 import signInService from '../../services/auth/signIn';
-import { loginActionCreator } from '../creators';
+import {
+  loginActionCreator,
+  errorCleanUpActionCreator,
+  messagesCleanUpActionCreator,
+} from '../creators';
 
 // eslint-disable-next-line consistent-return
 const signInAction = async (dispatch, user, password) => {
+  dispatch(errorCleanUpActionCreator());
+  dispatch(messagesCleanUpActionCreator());
   try {
     const response = await signInService(user, password);
     if (response.status === 200) {
@@ -26,7 +32,6 @@ const signInAction = async (dispatch, user, password) => {
     }
     return message;
   }
-  // return null;
 };
 
 export default signInAction;
