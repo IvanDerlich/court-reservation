@@ -11,7 +11,9 @@ const composedEnhancers = composeWithDevTools(options);
 
 const store = createStore(rootReducer, composedEnhancers(applyMiddleware(thunkMiddleware)));
 
-// store.dispatch(offlineFetching());
-// store.dispatch(apiFetching());
-// store.dispatch(loadState);
+// eslint-disable-next-line import/first
+import login from './actions/auth/signIn';
+
+login(store.dispatch, 'ivan@ivan.com', '12345678');
+
 export default store;
