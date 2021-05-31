@@ -9,16 +9,7 @@ import { Link } from 'react-router-dom';
 import loggedImage from '../resources/logged-Image.jpg';
 import notLoggedImage from '../resources/logged-Image2.jpg';
 
-const useStyles = makeStyles(theme => ({
-  // root: {
-  //   flexGrow: 1,
-  //   margin: '30px 40px',
-  // },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+const useStyles = makeStyles(() => ({
   title: {
     color: '#352d2d',
     marginTop: '20px',
@@ -27,13 +18,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '46px',
     color: 'white',
   },
-  // content: {
-  //   height: '100vh',
-  // },
-  loggedWelcome: {
-    // ...this.root,
-    margin: '30px 40px',
-    backgroundImage: `url(${loggedImage})`,
+  root: {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -41,17 +26,14 @@ const useStyles = makeStyles(theme => ({
     width: '90vw',
     height: '90vh',
   },
+  loggedWelcome: {
+    margin: '30px 40px',
+    backgroundImage: `url(${loggedImage})`,
+  },
   notLoggedWelcome: {
-    // ...this.root,
     marginTop: '30px',
     marginLeft: '20px',
     backgroundImage: `url(${notLoggedImage})`,
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    position: 'relative',
-    width: '90vw',
-    height: '90vh',
   },
 }));
 
@@ -59,7 +41,7 @@ function Home({ logged }) {
   const classes = useStyles();
   if (logged) {
     return (
-      <div className={classes.loggedWelcome}>
+      <div className={`${classes.root} ${classes.loggedWelcome}`}>
         <Grid container spacing={3} justify="flex-end" alignItems="center">
           <Grid item xs={6} className={classes.content}>
             <Typography variant="h2" className={classes.welcomeTitle}>
@@ -71,7 +53,7 @@ function Home({ logged }) {
     );
   }
   return (
-    <div className={classes.notLoggedWelcome}>
+    <div className={`${classes.root} ${classes.notLoggedWelcome}`}>
       <Grid container spacing={3} justify="flex-start" alignItems="center">
         <Grid item xs={6} className={classes.content}>
           <Typography variant="h3" className={classes.title}>
