@@ -40,7 +40,7 @@ function Navbar({ logged, signOut }) {
           { logged && (
             <>
               <Typography className={classes.tab}>
-                <Link to="/courts">Courts</Link>
+                <Link to="/courts/all">Courts</Link>
               </Typography>
               <Typography className={classes.tab}>
                 <Link to="/bookings">Bookings</Link>

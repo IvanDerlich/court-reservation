@@ -62,7 +62,7 @@ function Home({ logged }) {
           <Button variant="contained">
             <Link to="/signin">Sign In</Link>
           </Button>
-          <Button variant="contained" color="Seconday">
+          <Button variant="contained">
             <Link to="/signup">Sign Up</Link>
           </Button>
         </Grid>

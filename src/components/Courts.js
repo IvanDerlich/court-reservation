@@ -28,8 +28,8 @@ function Courts({ logged }) {
     return <div className="courts-error-message"> Unauthorized. Please Log In </div>;
   }
   return (
-    <Grid spacing={3} className={classes.root}>
-      <Grid xs={3}>
+    <Grid className={classes.root}>
+      <Grid>
         <Paper className={classes.paper}>
           <Typography variant="h4" className="courts-title">Courts</Typography>
           <MenuList>
@@ -51,9 +51,6 @@ function Courts({ logged }) {
           </MenuList>
         </Paper>
       </Grid>
-      {/* <Grid xs={7}>
-        asdfasdf
-      </Grid> */}
       <CourtsContent />
     </Grid>
   );
