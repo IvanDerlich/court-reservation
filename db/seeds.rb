@@ -15,7 +15,7 @@ user = User.create!(
   last_name: 'Derlich'
 )
 
-10.times do
+10.times do 
   User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,

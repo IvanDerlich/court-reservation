@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     json_response(@user.bookings)
   end
 
-  # GET /user/:id/courts
+  # GET /user/courts
   def courts
     json_response(@user.courts)
   end
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find(params[:email])
   end
 end

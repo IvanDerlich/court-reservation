@@ -5,8 +5,11 @@ class CourtsController < ApplicationController
   before_action :authorized?, only: %i[update destroy]
   before_action :useful_content?, only: %i[create update]
 
-  def index
-    json_response(Court.all)
+  def index  
+    courts = Court
+      .select('courts.id, courts.name, address, description, users.first_name, users.last_name')
+      .joins('INNER JOIN users ON users.id = courts.administrator_id') 
+    json_response(courts)
   end
 
   def show

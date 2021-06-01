@@ -65,7 +65,7 @@ RSpec.describe 'Authorization', type: :request do
          params: {
            email: user.email,
            password: user.password
-         }
+         }  
 
     expect(response.status).to eq(200)
 
