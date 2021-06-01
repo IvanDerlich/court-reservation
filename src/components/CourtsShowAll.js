@@ -29,9 +29,9 @@ const useStyles = makeStyles({
 
 function CourtsShowAll({ courts, getAllCourts, headers }) {
   // console.log(courts);
-  courts.forEach(court => {
-    console.log(court);
-  });
+  // courts.forEach(court => {
+  //   console.log(court);
+  // });
   const classes = useStyles();
 
   useEffect(() => {
