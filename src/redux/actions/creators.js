@@ -6,6 +6,7 @@ import {
   ADD_MESSAGE,
   CLEAN_MESSAGES,
   LOAD_ALL_COURTS,
+  LOAD_MY_COURTS,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -38,4 +39,9 @@ export const messagesCleanUpActionCreator = () => ({
 export const loadAllCourts = allCourts => ({
   type: LOAD_ALL_COURTS,
   payload: { allCourts },
+});
+
+export const loadMyCourts = myCourts => ({
+  type: LOAD_MY_COURTS,
+  payload: { myCourts },
 });

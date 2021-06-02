@@ -5,3 +5,4 @@ export const CLEAN_ERRORS = 'Clean Errors Array';
 export const ADD_MESSAGE = 'Add Message to Messages Array';
 export const CLEAN_MESSAGES = 'Clean Messages Array';
 export const LOAD_ALL_COURTS = 'Load all Courts';
+export const LOAD_MY_COURTS = 'Load my Courts';

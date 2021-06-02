@@ -13,7 +13,6 @@ import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import getAllCourtsAction from '../redux/actions/courts/getAll';
-// import CourtsCourt from './CourtsCourt';
 
 const useStyles = makeStyles({
   table: {
@@ -28,10 +27,6 @@ const useStyles = makeStyles({
 });
 
 function CourtsShowAll({ courts, getAllCourts, headers }) {
-  // console.log(courts);
-  // courts.forEach(court => {
-  //   console.log(court);
-  // });
   const classes = useStyles();
 
   useEffect(() => {

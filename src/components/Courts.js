@@ -6,6 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+
 import { Link } from 'react-router-dom';
 
 // import CourtMenu from './CourtsMenu';
@@ -23,34 +25,36 @@ const useStyles = makeStyles(() => ({
 
 function Courts({ logged }) {
   const classes = useStyles();
-  // if it's not logged ask the user to log or that he's got access forbiden
+
   if (!logged) {
-    return <div className="courts-error-message"> Unauthorized. Please Log In </div>;
+    return (
+      <Alert severity="error">
+        Unauthorized. Please Log In
+      </Alert>
+    );
   }
   return (
     <Grid className={classes.root}>
-      <Grid>
-        <Paper className={classes.paper}>
-          <Typography variant="h4" className="courts-title">Courts</Typography>
-          <MenuList>
-            <MenuItem>
-              <Link to="/courts/all">
-                All courts
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/courts/mine">
-                My courts
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/courts/new">
-                Create Court
-              </Link>
-            </MenuItem>
-          </MenuList>
-        </Paper>
-      </Grid>
+      <Paper className={classes.paper}>
+        <Typography variant="h4" className="courts-title">Courts</Typography>
+        <MenuList>
+          <MenuItem>
+            <Link to="/courts/all">
+              All courts
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/courts/mine">
+              My courts
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/courts/new">
+              Create Court
+            </Link>
+          </MenuItem>
+        </MenuList>
+      </Paper>
       <CourtsContent />
     </Grid>
   );

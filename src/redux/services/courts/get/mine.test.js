@@ -11,6 +11,7 @@ describe('Test Court Get methods', () => {
       signInService(email, password)
         .then(response => {
           headers = response.headers;
+          expect(response.status).toBe(200);
           done();
         });
     } catch (e) {
@@ -18,13 +19,12 @@ describe('Test Court Get methods', () => {
     }
   });
   describe('getMyCourts', () => {
-    it('Returns some', async () => {
+    it('Returns my courts', async () => {
       try {
         const response = await getMyCourtsService(headers);
-        console.log('Response in My Courts');
-        console.log(response);
-        // expect(response.status).toBe(200);
-        // expect(response.data.length).toBe(18);
+        expect(response.status).toBe(200);
+        expect(response.data.length).toBe(10);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       }

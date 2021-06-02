@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { Route, Switch } from 'react-router-dom';
 import CourtsShowAll from './CourtsShowAll';
 import CourtsShowMine from './CourtsShowMine';
 import CourtsNew from './CourtsNew';
-import './CourtsContent.scss';
 
 function CourtsContent() {
   return (
