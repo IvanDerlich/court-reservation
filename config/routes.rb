@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  get 'users/:id/bookings', to: 'users#bookings', as: 'user_bookings'
+  get 'bookings/mine', to: 'users#bookings_mine', as: 'my_bookings'
+  get 'bookings/others', to: 'users#bookings_others', as: 'others_bookings'
   get 'user/courts', to: 'users#courts', as: 'user_courts'
-  get 'courts/:id/bookings', to: 'courts#bookings', as: 'courts_bookings'
 
   namespace :api do
     namespace :v1 do

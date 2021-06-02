@@ -95,13 +95,13 @@ RSpec.describe 'Courts', type: :request do
         address: Faker::Address.street_address,
         description: Faker::Lorem.sentence,
         administrator_id: user.id
-      }
+      }      
     end
     context 'When the request is valid' do
-      before do
+      before do        
         post '/courts',
-             params: valid_attributes,
-             headers: headers
+            params: valid_attributes,
+            headers: headers      
       end
 
       it 'returns status code 201' do
@@ -114,6 +114,40 @@ RSpec.describe 'Courts', type: :request do
         expect(json['description']).to eq(valid_attributes[:description])
         expect(json['administrator_id']).to eq(valid_attributes[:administrator_id])
       end
+
+      context 'GET /user/court' do
+        let(:valid_attributes2) do
+          {
+            name: Faker::Lorem.characters(number: 6),
+            address: Faker::Address.street_address,
+            description: Faker::Lorem.sentence,
+            administrator_id: user.id
+          }
+        end
+
+        it 'See the created courts' do
+          # create anothe court
+          post '/courts',
+            params: valid_attributes2,
+            headers: headers 
+
+          get "/user/courts",            
+            params: {
+              email: user.email
+            },
+            headers: headers
+          expect(json.first.name).to eq(valid_attributes[:name])
+          expect(json.first.address).to eq(valid_attributes[:address])
+          expect(json.first.description).to eq(valid_attributes[:description])
+          expect(json.first.administrator_id).to eq(user.id)
+          expect(json.second.name).to eq(valid_attributes2[:name])
+          expect(json.second.address).to eq(valid_attributes2[:address])
+          expect(json.second.description).to eq(valid_attributes2[:description])
+          expect(json.second.administrator_id).to eq(user.id)
+        end 
+      end
+
+
     end
     # rubocop:disable Metrics/BlockLength
     context 'when the request is invalid ->' do
