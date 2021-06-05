@@ -1,5 +1,4 @@
 import { Route, Switch } from 'react-router-dom';
-import Home from '../containers/Home';
 import Navbar from './Navbar';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
@@ -7,6 +6,9 @@ import Messages from './Messages';
 import Courts from './Courts';
 import Bookings from './Bookings';
 import './App.scss';
+// containers
+import Footer from '../containers/Footer';
+import Home from '../containers/Home';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/bookings" component={() => <Bookings />} />
         </Switch>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -7,7 +7,6 @@ const getMyCourtsService = headers => {
   };
 
   const response = axios.get(
-    // Improve this code: There has to be a way to send a params object
     `${MY_COURTS_ENDPOINT}?email=${headers.uid}`,
     config,
   );
