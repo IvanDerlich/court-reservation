@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unescaped-entities */
-function BookingsShowMine() {
+import React from 'react';
+
+export default function BookingsShowMine() {
   return (
     <div>
-      Show the Bookings I've done
+      asdfdas
     </div>
   );
 }
-
-export default BookingsShowMine;

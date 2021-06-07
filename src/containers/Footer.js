@@ -5,10 +5,16 @@ import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   footer: {
     display: 'flex',
     justifyContent: 'center',
+    bottom: '0px',
+    position: 'fixed',
+    backgroundColor: theme.palette.primary.main,
+    width: '100%',
+    margin: 0,
+    left: 0,
   },
 }));
 

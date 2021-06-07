@@ -7,6 +7,7 @@ import {
   CLEAN_MESSAGES,
   LOAD_ALL_COURTS,
   LOAD_MY_COURTS,
+  LOAD_BOOKINGS_ON_MY_COURTS,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -44,4 +45,9 @@ export const loadAllCourts = allCourts => ({
 export const loadMyCourts = myCourts => ({
   type: LOAD_MY_COURTS,
   payload: { myCourts },
+});
+
+export const loadBookingsOnMyCourts = bookingsOnMyCourts => ({
+  type: LOAD_BOOKINGS_ON_MY_COURTS,
+  payload: { bookingsOnMyCourts },
 });

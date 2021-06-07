@@ -39,12 +39,12 @@ function Bookings({ logged }) {
         <Typography variant="h4" className="courts-title">Bookings</Typography>
         <MenuList>
           <MenuItem>
-            <Link to="/bookings/mine">
+            <Link to="/bookings/mybookings">
               My Bookings
             </Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/bookings/ofmycourts">
+            <Link to="/bookings/onmycourts">
               Bookings on my courts
             </Link>
           </MenuItem>
