@@ -282,11 +282,9 @@ const mapDispatchToProps = dispatch => ({
     password,
     firstName,
     lastName) => signUpAction(dispatch, email, password, firstName, lastName),
-  dispatch,
 });
 
 const mapStateToProps = state => ({
-  errors: state.errors,
   logged: !!state.headers,
 });
 
