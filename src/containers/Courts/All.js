@@ -11,9 +11,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Link } from 'react-router-dom';
 
-import getBookingsOnMyCourtsAction from '../redux/actions/bookings/getMine';
+import getAllCourtsAction from '../../redux/actions/courts/getAll';
 
 const useStyles = makeStyles({
   table: {
@@ -27,15 +26,14 @@ const useStyles = makeStyles({
   },
 });
 
-/* eslint-disable react/no-unescaped-entities */
-function BookingsShowMine({ bookings, getBookingsOnMyCourts, headers }) {
+function CourtsShowAll({ courts, getAllCourts, headers }) {
   const classes = useStyles();
 
   useEffect(() => {
-    getBookingsOnMyCourts(headers);
+    getAllCourts(headers);
   }, []);
 
-  if (bookings.length < 1) {
+  if (courts.length < 1) {
     return (
       <CircularProgress
         id="sign-in-spinner"
@@ -43,41 +41,31 @@ function BookingsShowMine({ bookings, getBookingsOnMyCourts, headers }) {
       />
     );
   }
-  // console.log(bookings);
   return (
     <TableContainer component={Paper} className={classes.container}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow className={classes.tableHead}>
-            <TableCell align="right">Court Name</TableCell>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Booker</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Address</TableCell>
             <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Administrator</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {bookings.map(({
+          {courts.map(({
             id,
-            booker_id,
-            booking_description,
-            court_name,
-            date,
+            name,
+            address,
+            description,
             first_name,
             last_name,
           }) => (
             <TableRow key={id}>
-              <TableCell>
-                <Link to={`/court/${id}`}>
-                  {court_name}
-                </Link>
-              </TableCell>
-              <TableCell align="right">{date}</TableCell>
-              <TableCell align="right">
-                <Link to={`/user/${booker_id}`}>
-                  {`${first_name} ${last_name}`}
-                </Link>
-              </TableCell>
-              <TableCell align="right">{ booking_description }</TableCell>
+              <TableCell>{name}</TableCell>
+              <TableCell align="right">{address}</TableCell>
+              <TableCell align="right">{description}</TableCell>
+              <TableCell align="right">{`${first_name} ${last_name}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -86,24 +74,23 @@ function BookingsShowMine({ bookings, getBookingsOnMyCourts, headers }) {
   );
 }
 
-BookingsShowMine.propTypes = {
-  bookings: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getBookingsOnMyCourts: PropTypes.func.isRequired,
+CourtsShowAll.propTypes = {
+  courts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getAllCourts: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  bookings: state.bookingsOnMyCourts,
+  courts: state.allCourts,
   headers: state.headers,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getBookingsOnMyCourts: headers => getBookingsOnMyCourtsAction(dispatch, headers),
+  getAllCourts: headers => getAllCourtsAction(dispatch, headers),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(BookingsShowMine);
-// export default BookingsShowMine;
+)(CourtsShowAll);

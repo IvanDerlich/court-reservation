@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
-import BookingsShowMine from './BookingsShowMine';
-import BookingsShowOthers from './BookingsShowOnMyCourts';
-import './BookingsContent.scss';
+import BookingsShowMine from './Mine';
+import BookingsShowOthers from './OnMine';
 
 function BookingsContent() {
   return (

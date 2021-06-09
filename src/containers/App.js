@@ -1,14 +1,14 @@
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
-import SignInForm from './SignInForm';
-import SignUpForm from './SignUpForm';
+import SignInForm from './LogForms/In';
+import SignUpForm from './LogForms/Up';
 import Messages from './Messages';
-import Courts from './Courts';
-import Bookings from './Bookings';
+import Courts from './Courts/Index';
+import Bookings from './Bookings/Index';
 import './App.scss';
 // containers
-import Footer from '../containers/Footer';
-import Home from '../containers/Home';
+import Footer from '../components/Footer';
+import Home from '../components/Home';
 
 function App() {
   return (

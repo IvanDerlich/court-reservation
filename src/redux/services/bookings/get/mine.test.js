@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import signInService from '../../auth/signIn';
-import getBookingsOnOthersService from './onOthers';
+import getBookingsOnOthersService from './mine';
 // import serverValue from './onMineServerValues';
 
 describe('Test Court Get methods', () => {

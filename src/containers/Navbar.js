@@ -43,7 +43,7 @@ function Navbar({ logged, signOut }) {
                 <Link to="/courts/all">Courts</Link>
               </Typography>
               <Typography className={classes.tab}>
-                <Link to="/bookings">Bookings</Link>
+                <Link to="/bookings/mybookings">Bookings</Link>
               </Typography>
             </>
           )}

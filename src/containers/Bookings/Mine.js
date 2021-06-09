@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
@@ -10,8 +11,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Link } from 'react-router-dom';
 
-import getMyCourtsAction from '../redux/actions/courts/getMine';
+import getMyBookingsAction from '../../redux/actions/bookings/getMine';
 
 const useStyles = makeStyles({
   table: {
@@ -25,14 +27,15 @@ const useStyles = makeStyles({
   },
 });
 
-function CourtsShowMine({ courts, getMyCourts, headers }) {
+/* eslint-disable react/no-unescaped-entities */
+function BookingsShowMine({ bookings, getMyBookings, headers }) {
   const classes = useStyles();
 
   useEffect(() => {
-    getMyCourts(headers);
+    getMyBookings(headers);
   }, []);
 
-  if (courts.length < 1) {
+  if (bookings.length < 1) {
     return (
       <CircularProgress
         id="sign-in-spinner"
@@ -45,22 +48,28 @@ function CourtsShowMine({ courts, getMyCourts, headers }) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow className={classes.tableHead}>
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Address</TableCell>
+            <TableCell>Court Name</TableCell>
+            <TableCell align="right">Date</TableCell>
             <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {courts.map(({
+          {bookings.map(({
             id,
-            name,
-            address,
+            court_id,
+            courts_name,
+            date,
             description,
           }) => (
             <TableRow key={id}>
-              <TableCell>{name}</TableCell>
-              <TableCell align="right">{address}</TableCell>
-              <TableCell align="right">{description}</TableCell>
+              <TableCell>
+                <Link to={`/court/${court_id}`}>
+                  {courts_name}
+                </Link>
+              </TableCell>
+              <TableCell align="right">{date}</TableCell>
+              <TableCell align="right">{ description }</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -69,23 +78,23 @@ function CourtsShowMine({ courts, getMyCourts, headers }) {
   );
 }
 
-CourtsShowMine.propTypes = {
-  courts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getMyCourts: PropTypes.func.isRequired,
+BookingsShowMine.propTypes = {
+  bookings: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getMyBookings: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  courts: state.myCourts,
+  bookings: state.bookingsMine,
   headers: state.headers,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMyCourts: headers => getMyCourtsAction(dispatch, headers),
+  getMyBookings: headers => getMyBookingsAction(dispatch, headers),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CourtsShowMine);
+)(BookingsShowMine);

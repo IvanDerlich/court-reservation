@@ -6,6 +6,7 @@ import messages from './messages';
 import allCourts from './allCourts';
 import myCourts from './myCourts';
 import bookingsOnMyCourts from './bookingsOnMyCourts';
+import bookingsMine from './bookingsMine';
 
 const rootReducer = combineReducers({
   headers,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   allCourts,
   myCourts,
   bookingsOnMyCourts,
+  bookingsMine,
 });
 
 export default rootReducer;

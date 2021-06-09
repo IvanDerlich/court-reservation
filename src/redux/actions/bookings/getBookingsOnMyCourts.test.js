@@ -1,8 +1,8 @@
-import getBookingsMineAction from './getMine';
+import getBookingsOnMyCourts from './getBookingsOnMyCourts';
 import store from '../../index';
 import signInService from '../../services/auth/signIn';
 
-describe('Test get Mine', () => {
+describe('Test get Bookings on mMy courts', () => {
   let headers = {};
   beforeAll(done => {
     const email = 'ivan@ivan.com';
@@ -19,9 +19,9 @@ describe('Test get Mine', () => {
   });
 
   it('', async () => {
-    expect(store.getState().bookingsMine).toEqual([]);
-    await getBookingsMineAction(store.dispatch, headers);
-    console.log(store.getState().bookingsMine);
+    expect(store.getState().bookingsOnMyCourts).toEqual([]);
+    const response = await getBookingsOnMyCourts(store.dispatch, headers);
+    console.log(response);
     // expect(store.getState().allCourts).toEqual(allCourtsInServer);
   });
 });

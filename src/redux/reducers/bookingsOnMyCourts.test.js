@@ -3,11 +3,11 @@ import { loadBookingsOnMyCourts } from '../actions/creators';
 
 describe('Bookings on my courts', () => {
   it('', () => {
-    expect(store.getState().allCourts).toEqual([]);
+    expect(store.getState().bookingsOnMyCourts).toEqual([]);
     const allCourts = [0, 1, 2, 3, 4];
     store.dispatch(
       loadBookingsOnMyCourts(allCourts),
     );
-    console.log(store.getState().bookingsOnMyCourts);
+    expect(store.getState().bookingsOnMyCourts).toEqual(allCourts);
   });
 });

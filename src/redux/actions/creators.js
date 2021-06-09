@@ -8,6 +8,7 @@ import {
   LOAD_ALL_COURTS,
   LOAD_MY_COURTS,
   LOAD_BOOKINGS_ON_MY_COURTS,
+  LOAD_MY_BOOKINGS,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -50,4 +51,9 @@ export const loadMyCourts = myCourts => ({
 export const loadBookingsOnMyCourts = bookingsOnMyCourts => ({
   type: LOAD_BOOKINGS_ON_MY_COURTS,
   payload: { bookingsOnMyCourts },
+});
+
+export const loadBookingsMine = bookingsMine => ({
+  type: LOAD_MY_BOOKINGS,
+  payload: { bookingsMine },
 });

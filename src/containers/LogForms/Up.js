@@ -11,14 +11,13 @@ import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@material-ui/core/Typography';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import signUpAction from '../redux/actions/auth/signUp';
+import signUpAction from '../../redux/actions/auth/signUp';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -253,7 +252,7 @@ function SignUpForm({ signUp }) {
         id="sign-in-spinner"
         className={showSpinner === false ? classes.hide : null}
       />
-      <Box mt={5}>
+      {/* <Box mt={5}>
         <Typography variant="body2" color="textSecondary" align="center">
           {'Copyright © '}
           <a href="http://ivanderlich.com" className={classes.ivanderlich}>Ivan Derlich</a>
@@ -261,7 +260,7 @@ function SignUpForm({ signUp }) {
           {new Date().getFullYear()}
           {'.'}
         </Typography>
-      </Box>
+      </Box> */}
     </Container>
   );
 }

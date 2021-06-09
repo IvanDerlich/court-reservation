@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
 import Paper from '@material-ui/core/Paper';
 import MenuList from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
-
 import { Link } from 'react-router-dom';
+import Content from './Content';
 
 // import CourtMenu from './CourtsMenu';
-import CourtsContent from './CourtsContent';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,7 +22,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Courts({ logged }) {
+function Bookings({ logged }) {
   const classes = useStyles();
 
   if (!logged) {
@@ -36,40 +35,38 @@ function Courts({ logged }) {
   return (
     <Grid className={classes.root}>
       <Paper className={classes.paper}>
-        <Typography variant="h4" className="courts-title">Courts</Typography>
+        <Typography variant="h4" className="courts-title">Bookings</Typography>
         <MenuList>
           <MenuItem>
+            <Link to="/bookings/mybookings">
+              My Bookings
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/bookings/onmycourts">
+              Bookings on my courts
+            </Link>
+          </MenuItem>
+          <MenuItem>
             <Link to="/courts/all">
-              All courts
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/courts/mine">
-              My courts
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/courts/new">
-              Create Court
+              Book a court
             </Link>
           </MenuItem>
         </MenuList>
       </Paper>
-      <CourtsContent />
+      <Content />
     </Grid>
   );
 }
 
-Courts.propTypes = {
+Bookings.propTypes = {
   logged: PropTypes.bool.isRequired,
 };
 
-// eslint-disable-next-line no-unused-vars
 const mapStateToProps = state => ({
-  // logged: !!state.headers,
-  logged: true,
+  logged: !!state.headers,
 });
 
 export default connect(
   mapStateToProps,
-)(Courts);
+)(Bookings);

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
@@ -12,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import getAllCourtsAction from '../redux/actions/courts/getAll';
+import getMyCourtsAction from '../../redux/actions/courts/getMine';
 
 const useStyles = makeStyles({
   table: {
@@ -26,11 +25,11 @@ const useStyles = makeStyles({
   },
 });
 
-function CourtsShowAll({ courts, getAllCourts, headers }) {
+function CourtsShowMine({ courts, getMyCourts, headers }) {
   const classes = useStyles();
 
   useEffect(() => {
-    getAllCourts(headers);
+    getMyCourts(headers);
   }, []);
 
   if (courts.length < 1) {
@@ -49,7 +48,7 @@ function CourtsShowAll({ courts, getAllCourts, headers }) {
             <TableCell>Name</TableCell>
             <TableCell align="right">Address</TableCell>
             <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Administrator</TableCell>
+            <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -58,14 +57,11 @@ function CourtsShowAll({ courts, getAllCourts, headers }) {
             name,
             address,
             description,
-            first_name,
-            last_name,
           }) => (
             <TableRow key={id}>
               <TableCell>{name}</TableCell>
               <TableCell align="right">{address}</TableCell>
               <TableCell align="right">{description}</TableCell>
-              <TableCell align="right">{`${first_name} ${last_name}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -74,23 +70,23 @@ function CourtsShowAll({ courts, getAllCourts, headers }) {
   );
 }
 
-CourtsShowAll.propTypes = {
+CourtsShowMine.propTypes = {
   courts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getAllCourts: PropTypes.func.isRequired,
+  getMyCourts: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  courts: state.allCourts,
+  courts: state.myCourts,
   headers: state.headers,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllCourts: headers => getAllCourtsAction(dispatch, headers),
+  getMyCourts: headers => getMyCourtsAction(dispatch, headers),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CourtsShowAll);
+)(CourtsShowMine);

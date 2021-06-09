@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +18,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
-import signInAction from '../redux/actions/auth/signIn';
+import signInAction from '../../redux/actions/auth/signIn';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -38,9 +37,6 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
-  ivanderlich: {
-    cursor: 'pointer',
   },
   hide: {
     display: 'none',
@@ -166,7 +162,7 @@ function SignInForm({ signIn }) {
           {errors.serverError.message}
         </Alert>
       )}
-      <Box mt={8}>
+      {/* <Box mt={8}>
         <Typography variant="body2" color="textSecondary" align="center">
           {'Copyright © '}
           <a href="http://ivanderlich.com" className={classes.ivanderlich}>Ivan Derlich</a>
@@ -174,7 +170,7 @@ function SignInForm({ signIn }) {
           {new Date().getFullYear()}
           {'.'}
         </Typography>
-      </Box>
+      </Box> */}
     </Container>
   );
 }

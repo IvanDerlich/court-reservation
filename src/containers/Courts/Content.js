@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
-import CourtsShowAll from './CourtsShowAll';
-import CourtsShowMine from './CourtsShowMine';
-import CourtsNew from './CourtsNew';
+import CourtsShowAll from './All';
+import CourtsShowMine from './Mine';
+import CourtsNew from './New';
 
 function CourtsContent() {
   return (
