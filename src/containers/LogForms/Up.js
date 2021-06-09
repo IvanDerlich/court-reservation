@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -40,9 +40,12 @@ const useStyles = makeStyles(theme => ({
   hide: {
     display: 'none',
   },
+  already: {
+    justifyContent: 'center',
+  },
 }));
 
-function SignUpForm({ signUp }) {
+function SignUpForm({ signUp, logged }) {
   const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
   const history = useHistory();
@@ -113,6 +116,14 @@ function SignUpForm({ signUp }) {
       history.push('/signin');
     }
   };
+
+  console.log(logged);
+  useEffect(() => {
+    if (logged) {
+      const homeLink = document.querySelector('#home-link');
+      homeLink.click();
+    }
+  }, []);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -239,7 +250,7 @@ function SignUpForm({ signUp }) {
           >
             Sign Up
           </Button>
-          <Grid container>
+          <Grid className={classes.already} container>
             <Grid item>
               Already have an account?
               {' '}
@@ -252,15 +263,6 @@ function SignUpForm({ signUp }) {
         id="sign-in-spinner"
         className={showSpinner === false ? classes.hide : null}
       />
-      {/* <Box mt={5}>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {'Copyright © '}
-          <a href="http://ivanderlich.com" className={classes.ivanderlich}>Ivan Derlich</a>
-          {' '}
-          {new Date().getFullYear()}
-          {'.'}
-        </Typography>
-      </Box> */}
     </Container>
   );
 }
@@ -268,6 +270,11 @@ function SignUpForm({ signUp }) {
 SignUpForm.propTypes = {
   signUp: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
+  logged: PropTypes.bool,
+};
+
+SignUpForm.defaultProps = {
+  logged: false,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -280,6 +287,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   errors: state.errors,
+  logged: !!state.headers,
 });
 
 export default connect(

@@ -35,7 +35,7 @@ function Navbar({ logged, signOut }) {
       <Toolbar className={classes.toolBar}>
         <Box display="flex" justifyContent="flex-end">
           <Typography className={classes.tab}>
-            <Link to="/">Home</Link>
+            <Link id="home-link" to="/">Home</Link>
           </Typography>
           { logged && (
             <>

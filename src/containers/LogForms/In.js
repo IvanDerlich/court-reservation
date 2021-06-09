@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -41,11 +41,14 @@ const useStyles = makeStyles(theme => ({
   hide: {
     display: 'none',
   },
+  already: {
+    justifyContent: 'center',
+  },
 }));
 
-function SignInForm({ signIn }) {
-  const classes = useStyles();
+function SignInForm({ signIn, logged }) {
   const history = useHistory();
+  const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
 
   const maxEmailLength = 30;
@@ -87,6 +90,13 @@ function SignInForm({ signIn }) {
       history.push('/');
     }
   };
+
+  useEffect(() => {
+    if (logged) {
+      const homeLink = document.querySelector('#home-link');
+      homeLink.click();
+    }
+  }, [logged]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -144,7 +154,7 @@ function SignInForm({ signIn }) {
           >
             Sign In
           </Button>
-          <Grid container>
+          <Grid className={classes.already} container>
             <Grid item>
               Don't have an account?
               {' '}
@@ -162,21 +172,13 @@ function SignInForm({ signIn }) {
           {errors.serverError.message}
         </Alert>
       )}
-      {/* <Box mt={8}>
-        <Typography variant="body2" color="textSecondary" align="center">
-          {'Copyright © '}
-          <a href="http://ivanderlich.com" className={classes.ivanderlich}>Ivan Derlich</a>
-          {' '}
-          {new Date().getFullYear()}
-          {'.'}
-        </Typography>
-      </Box> */}
     </Container>
   );
 }
 
 SignInForm.propTypes = {
   signIn: PropTypes.func.isRequired,
+  logged: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
