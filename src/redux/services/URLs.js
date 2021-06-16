@@ -6,3 +6,4 @@ export const MY_COURTS_ENDPOINT = `${BASE_URL}/user/courts`;
 export const BOOKINGS_ON_MINE_ENDPOINT = `${BASE_URL}/bookings/on-mine`;
 export const MY_BOOKINGS_ENDPOINT = `${BASE_URL}/bookings/on-others`;
 export const CREATE_COURT_ENDPOINT = `${BASE_URL}/courts`;
+export const DELETE_COURT_ENDPOINT = `${BASE_URL}/courts`;

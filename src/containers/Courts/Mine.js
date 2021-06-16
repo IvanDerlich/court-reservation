@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DeleteButton from '@material-ui/icons/DeleteOutlined';
 
+import createCourtAction from '../../redux/actions/courts/delete';
 import getMyCourtsAction from '../../redux/actions/courts/getMine';
 
 const useStyles = makeStyles({
@@ -27,6 +30,9 @@ const useStyles = makeStyles({
   deleteButton: {
     cursor: 'pointer',
   },
+  // court: {
+  //   cursor: 'pointer',
+  // },
 });
 
 function CourtsShowMine({
@@ -65,13 +71,17 @@ function CourtsShowMine({
             description,
           }) => (
             <TableRow key={id}>
-              <TableCell>{name}</TableCell>
+              <TableCell
+                className={classes.deleteButton}
+              >
+                <Link to={`/court/${id}`}>{name}</Link>
+              </TableCell>
               <TableCell align="right">{address}</TableCell>
               <TableCell align="right">{description}</TableCell>
               <TableCell>
                 <DeleteButton
-                  className={classes.deleteButton}
-                  onClick={() => deleteCourt()}
+                  // className={classes.court}
+                  onClick={() => deleteCourt(headers, id)}
                 />
               </TableCell>
             </TableRow>
@@ -97,7 +107,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMyCourts: headers => getMyCourtsAction(dispatch, headers),
-  deleteCourt: () => console.log('Click'),
+  deleteCourt: (headers, id) => createCourtAction(dispatch, headers, id),
 });
 
 export default connect(

@@ -1,17 +1,17 @@
-// import axios from 'axios';
-// import { DELETE_COURT_ENDPOINT } from '../URLs';
+import axios from 'axios';
+import { DELETE_COURT_ENDPOINT } from '../URLs';
 
-// const deleteCourtService = (headers, courtId) => {
-//   const config = {
-//     headers,
-//   };
+const deleteCourtService = (headers, courtId) => {
+  const config = {
+    headers,
+  };
 
-//   const response = axios.delete((
-//     // Improve this code: There has to be a way to send a params object
-//     `${DELETE_COURT_ENDPOINT}?email=${headers.uid}`,
-//     config,
-//   );
-//   return response;
-// };
+  const response = axios.delete(
+    `${DELETE_COURT_ENDPOINT}/${courtId}`,
+    config,
+  );
 
-// export default deleteCourtService;
+  return response;
+};
+
+export default deleteCourtService;
