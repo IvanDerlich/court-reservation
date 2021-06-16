@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,8 +16,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@material-ui/core/Typography';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
 
 import createCourtAction from '../../redux/actions/courts/create';
+import {
+  errorCleanUpActionCreator,
+  messagesCleanUpActionCreator,
+  messageActionCreator,
+} from '../../redux/actions/creators';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -42,14 +48,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function SignUpForm({ createCourt }) {
+function NewCourtForm({
+  createCourt, headers, courtCreatedSuccessfully, cleanMessagesAndErrors,
+}) {
   const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
   const history = useHistory();
 
-  // const maxCourtLength = 40;
-  // const maxAddress = 50;
-  // const maxDescription = 100;
+  useEffect(() => {
+    cleanMessagesAndErrors();
+  }, []);
+
   const maxLength = {
     name: 40,
     address: 50,
@@ -72,7 +81,6 @@ function SignUpForm({ createCourt }) {
       ),
     description: yup
       .string('Please enter a string')
-      .required('Please, type the court description')
       .max(
         maxLength.description,
         `Address can't be longuer than ${maxLength.description} characters`,
@@ -89,12 +97,13 @@ function SignUpForm({ createCourt }) {
   });
 
   const onSubmit = async () => {
-    const name = document.querySelector('#name').value;
-    const address = document.querySelector('#address').value;
-    const description = document.querySelector('#description').value;
-
+    const court = {
+      name: document.querySelector('#name').value,
+      address: document.querySelector('#address').value,
+      description: document.querySelector('#description').value,
+    };
     setShowSpinner(true);
-    const errorMessage = await createCourt(name, address, description);
+    const errorMessage = await createCourt(headers, court);
     setShowSpinner(false);
     if (errorMessage) {
       setError('serverError', {
@@ -102,7 +111,8 @@ function SignUpForm({ createCourt }) {
         message: errorMessage,
       });
     } else {
-      history.push('/signin');
+      courtCreatedSuccessfully();
+      history.push('/courts/all');
     }
   };
 
@@ -187,22 +197,37 @@ function SignUpForm({ createCourt }) {
         id="sign-in-spinner"
         className={showSpinner === false ? classes.hide : null}
       />
+      {errors.serverError !== undefined && (
+        <Alert severity="error">
+          {errors.serverError.message}
+        </Alert>
+      )}
     </Container>
   );
 }
 
-SignUpForm.propTypes = {
+NewCourtForm.propTypes = {
   createCourt: PropTypes.func.isRequired,
+  courtCreatedSuccessfully: PropTypes.func.isRequired,
+  cleanMessagesAndErrors: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  headers: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  createCourt: (name,
-    address,
-    description) => createCourtAction(dispatch, name, address, description),
-  dispatch,
+  createCourt: (headers, court) => createCourtAction(dispatch, headers, court),
+  courtCreatedSuccessfully: () => dispatch(messageActionCreator('Court created successfully')),
+  cleanMessagesAndErrors: () => {
+    dispatch(errorCleanUpActionCreator());
+    dispatch(messagesCleanUpActionCreator());
+  },
+});
+
+const mapStateToProps = state => ({
+  headers: state.headers,
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
-)(SignUpForm);
+)(NewCourtForm);

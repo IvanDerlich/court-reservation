@@ -27,12 +27,13 @@ const useStyles = makeStyles(() => ({
     height: '90vh',
   },
   loggedWelcome: {
-    margin: '30px 40px',
+    marginTop: '1.5vh',
+    width: '100%',
     backgroundImage: `url(${loggedImage})`,
   },
   notLoggedWelcome: {
-    marginTop: '30px',
-    marginLeft: '20px',
+    marginTop: '1.5vh',
+    width: '100%',
     backgroundImage: `url(${notLoggedImage})`,
   },
 }));

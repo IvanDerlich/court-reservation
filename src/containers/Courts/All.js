@@ -18,9 +18,6 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-  container: {
-    marginTop: 50,
-  },
   spinner: {
     marginTop: 100,
   },
@@ -42,7 +39,7 @@ function CourtsShowAll({ courts, getAllCourts, headers }) {
     );
   }
   return (
-    <TableContainer component={Paper} className={classes.container}>
+    <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow className={classes.tableHead}>

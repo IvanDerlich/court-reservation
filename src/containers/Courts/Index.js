@@ -13,13 +13,13 @@ import { Link } from 'react-router-dom';
 // import CourtMenu from './CourtsMenu';
 import CourtsContent from './Content';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
   paper: {
-    // marginRight: theme.spacing(2),
-    margin: '30px',
+    marginRight: theme.spacing(2),
+    marginTop: '1vh',
   },
 }));
 

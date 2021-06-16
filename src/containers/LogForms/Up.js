@@ -16,6 +16,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@material-ui/core/Typography';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from '@material-ui/lab/Alert';
 
 import signUpAction from '../../redux/actions/auth/signUp';
 
@@ -117,7 +118,6 @@ function SignUpForm({ signUp, logged }) {
     }
   };
 
-  console.log(logged);
   useEffect(() => {
     if (logged) {
       const homeLink = document.querySelector('#home-link');
@@ -263,6 +263,11 @@ function SignUpForm({ signUp, logged }) {
         id="sign-in-spinner"
         className={showSpinner === false ? classes.hide : null}
       />
+      {errors.serverError !== undefined && (
+        <Alert severity="error">
+          {errors.serverError.message}
+        </Alert>
+      )}
     </Container>
   );
 }
