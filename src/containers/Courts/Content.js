@@ -1,8 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import CourtsShowAll from './All';
-import CourtsShowMine from './Mine';
-import CourtsNew from './New';
+import All from './All';
+import Mine from './Mine';
+import New from './New';
+import ShowOne from './One';
 
 const useStyles = makeStyles({
   container: {
@@ -17,9 +18,10 @@ function CourtsContent() {
   return (
     <div className={classes.container}>
       <Switch>
-        <Route exact path="/courts/all" component={() => (<CourtsShowAll />)} />
-        <Route exact path="/courts/mine" component={() => <CourtsShowMine />} />
-        <Route exact path="/courts/new" component={() => <CourtsNew />} />
+        <Route exact path="/courts/all" component={All} />
+        <Route exact path="/courts/mine" component={Mine} />
+        <Route exact path="/courts/new" component={New} />
+        <Route exact path="/courts/:symbol" component={() => <ShowOne />} />
       </Switch>
     </div>
   );

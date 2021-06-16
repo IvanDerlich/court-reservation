@@ -72,15 +72,15 @@ function CourtsShowMine({
           }) => (
             <TableRow key={id}>
               <TableCell
-                className={classes.deleteButton}
+                className={classes.court}
               >
-                <Link to={`/court/${id}`}>{name}</Link>
+                <Link to={`/courts/${id}`}>{name}</Link>
               </TableCell>
               <TableCell align="right">{address}</TableCell>
               <TableCell align="right">{description}</TableCell>
               <TableCell>
                 <DeleteButton
-                  // className={classes.court}
+                  className={classes.deleteButton}
                   onClick={() => deleteCourt(headers, id)}
                 />
               </TableCell>

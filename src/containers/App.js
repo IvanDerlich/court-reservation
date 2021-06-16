@@ -13,6 +13,7 @@ import './App.scss';
 // containers
 import Footer from '../components/Footer';
 import Home from '../components/Home';
+import PageNotFound from '../components/PageNotFound';
 
 const useStyles = makeStyles(() => ({
   // mainSection: {
@@ -34,6 +35,9 @@ function App() {
           <Route exact path="/signup" component={() => <SignUpForm />} />
           <Route path="/courts" component={() => <Courts />} />
           <Route path="/bookings" component={() => <Bookings />} />
+          <Route>
+            <PageNotFound />
+          </Route>
         </Switch>
       </div>
       <Footer />
