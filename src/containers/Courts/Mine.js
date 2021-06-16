@@ -10,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import DeleteButton from '@material-ui/icons/DeleteOutlined';
 
 import getMyCourtsAction from '../../redux/actions/courts/getMine';
 
@@ -23,9 +24,14 @@ const useStyles = makeStyles({
   spinner: {
     marginTop: 100,
   },
+  deleteButton: {
+    cursor: 'pointer',
+  },
 });
 
-function CourtsShowMine({ courts, getMyCourts, headers }) {
+function CourtsShowMine({
+  courts, getMyCourts, headers, deleteCourt,
+}) {
   const classes = useStyles();
 
   useEffect(() => {
@@ -62,6 +68,12 @@ function CourtsShowMine({ courts, getMyCourts, headers }) {
               <TableCell>{name}</TableCell>
               <TableCell align="right">{address}</TableCell>
               <TableCell align="right">{description}</TableCell>
+              <TableCell>
+                <DeleteButton
+                  className={classes.deleteButton}
+                  onClick={() => deleteCourt()}
+                />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -73,6 +85,7 @@ function CourtsShowMine({ courts, getMyCourts, headers }) {
 CourtsShowMine.propTypes = {
   courts: PropTypes.arrayOf(PropTypes.object).isRequired,
   getMyCourts: PropTypes.func.isRequired,
+  deleteCourt: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
@@ -84,6 +97,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMyCourts: headers => getMyCourtsAction(dispatch, headers),
+  deleteCourt: () => console.log('Click'),
 });
 
 export default connect(

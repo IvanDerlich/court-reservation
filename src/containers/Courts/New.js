@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -19,11 +19,6 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
 
 import createCourtAction from '../../redux/actions/courts/create';
-import {
-  errorCleanUpActionCreator,
-  messagesCleanUpActionCreator,
-  messageActionCreator,
-} from '../../redux/actions/creators';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -49,15 +44,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function NewCourtForm({
-  createCourt, headers, courtCreatedSuccessfully, cleanMessagesAndErrors,
+  createCourt, headers,
 }) {
   const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
   const history = useHistory();
-
-  useEffect(() => {
-    cleanMessagesAndErrors();
-  }, []);
 
   const maxLength = {
     name: 40,
@@ -111,8 +102,7 @@ function NewCourtForm({
         message: errorMessage,
       });
     } else {
-      courtCreatedSuccessfully();
-      history.push('/courts/all');
+      history.push('/courts/mine');
     }
   };
 
@@ -208,19 +198,12 @@ function NewCourtForm({
 
 NewCourtForm.propTypes = {
   createCourt: PropTypes.func.isRequired,
-  courtCreatedSuccessfully: PropTypes.func.isRequired,
-  cleanMessagesAndErrors: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   createCourt: (headers, court) => createCourtAction(dispatch, headers, court),
-  courtCreatedSuccessfully: () => dispatch(messageActionCreator('Court created successfully')),
-  cleanMessagesAndErrors: () => {
-    dispatch(errorCleanUpActionCreator());
-    dispatch(messagesCleanUpActionCreator());
-  },
 });
 
 const mapStateToProps = state => ({
