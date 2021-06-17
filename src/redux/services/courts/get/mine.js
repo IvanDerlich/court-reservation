@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MY_COURTS_ENDPOINT } from '../../URLs';
+import { COURTS_ENDPOINT } from '../../URLs';
 
 const getMyCourtsService = headers => {
   const config = {
@@ -7,7 +7,7 @@ const getMyCourtsService = headers => {
   };
 
   const response = axios.get(
-    `${MY_COURTS_ENDPOINT}?email=${headers.uid}`,
+    `${COURTS_ENDPOINT}?email=${headers.uid}`,
     config,
   );
   return response;

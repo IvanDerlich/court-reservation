@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,6 +17,10 @@ import Typography from '@material-ui/core/Typography';
 import { useForm } from 'react-hook-form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
+import {
+  errorCleanUpActionCreator,
+  messagesCleanUpActionCreator,
+} from '../../redux/actions/creators';
 
 import createCourtAction from '../../redux/actions/courts/create';
 
@@ -44,11 +48,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function NewCourtForm({
-  createCourt, headers,
+  createCourt, headers, dispatch,
 }) {
   const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(errorCleanUpActionCreator());
+    dispatch(messagesCleanUpActionCreator());
+  }, []);
 
   const maxLength = {
     name: 40,
@@ -198,12 +207,14 @@ function NewCourtForm({
 
 NewCourtForm.propTypes = {
   createCourt: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   createCourt: (headers, court) => createCourtAction(dispatch, headers, court),
+  dispatch,
 });
 
 const mapStateToProps = state => ({

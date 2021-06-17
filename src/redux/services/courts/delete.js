@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_COURT_ENDPOINT } from '../URLs';
+import { COURTS_ENDPOINT } from '../URLs';
 
 const deleteCourtService = (headers, courtId) => {
   const config = {
@@ -7,7 +7,7 @@ const deleteCourtService = (headers, courtId) => {
   };
 
   const response = axios.delete(
-    `${DELETE_COURT_ENDPOINT}/${courtId}`,
+    `${COURTS_ENDPOINT}/${courtId}`,
     config,
   );
 

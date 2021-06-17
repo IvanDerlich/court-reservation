@@ -21,7 +21,7 @@ function CourtsContent() {
         <Route exact path="/courts/all" component={All} />
         <Route exact path="/courts/mine" component={Mine} />
         <Route exact path="/courts/new" component={New} />
-        <Route exact path="/courts/:symbol" component={() => <ShowOne />} />
+        <Route exact path="/courts/:courtId" component={() => <ShowOne />} />
       </Switch>
     </div>
   );

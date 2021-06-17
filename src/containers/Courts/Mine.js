@@ -30,9 +30,6 @@ const useStyles = makeStyles({
   deleteButton: {
     cursor: 'pointer',
   },
-  // court: {
-  //   cursor: 'pointer',
-  // },
 });
 
 function CourtsShowMine({
@@ -71,9 +68,7 @@ function CourtsShowMine({
             description,
           }) => (
             <TableRow key={id}>
-              <TableCell
-                className={classes.court}
-              >
+              <TableCell>
                 <Link to={`/courts/${id}`}>{name}</Link>
               </TableCell>
               <TableCell align="right">{address}</TableCell>

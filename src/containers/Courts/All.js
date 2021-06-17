@@ -13,10 +13,6 @@ import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import getAllCourtsAction from '../../redux/actions/courts/getAll';
-import {
-  errorCleanUpActionCreator,
-  messagesCleanUpActionCreator,
-} from '../../redux/actions/creators';
 
 const useStyles = makeStyles({
   table: {
@@ -28,12 +24,11 @@ const useStyles = makeStyles({
 });
 
 function CourtsShowAll({
-  courts, getAllCourts, headers, cleanMessagesAndErrors,
+  courts, getAllCourts, headers,
 }) {
   const classes = useStyles();
 
   useEffect(() => {
-    cleanMessagesAndErrors();
     getAllCourts(headers);
   }, []);
 
@@ -81,7 +76,6 @@ function CourtsShowAll({
 CourtsShowAll.propTypes = {
   courts: PropTypes.arrayOf(PropTypes.object).isRequired,
   getAllCourts: PropTypes.func.isRequired,
-  cleanMessagesAndErrors: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
 };
@@ -93,10 +87,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllCourts: headers => getAllCourtsAction(dispatch, headers),
-  cleanMessagesAndErrors: () => {
-    dispatch(errorCleanUpActionCreator());
-    dispatch(messagesCleanUpActionCreator());
-  },
 });
 
 export default connect(

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_COURT_ENDPOINT } from '../URLs';
+import { COURTS_ENDPOINT } from '../URLs';
 
 const postCourtService = (headers, court) => {
   /*
@@ -24,7 +24,7 @@ const postCourtService = (headers, court) => {
 
   try {
     axios.post(
-      CREATE_COURT_ENDPOINT,
+      COURTS_ENDPOINT,
       data,
       config,
     );
