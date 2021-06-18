@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import BookingsShowMine from './Mine';
 import BookingsShowOthers from './OnMine';
+import NewCourtForm from './New';
 
 function BookingsContent() {
   return (
@@ -8,6 +9,7 @@ function BookingsContent() {
       <Switch>
         <Route exact path="/bookings/mybookings" component={() => <BookingsShowMine />} />
         <Route exact path="/bookings/onmycourts" component={() => <BookingsShowOthers />} />
+        <Route exact path="/bookings/new/:courtId" component={NewCourtForm} />
       </Switch>
     </div>
   );

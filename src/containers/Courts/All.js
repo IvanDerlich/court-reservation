@@ -2,6 +2,8 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -61,7 +63,7 @@ function CourtsShowAll({
             last_name,
           }) => (
             <TableRow key={id}>
-              <TableCell>{name}</TableCell>
+              <TableCell><Link to={`/courts/${id}`}>{name}</Link></TableCell>
               <TableCell align="right">{address}</TableCell>
               <TableCell align="right">{description}</TableCell>
               <TableCell align="right">{`${first_name} ${last_name}`}</TableCell>

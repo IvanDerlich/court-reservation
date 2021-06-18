@@ -57,14 +57,14 @@ function BookingsShowMine({ bookings, getMyBookings, headers }) {
         <TableBody>
           {bookings.map(({
             id,
-            court_id,
+            // court_id,
             courts_name,
             date,
             description,
           }) => (
             <TableRow key={id}>
               <TableCell>
-                <Link to={`/court/${court_id}`}>
+                <Link to={`/bookings/${id}`}>
                   {courts_name}
                 </Link>
               </TableCell>

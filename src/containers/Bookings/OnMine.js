@@ -107,4 +107,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(BookingsShowMine);
-// export default BookingsShowMine;
