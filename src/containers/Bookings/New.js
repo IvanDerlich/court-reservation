@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // import { useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -35,7 +35,7 @@ import {
 //   messagesCleanUpActionCreator,
 // } from '../../redux/actions/creators';
 
-import createBooking from '../../redux/actions/bookings/create';
+import createBookingAction from '../../redux/actions/bookings/create';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -60,23 +60,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function NewBookingForm(
-  // { createCourt, headers, dispatch}
-  { courtId, headers },
-) {
+function NewBookingForm({
+  courtId,
+  headers,
+  createBooking,
+}) {
+  // console.log(headers);
   const [selectedDate, handleDateChange] = useState(new Date());
   const [showSpinner, setShowSpinner] = useState(false);
   const classes = useStyles();
-  const history = useHistory();
+  // const history = useHistory();
 
-  console.log('Court Id:', courtId);
+  // console.log('Court Id:', courtId);
   // console.log('Selected Date: ', selectedDate);
-  console.log('Headers: ', headers);
-
-  // useEffect(() => {
-  //   dispatch(errorCleanUpActionCreator());
-  //   dispatch(messagesCleanUpActionCreator());
-  // }, []);
+  // console.log('Headers: ', headers);
 
   const maxLength = {
     name: 40,
@@ -95,31 +92,31 @@ function NewBookingForm(
   const {
     register,
     handleSubmit,
-    setError,
+    // setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async () => {
-    const day = document.querySelector('#day').value;
-    const time = document.querySelector('#dtime').value;
+    setShowSpinner(true);
     const booking = {
-      date: `Combine day and time into one: ${day}${time}`,
+      courtId,
+      date: selectedDate,
       description: document.querySelector('#description').value,
     };
+    createBooking(headers, booking);
     // create a date time
-    setShowSpinner(true);
-    const errorMessage = await createBooking(headers, booking);
+    // const errorMessage = await createBooking(headers, booking);
+    // if (errorMessage) {
+    //   setError('serverError', {
+    //     type: 'serverError',
+    //     message: errorMessage,
+    //   });
+    // } else {
+    //   history.push('/courts/mine');
+    // }
     setShowSpinner(false);
-    if (errorMessage) {
-      setError('serverError', {
-        type: 'serverError',
-        message: errorMessage,
-      });
-    } else {
-      history.push('/courts/mine');
-    }
   };
 
   return (
@@ -171,7 +168,6 @@ function NewBookingForm(
                 helperText={
                   errors.description !== undefined && errors.description.message
                 }
-                // autoComplete="email"
               />
             </Grid>
           </Grid>
@@ -203,13 +199,13 @@ NewBookingForm.propTypes = {
   courtId: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
-//  createCourt: PropTypes.func.isRequired,
+  createBooking: PropTypes.func.isRequired,
 //  dispatch: PropTypes.func.isRequired,
 };
 
-// const mapDispatchToProps = dispatch => ({
-//   createCourt: (headers, court) => createCourtAction(dispatch, headers, court),
-// });
+const mapDispatchToProps = dispatch => ({
+  createBooking: (headers, booking) => createBookingAction(dispatch, headers, booking),
+});
 
 const mapStateToProps = state => ({
   headers: state.headers,
@@ -217,5 +213,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )(NewBookingForm);
