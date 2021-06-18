@@ -105,8 +105,7 @@ function NewBookingForm({
       date: selectedDate,
       description: document.querySelector('#description').value,
     };
-    createBooking(headers, booking);
-    // create a date time
+    await createBooking(headers, booking);
     // const errorMessage = await createBooking(headers, booking);
     // if (errorMessage) {
     //   setError('serverError', {
