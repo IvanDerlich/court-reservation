@@ -65,8 +65,8 @@ function NewBookingForm(
   { courtId, headers },
 ) {
   const [selectedDate, handleDateChange] = useState(new Date());
-  const classes = useStyles();
   const [showSpinner, setShowSpinner] = useState(false);
+  const classes = useStyles();
   const history = useHistory();
 
   console.log('Court Id:', courtId);
@@ -141,31 +141,20 @@ function NewBookingForm(
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid container justify="space-around">
                 <KeyboardDatePicker
-                  // disableToolbar
-                  // variant="inline"
-                  // format="MM/dd/yyyy"
-                  // margin="normal"
-                  // id="date-picker-inline"
-                  // label="Pick day"
+                  disableToolbar
+                  variant="inline"
+                  format="dd/MM/yyyy"
+                  margin="normal"
+                  label="Pick day"
                   value={selectedDate}
                   onChange={handleDateChange}
-                  {...register('day')}
-                  passHref={2}
-                  // KeyboardButtonProps={{
-                  //   'aria-label': 'change date',
-                  // }}
                 />
                 <KeyboardTimePicker
-                  // margin="normal"
-                  // id="time-picker"
-                  // label="Pick  hour"
+                  margin="normal"
+                  label="Pick  hour"
                   value={selectedDate}
                   onChange={handleDateChange}
-                  {...register('time')}
-                  passHref={2}
-                  // KeyboardButtonProps={{
-                  //   'aria-label': 'change time',
-                  // }}
+                  minutesStep={30}
                 />
               </Grid>
             </MuiPickersUtilsProvider>
@@ -220,7 +209,6 @@ NewBookingForm.propTypes = {
 
 // const mapDispatchToProps = dispatch => ({
 //   createCourt: (headers, court) => createCourtAction(dispatch, headers, court),
-//   dispatch,
 // });
 
 const mapStateToProps = state => ({
