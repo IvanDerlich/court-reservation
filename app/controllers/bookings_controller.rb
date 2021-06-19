@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   before_action :authenticate_api_v1_user!
-  before_action :set_court
-  before_action :set_court_booking, only: %i[show update destroy]
+  before_action :set_court, only: [:index]
+  before_action :set_user, only: [:on_mine, :on_others]
+  before_action :set_court_booking, only: [:show, :update, :destroy]  
 
   # GET /courts/:court_id/bookings
   def index
@@ -15,8 +16,16 @@ class BookingsController < ApplicationController
 
   # POST /courts/:court_id/bookings
   def create
-    booking = @court.bookings.create(booking_params)
 
+    court = Court.find(params[:booking][:courtId])
+
+    booking = Booking.create(
+      booker_id: current_api_v1_user.id,
+      court: court,      
+      date: params[:booking][:date],
+      description: params[:booking][:description],
+    )
+    
     if booking.save
       json_response(booking, :created)
     else
@@ -44,14 +53,57 @@ class BookingsController < ApplicationController
     json_response(@booking, 200)
   end
 
+  # GET /bookings/mine
+  def on_mine
+    bookings = Booking
+      .joins(:booker)
+      .joins(:court)      
+      .select(
+        # bookings
+        'bookings.id',
+        'date',        
+        'bookings.description as booking_description',
+        # courts
+        'courts.id as court_id',
+        'courts.name as court_name',        
+        # bookers
+        'booker_id', # key from bookings
+        'users.first_name',
+        'users.last_name',
+      )
+      .where(courts: {administrator_id: @user.id})
+    json_response(bookings)
+  end
+
+  # GET /bookings/others
+  def on_others
+    bookings = Booking
+      .joins(:court)
+      .select(
+        # bookings
+        'bookings.id',
+        'bookings.date',
+        'bookings.description',
+        # courts
+        'courts.id as court_id',
+        'courts.name as courts_name'
+      )      
+      .where(booker_id: @user.id)
+    json_response(bookings)    
+  end
+
   private
 
   def booking_params
-    params.permit(:booker_id, :description, :date)
+    params.permit(:booker_id, :description, :date, :court_id)
   end
 
   def set_court
     @court = Court.find(params[:court_id])
+  end
+
+  def set_user    
+    @user = User.find_by(email: params[:email])
   end
 
   def set_court_booking

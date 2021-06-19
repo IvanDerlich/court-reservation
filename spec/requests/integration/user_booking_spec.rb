@@ -23,31 +23,38 @@ RSpec.describe User, type: :request do
   end
   # </login>
 
-  describe 'User-Booking Integration' do
-    let!(:bookings) { create_list :booking, 10, booker: user }
-    after do
-      get "/users/#{user_id}/bookings", headers: headers
-      expect(json.length).to be(10)
-      (0..9).each do |i|
-        expect(json[i].description).to eq(bookings[i].description)
-        expect(
-          DateTime.parse(json[i].created_at).strftime('%c')
-        ).to eq(bookings[i].created_at.strftime('%c'))
-        expect(
-          DateTime.parse(json[i].created_at).strftime('%c')
-        ).to eq(bookings[i].created_at.strftime('%c'))
+  describe 'User-Booking Integration' do   
+    let!(:bookings_mine) { create_list :booking, 10, booker: user }
+    let!(:bookings_others) { create_list :booking, 10, court: create(
+      :court,
+      administrator: user,
+    )}
+
+    context "Show all other's bookings on user's court" do
+      
+      it "" do
+        get '/bookings/on-others', headers: headers, params: {
+          email: user.email
+        } 
+      p response      
+      end
+    end   
+
+    context  "Show all user's bookings on others courts" do
+      it '' do
+        get '/bookings/on-mine', headers: headers, params: {
+          email: user.email
+        }
+        p response
+        # for i in 0..9 do
+        #   expect(json[i].id).to eq(bookings_mine[i].id)
+        #   expect(json[i].booker_id).to eq(bookings_mine[i].booker_id)
+        #   expect(json[i].court_id).to eq(bookings_mine[i].court_id)
+        #   expect(json[i].description).to eq(bookings_mine[i].description)  
+        # end
       end
     end
-
-    let(:user_id) { user.id }
-    it 'Show all the bookings a user has booked' do
-    end
-
-    let!(:user2) { create(:user) }
-    let!(:bookings) { create_list(:booking, 10, booker_id: user2.id) }
-    let(:user_id) { user2.id }
-    it 'Show all the bookings another user has booked' do
-    end
+     
   end
 end
 

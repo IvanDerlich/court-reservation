@@ -2,17 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_user, only: %i[bookings courts]
 
-  # GET /bookings/mine
-  def my_bookings
-    bookings = @user.bookings
-    json_response(bookings)
-  end
 
-  # GET /bookings/others
-  def my_bookings
-    bookings = @user.bookings
-    json_response(bookings)
-  end
 
   # GET /user/courts
   def courts

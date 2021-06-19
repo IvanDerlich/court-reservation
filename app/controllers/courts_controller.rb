@@ -1,7 +1,7 @@
 class CourtsController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_court, only: %i[show bookings update destroy]
-  before_action :authorized_create?, only: [:create]
+  # before_action :authorized_create?, only: [:create]
   before_action :authorized?, only: %i[update destroy]
   before_action :useful_content?, only: %i[create update]
 
@@ -17,12 +17,12 @@ class CourtsController < ApplicationController
   end
 
   def create
-    @court = Court.create!(court_params)
+    @court = Court.create!(court_params.merge({administrator_id: current_api_v1_user.id}))
     json_response(@court, :created)
   end
 
   def update
-    if @court.update(court_params)
+    if @court.update(court_params.merge({administrator_id: current_api_v1_user.id}))
       @court.save
       head :accepted
     else
@@ -44,7 +44,7 @@ class CourtsController < ApplicationController
   private
 
   def court_params
-    params.permit(:name, :address, :description, :administrator_id)
+    params.permit(:name, :address, :description)
   end
 
   def set_court
@@ -57,12 +57,12 @@ class CourtsController < ApplicationController
     return head :unauthorized if current_api_v1_user.id != @court.administrator_id
   end
 
-  def authorized_create?
-    return head :unprocessable_entity unless
-      _has_value? params[:administrator_id]
-    return head :unauthorized if
-  current_api_v1_user.id != params[:administrator_id].to_i
-  end
+  # def authorized_create?
+  #   return head :unprocessable_entity unless
+  #     _has_value? params[:administrator_id]
+  #   return head :unauthorized if
+  # current_api_v1_user.id != params[:administrator_id].to_i
+  # end
 
   def useful_content?
     unless params[:name] ||
