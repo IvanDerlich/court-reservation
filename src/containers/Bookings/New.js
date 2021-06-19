@@ -55,15 +55,10 @@ function NewBookingForm({
   headers,
   createBooking,
 }) {
-  // console.log(headers);
   const [selectedDate, handleDateChange] = useState(new Date('Sat Jun 19 2021 05:00:00'));
   const [showSpinner, setShowSpinner] = useState(false);
   const classes = useStyles();
   const history = useHistory();
-
-  // console.log('Court Id:', courtId);
-  // console.log('Selected Date: ', selectedDate);
-  // console.log('Headers: ', headers);
 
   const maxLength = {
     name: 40,
@@ -95,7 +90,6 @@ function NewBookingForm({
       date: selectedDate,
       description: document.querySelector('#description').value,
     };
-    // await createBooking(headers, booking);
     const errorMessage = await createBooking(headers, booking);
     if (errorMessage) {
       setError('serverError', {
@@ -189,7 +183,6 @@ NewBookingForm.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
   createBooking: PropTypes.func.isRequired,
-//  dispatch: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
