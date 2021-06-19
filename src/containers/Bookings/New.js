@@ -1,13 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {
-  useState,
-  // useEffect,
-} from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -29,11 +24,6 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-
-// import {
-//   errorCleanUpActionCreator,
-//   messagesCleanUpActionCreator,
-// } from '../../redux/actions/creators';
 
 import createBookingAction from '../../redux/actions/bookings/create';
 
@@ -66,10 +56,10 @@ function NewBookingForm({
   createBooking,
 }) {
   // console.log(headers);
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState(new Date('Sat Jun 19 2021 05:00:00'));
   const [showSpinner, setShowSpinner] = useState(false);
   const classes = useStyles();
-  // const history = useHistory();
+  const history = useHistory();
 
   // console.log('Court Id:', courtId);
   // console.log('Selected Date: ', selectedDate);
@@ -92,7 +82,7 @@ function NewBookingForm({
   const {
     register,
     handleSubmit,
-    // setError,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -105,16 +95,16 @@ function NewBookingForm({
       date: selectedDate,
       description: document.querySelector('#description').value,
     };
-    await createBooking(headers, booking);
-    // const errorMessage = await createBooking(headers, booking);
-    // if (errorMessage) {
-    //   setError('serverError', {
-    //     type: 'serverError',
-    //     message: errorMessage,
-    //   });
-    // } else {
-    //   history.push('/courts/mine');
-    // }
+    // await createBooking(headers, booking);
+    const errorMessage = await createBooking(headers, booking);
+    if (errorMessage) {
+      setError('serverError', {
+        type: 'serverError',
+        message: errorMessage,
+      });
+    } else {
+      history.push('/bookings/mybookings');
+    }
     setShowSpinner(false);
   };
 
@@ -150,7 +140,7 @@ function NewBookingForm({
                   label="Pick  hour"
                   value={selectedDate}
                   onChange={handleDateChange}
-                  minutesStep={30}
+                  minutesStep={60}
                 />
               </Grid>
             </MuiPickersUtilsProvider>
@@ -170,6 +160,15 @@ function NewBookingForm({
               />
             </Grid>
           </Grid>
+          <LinearProgress
+            id="sign-in-spinner"
+            className={showSpinner === false ? classes.hide : null}
+          />
+          {errors.serverError !== undefined && (
+            <Alert severity="error">
+              {errors.serverError.message}
+            </Alert>
+          )}
           <Button
             type="submit"
             fullWidth
@@ -181,15 +180,6 @@ function NewBookingForm({
           </Button>
         </form>
       </div>
-      <LinearProgress
-        id="sign-in-spinner"
-        className={showSpinner === false ? classes.hide : null}
-      />
-      {errors.serverError !== undefined && (
-        <Alert severity="error">
-          {errors.serverError.message}
-        </Alert>
-      )}
     </Container>
   );
 }

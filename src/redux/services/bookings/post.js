@@ -1,37 +1,37 @@
 import axios from 'axios';
 import { getBookingsEndport } from '../URLs';
 
-const postBookingService = (headers, booking) => {
-  console.log('-----Inside Post Service------');
-  console.log('Headers: ', headers);
-  console.log('Booking', booking);
-
+const postBookingService = async (headers, booking) => {
   /*
     deconstruct object before posting it
     to ignore malicious or unintended parameters
   */
-  const {
-    // eslint-disable-next-line camelcase
-    courtId,
-    date,
-    description,
-  } = booking;
+  // const {
+  //   // eslint-disable-next-line camelcase
+  //   courtId,
+  //   date,
+  //   description,
+  // } = booking;
+  const { courtId } = booking;
 
   const data = {
     // court_id: courtId,
-    date,
-    description,
+    booking,
   };
-  console.log('BOOKINGS_ENDPOINT: ', getBookingsEndport(courtId));
-  console.log('Data: ', data);
-  console.log('-------------');
 
   const config = {
     headers,
   };
 
+  console.log('-----Inside Post Service------');
+  console.log('Headers: ', headers);
+  console.log('Booking', booking);
+  console.log('BOOKINGS_ENDPOINT: ', getBookingsEndport(courtId));
+  console.log('Data: ', data);
+  console.log('-------------');
+
   try {
-    axios.post(
+    await axios.post(
       getBookingsEndport(courtId),
       data,
       config,

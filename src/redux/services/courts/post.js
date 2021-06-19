@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { COURTS_ENDPOINT } from '../URLs';
 
-const postCourtService = (headers, court) => {
+const postCourtService = async (headers, court) => {
   /*
     deconstruct object before posting it
     to ignore malicious or unintended parameters
@@ -23,7 +23,7 @@ const postCourtService = (headers, court) => {
   };
 
   try {
-    axios.post(
+    await axios.post(
       COURTS_ENDPOINT,
       data,
       config,
