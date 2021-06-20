@@ -49,8 +49,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking.destroy
-    json_response(@booking, 200)
+    booking = Booking.find(params[:id])
+    booking.destroy    
+    json_response(booking, 200)
   end
 
   # GET /bookings/mine

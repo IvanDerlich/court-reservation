@@ -26200,3 +26200,2085 @@ Processing by BookingsController#on_others as HTML
 Completed 200 OK in 13ms (Views: 3.5ms | ActiveRecord: 1.8ms | Allocations: 3784)
 
 
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-19 18:09:34 -0300
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (7.2ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"TA4bEg4st053w-x_au5plQ\\\":{\\\"token\\\":\\\"$2a$10$C5GQD.Psz2vB9yhynpJ1yu4gBZoqHnofB9o8C26IgZSRkm7lxso1K\\\",\\\"expiry\\\":1625216280},\\\"0A6ri-KeDto2z8vsVPVG3g\\\":{\\\"token\\\":\\\"$2a$10$s3T9gdOOVfQIkaB2QkfZTuGEi27L5tF4u.HSc/kFZfY5pqdU7PQQm\\\",\\\"expiry\\\":1625252767},\\\"kspiBP22eRAu3mMhxkOHQA\\\":{\\\"token\\\":\\\"$2a$10$V7b8xj41kuxU0iAUun6C1uR5d4Ra.gyQkxAGmNe6RnMPM.ze7cDVa\\\",\\\"expiry\\\":1625252770},\\\"KvYWiqiD7_kXOSA-yaAkLw\\\":{\\\"token\\\":\\\"$2a$10$mfe1voRlrNzNC86EMQBbuuLRZD0gZLWgrC2uGVkCFe1MDG1U2ugaq\\\",\\\"expiry\\\":1625289777},\\\"WM4OuNSVUo7G0JDzY_KDog\\\":{\\\"token\\\":\\\"$2a$10$1Uq1ZymL9O2DfrXAACEzwudHGIdGPvp.cYuj6UWPBHuhRNNzD1Xlm\\\",\\\"expiry\\\":1625290566},\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574}}\""], ["updated_at", "2021-06-19 21:09:34.650856"], ["id", 1]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 440ms (Views: 0.5ms | ActiveRecord: 25.5ms | Allocations: 17900)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-19 18:09:35 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (5.3ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 118ms (Views: 12.5ms | ActiveRecord: 9.9ms | Allocations: 10503)
+
+
+Started POST "/courts/8/bookings" for 127.0.0.1 at 2021-06-19 18:09:41 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"8", "date"=>"2021-06-19T08:00:00.000Z", "description"=>""}, "court_id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (1.2ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 8], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 8], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 50ms (ActiveRecord: 10.0ms | Allocations: 12446)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 18:09:44 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 9.5ms | ActiveRecord: 2.1ms | Allocations: 4547)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 18:10:02 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 3.7ms | ActiveRecord: 2.0ms | Allocations: 3801)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 18:10:06 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.4ms | ActiveRecord: 2.1ms | Allocations: 3784)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 18:11:28 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 4.5ms | ActiveRecord: 1.8ms | Allocations: 3784)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 18:12:18 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.1ms | ActiveRecord: 1.7ms | Allocations: 3784)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-19 23:07:28 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (4.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"0A6ri-KeDto2z8vsVPVG3g\\\":{\\\"token\\\":\\\"$2a$10$s3T9gdOOVfQIkaB2QkfZTuGEi27L5tF4u.HSc/kFZfY5pqdU7PQQm\\\",\\\"expiry\\\":1625252767},\\\"kspiBP22eRAu3mMhxkOHQA\\\":{\\\"token\\\":\\\"$2a$10$V7b8xj41kuxU0iAUun6C1uR5d4Ra.gyQkxAGmNe6RnMPM.ze7cDVa\\\",\\\"expiry\\\":1625252770},\\\"KvYWiqiD7_kXOSA-yaAkLw\\\":{\\\"token\\\":\\\"$2a$10$mfe1voRlrNzNC86EMQBbuuLRZD0gZLWgrC2uGVkCFe1MDG1U2ugaq\\\",\\\"expiry\\\":1625289777},\\\"WM4OuNSVUo7G0JDzY_KDog\\\":{\\\"token\\\":\\\"$2a$10$1Uq1ZymL9O2DfrXAACEzwudHGIdGPvp.cYuj6UWPBHuhRNNzD1Xlm\\\",\\\"expiry\\\":1625290566},\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449}}\""], ["updated_at", "2021-06-20 02:07:29.459441"], ["id", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 509ms (Views: 0.3ms | ActiveRecord: 57.5ms | Allocations: 9076)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-19 23:07:30 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (7.4ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 103ms (Views: 5.1ms | ActiveRecord: 8.5ms | Allocations: 4586)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 23:07:30 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (2.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 3.9ms | ActiveRecord: 3.9ms | Allocations: 3787)
+
+
+Started GET "/bookings/on-mine?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 23:07:33 -0300
+Processing by BookingsController#on_mine as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", bookings.description as booking_description, courts.id as court_id, courts.name as court_name, "bookings"."booker_id", "users"."first_name", "users"."last_name" FROM "bookings" INNER JOIN "users" ON "users"."id" = "bookings"."booker_id" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "courts"."administrator_id" = $1[0m  [["administrator_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.4ms | ActiveRecord: 3.1ms | Allocations: 4125)
+
+
+Started GET "/bookings/on-mine?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 23:07:36 -0300
+Processing by BookingsController#on_mine as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", bookings.description as booking_description, courts.id as court_id, courts.name as court_name, "bookings"."booker_id", "users"."first_name", "users"."last_name" FROM "bookings" INNER JOIN "users" ON "users"."id" = "bookings"."booker_id" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "courts"."administrator_id" = $1[0m  [["administrator_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 3.8ms | ActiveRecord: 2.1ms | Allocations: 3972)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-19 23:07:39 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.0ms | ActiveRecord: 2.1ms | Allocations: 3784)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 01:21:03 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (3.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 96ms (Views: 4.6ms | ActiveRecord: 62.2ms | Allocations: 5944)
+
+
+Started DELETE "/courts/15/bookings" for 127.0.0.1 at 2021-06-20 01:24:11 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/courts/15/bookings"):
+  
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 01:26:06 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (5.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"kspiBP22eRAu3mMhxkOHQA\\\":{\\\"token\\\":\\\"$2a$10$V7b8xj41kuxU0iAUun6C1uR5d4Ra.gyQkxAGmNe6RnMPM.ze7cDVa\\\",\\\"expiry\\\":1625252770},\\\"KvYWiqiD7_kXOSA-yaAkLw\\\":{\\\"token\\\":\\\"$2a$10$mfe1voRlrNzNC86EMQBbuuLRZD0gZLWgrC2uGVkCFe1MDG1U2ugaq\\\",\\\"expiry\\\":1625289777},\\\"WM4OuNSVUo7G0JDzY_KDog\\\":{\\\"token\\\":\\\"$2a$10$1Uq1ZymL9O2DfrXAACEzwudHGIdGPvp.cYuj6UWPBHuhRNNzD1Xlm\\\",\\\"expiry\\\":1625290566},\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766}}\""], ["updated_at", "2021-06-20 04:26:06.478152"], ["id", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 425ms (Views: 0.3ms | ActiveRecord: 8.0ms | Allocations: 6983)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 01:26:07 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 98ms (Views: 4.3ms | ActiveRecord: 2.0ms | Allocations: 3806)
+
+
+Started DELETE "/courts/15/bookings" for 127.0.0.1 at 2021-06-20 01:26:09 -0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/courts/15/bookings"):
+  
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 01:44:51 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 3.3ms | ActiveRecord: 5.6ms | Allocations: 5887)
+
+
+Started DELETE "/courts/15/bookings/undefined" for 127.0.0.1 at 2021-06-20 01:51:27 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"15", "id"=>"undefined"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 6.4ms | Allocations: 3538)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:01:26 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 8.9ms | ActiveRecord: 7.6ms | Allocations: 5886)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:31:37 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.3ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 3.4ms | ActiveRecord: 10.7ms | Allocations: 5942)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:31:37 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 5.2ms | ActiveRecord: 3.7ms | Allocations: 3784)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:31:38 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 5.0ms | ActiveRecord: 3.4ms | Allocations: 3784)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 02:31:49 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (4.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"KvYWiqiD7_kXOSA-yaAkLw\\\":{\\\"token\\\":\\\"$2a$10$mfe1voRlrNzNC86EMQBbuuLRZD0gZLWgrC2uGVkCFe1MDG1U2ugaq\\\",\\\"expiry\\\":1625289777},\\\"WM4OuNSVUo7G0JDzY_KDog\\\":{\\\"token\\\":\\\"$2a$10$1Uq1ZymL9O2DfrXAACEzwudHGIdGPvp.cYuj6UWPBHuhRNNzD1Xlm\\\",\\\"expiry\\\":1625290566},\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709}}\""], ["updated_at", "2021-06-20 05:31:49.982904"], ["id", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 422ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 6983)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:31:51 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 98ms (Views: 4.9ms | ActiveRecord: 2.0ms | Allocations: 3804)
+
+
+Started DELETE "/courts/8/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:31:55 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"8", "id"=>"undefined"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 1379)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:33:13 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.7ms | ActiveRecord: 1.8ms | Allocations: 3784)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 02:34:32 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (7.8ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 20ms (Views: 4.9ms | ActiveRecord: 8.5ms | Allocations: 4563)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:34:33 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.7ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 5.5ms | ActiveRecord: 1.7ms | Allocations: 4563)
+
+
+Started DELETE "/courts/8" for 127.0.0.1 at 2021-06-20 02:34:34 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."court_id" = $1[0m  [["court_id", 8]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Destroy (1.9ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 15]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mCourt Destroy (1.0ms)[0m  [1m[31mDELETE FROM "courts" WHERE "courts"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 43ms (ActiveRecord: 5.8ms | Allocations: 7534)
+
+
+Started DELETE "/courts/9" for 127.0.0.1 at 2021-06-20 02:35:43 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."court_id" = $1[0m  [["court_id", 9]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mCourt Destroy (0.6ms)[0m  [1m[31mDELETE FROM "courts" WHERE "courts"."id" = $1[0m  [["id", 9]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 16ms (ActiveRecord: 3.2ms | Allocations: 4327)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:35:46 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 5.7ms | ActiveRecord: 2.2ms | Allocations: 3701)
+
+
+Started DELETE "/courts/10/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:35:48 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"10", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1379)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:39:25 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 1.8ms | Allocations: 3706)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:40:27 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.3ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.6ms | ActiveRecord: 2.4ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:40:27 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 4.0ms | ActiveRecord: 2.4ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:40:28 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 3.8ms | ActiveRecord: 1.6ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:40:42 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 4.2ms | ActiveRecord: 1.9ms | Allocations: 3702)
+
+
+Started DELETE "/courts/10/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:40:51 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"10", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms | Allocations: 1379)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 02:41:44 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.6ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 6.2ms | ActiveRecord: 1.2ms | Allocations: 4370)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:41:46 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.9ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 5.1ms | ActiveRecord: 1.5ms | Allocations: 4370)
+
+
+Started DELETE "/courts/10" for 127.0.0.1 at 2021-06-20 02:41:47 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."court_id" = $1[0m  [["court_id", 10]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Destroy (1.3ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 16]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mCourt Destroy (0.6ms)[0m  [1m[31mDELETE FROM "courts" WHERE "courts"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 25ms (ActiveRecord: 8.4ms | Allocations: 4977)
+
+
+Started DELETE "/courts/10" for 127.0.0.1 at 2021-06-20 02:41:49 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Completed 404 Not Found in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1370)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:42:07 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.7ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 5.1ms | ActiveRecord: 1.3ms | Allocations: 4275)
+
+
+Started DELETE "/courts/11" for 127.0.0.1 at 2021-06-20 02:42:09 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.7ms | Allocations: 1356)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:42:35 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.5ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 5.2ms | ActiveRecord: 1.0ms | Allocations: 4275)
+
+
+Started DELETE "/courts/11" for 127.0.0.1 at 2021-06-20 02:44:10 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.6ms | Allocations: 1351)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:44:47 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.6ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 1.1ms | Allocations: 4275)
+
+
+Started DELETE "/courts/11" for 127.0.0.1 at 2021-06-20 02:44:49 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.6ms | Allocations: 1351)
+
+
+Started DELETE "/courts/11" for 127.0.0.1 at 2021-06-20 02:44:52 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.2ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.5ms | Allocations: 1352)
+
+
+Started DELETE "/courts/12" for 127.0.0.1 at 2021-06-20 02:44:53 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.6ms | Allocations: 1352)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:48:10 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.8ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 5.4ms | ActiveRecord: 1.8ms | Allocations: 4277)
+
+
+Started DELETE "/courts/11" for 127.0.0.1 at 2021-06-20 02:48:14 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.6ms | Allocations: 1351)
+
+
+Started DELETE "/courts/12" for 127.0.0.1 at 2021-06-20 02:48:16 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.3ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+Filter chain halted as :authorized? rendered or redirected
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.6ms | Allocations: 1352)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 02:51:08 -0300
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"WM4OuNSVUo7G0JDzY_KDog\\\":{\\\"token\\\":\\\"$2a$10$1Uq1ZymL9O2DfrXAACEzwudHGIdGPvp.cYuj6UWPBHuhRNNzD1Xlm\\\",\\\"expiry\\\":1625290566},\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869}}\""], ["updated_at", "2021-06-20 05:51:09.352802"], ["id", 1]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 441ms (Views: 0.5ms | ActiveRecord: 25.1ms | Allocations: 17900)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 02:51:11 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.9ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 104ms (Views: 10.3ms | ActiveRecord: 5.7ms | Allocations: 10214)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:51:13 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.5ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 4.0ms | ActiveRecord: 1.3ms | Allocations: 4291)
+
+
+Started POST "/courts" for 127.0.0.1 at 2021-06-20 02:51:22 -0300
+Processing by CourtsController#create as HTML
+  Parameters: {"name"=>"asdfadsfasdf", "address"=>"asdfasdafsd", "description"=>"asdfasd", "court"=>{"name"=>"asdfadsfasdf", "address"=>"asdfasdafsd", "description"=>"asdfasd"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :court[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courts_controller.rb:20:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:20:in `create'
+  [1m[36mCourt Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "courts" WHERE "courts"."name" = $1 LIMIT $2[0m  [["name", "asdfadsfasdf"], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:20:in `create'
+  [1m[36mCourt Create (4.7ms)[0m  [1m[32mINSERT INTO "courts" ("name", "address", "description", "administrator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "asdfadsfasdf"], ["address", "asdfasdafsd"], ["description", "asdfasd"], ["administrator_id", 1], ["created_at", "2021-06-20 05:51:22.291915"], ["updated_at", "2021-06-20 05:51:22.291915"]]
+  ↳ app/controllers/courts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courts_controller.rb:20:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 36ms (Views: 0.7ms | ActiveRecord: 7.9ms | Allocations: 7471)
+
+
+Started GET "/courts?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:51:22 -0300
+Processing by CourtsController#index as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.7ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 4.5ms | ActiveRecord: 1.6ms | Allocations: 4370)
+
+
+Started DELETE "/courts/51" for 127.0.0.1 at 2021-06-20 02:51:25 -0300
+Processing by CourtsController#destroy as HTML
+  Parameters: {"id"=>"51"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.2ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/controllers/courts_controller.rb:53:in `set_court'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."court_id" = $1[0m  [["court_id", 51]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mCourt Destroy (1.9ms)[0m  [1m[31mDELETE FROM "courts" WHERE "courts"."id" = $1[0m  [["id", 51]]
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/courts_controller.rb:35:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 28ms (ActiveRecord: 6.8ms | Allocations: 7114)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:51:27 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 12.1ms | ActiveRecord: 3.2ms | Allocations: 7218)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 02:51:30 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (1.5ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 6.0ms | ActiveRecord: 3.2ms | Allocations: 4275)
+
+
+Started POST "/courts/11/bookings" for 127.0.0.1 at 2021-06-20 02:51:36 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"11", "date"=>"2021-06-19T08:00:00.000Z", "description"=>"adsfasdfadsf"}, "court_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.5ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (6.2ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Create (1.3ms)[0m  [1m[32mINSERT INTO "bookings" ("booker_id", "court_id", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["booker_id", 1], ["court_id", 11], ["date", "2021-06-19 08:00:00"], ["description", "adsfasdfadsf"], ["created_at", "2021-06-20 05:51:36.183413"], ["updated_at", "2021-06-20 05:51:36.183413"]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."id" != $2 AND "bookings"."date" = $3 LIMIT $4[0m  [["court_id", 11], ["id", 17], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 39ms (Views: 0.6ms | ActiveRecord: 11.5ms | Allocations: 8261)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 02:51:36 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 5.4ms | ActiveRecord: 2.0ms | Allocations: 3701)
+
+
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:51:45 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1445)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:53:31 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1380)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 02:57:57 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:13:07 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 5.5ms | Allocations: 3526)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:13:14 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1381)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:13:36 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:14:30 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:15:42 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (1.4ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 4.5ms | ActiveRecord: 2.5ms | Allocations: 3712)
+
+
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:15:47 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:16:14 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.3ms | ActiveRecord: 1.9ms | Allocations: 3701)
+
+
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:16:15 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:16:40 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.5ms | ActiveRecord: 2.1ms | Allocations: 3704)
+
+
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:09 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:17 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:18 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:19 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 1381)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:20 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:17:31 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 5.8ms | ActiveRecord: 2.1ms | Allocations: 3705)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:17:43 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 1.5ms | Allocations: 3701)
+
+
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:17:45 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:19:46 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:20:17 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 3.6ms | ActiveRecord: 1.8ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:20:58 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 4.6ms | ActiveRecord: 1.7ms | Allocations: 3701)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:21:09 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:21:12 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1381)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:21:13 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:22:27 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 20ms (Views: 4.6ms | ActiveRecord: 4.7ms | Allocations: 3705)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:23:17 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.5ms | ActiveRecord: 1.8ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:23:24 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 6.3ms | ActiveRecord: 1.6ms | Allocations: 3701)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:23:26 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.6ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:25:32 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.6ms | ActiveRecord: 2.0ms | Allocations: 3701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:25:59 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 26ms (Views: 6.7ms | ActiveRecord: 3.3ms | Allocations: 3701)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:26:02 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 03:26:13 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"-dyfcGnzBZlX__zxrRat0Q\\\":{\\\"token\\\":\\\"$2a$10$/jpZJiKyYPIHYFyGshEyt.KYMRSytKetRBIgvYE/vD7/o/Mjd2Jr.\\\",\\\"expiry\\\":1625290623},\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973}}\""], ["updated_at", "2021-06-20 06:26:13.989575"], ["id", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 438ms (Views: 0.4ms | ActiveRecord: 3.3ms | Allocations: 6988)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:26:15 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 98ms (Views: 4.5ms | ActiveRecord: 1.4ms | Allocations: 3723)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:26:18 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:27:05 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 4.0ms | ActiveRecord: 2.7ms | Allocations: 3701)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:27:09 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:28:01 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 5.7ms | ActiveRecord: 1.8ms | Allocations: 3701)
+
+
+Started DELETE "/courts/17/bookings/undefined" for 127.0.0.1 at 2021-06-20 03:28:04 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"17", "id"=>"undefined"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 03:29:03 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:106:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 5.3ms | ActiveRecord: 1.8ms | Allocations: 3706)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:29:07 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/19/bookings/1" for 127.0.0.1 at 2021-06-20 03:29:36 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"19", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:29:46 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1380)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:29:48 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/19/bookings/1" for 127.0.0.1 at 2021-06-20 03:29:59 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"19", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1378)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:30:04 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 1381)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/bookings_controller.rb:52:in `destroy'
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:31:35 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 91ms (ActiveRecord: 6.6ms | Allocations: 7614)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:32:11 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.2ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:55:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 204 No Content in 98ms (ActiveRecord: 6.5ms | Allocations: 12285)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:33:13 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:55:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mBooking Destroy (3.0ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 17]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 109ms (Views: 0.5ms | ActiveRecord: 11.5ms | Allocations: 13724)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:33:14 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:55:in `destroy'
+Completed 404 Not Found in 7ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 1415)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:34:05 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:55:in `destroy'
+Completed 404 Not Found in 97ms (Views: 0.3ms | ActiveRecord: 6.3ms | Allocations: 8679)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:35:17 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:56:in `destroy'
+Completed 404 Not Found in 106ms (Views: 0.3ms | ActiveRecord: 8.6ms | Allocations: 8690)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 03:36:38 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+Completed 404 Not Found in 107ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 12821)
+
+
+Started DELETE "/courts/11/bookings/17" for 127.0.0.1 at 2021-06-20 04:26:00 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"17"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+Completed 404 Not Found in 90ms (Views: 1.6ms | ActiveRecord: 54.7ms | Allocations: 4964)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:28:22 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (5.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"LHdaGjo3Wm9Kh9NACydTPA\\\":{\\\"token\\\":\\\"$2a$10$jQssOBM2gXBvyRKRVxAVa.mjdWbjVSQHn1b.QdMwp.9MjKaK51nV6\\\",\\\"expiry\\\":1625292773},\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703}}\""], ["updated_at", "2021-06-20 07:28:23.417698"], ["id", 1]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 426ms (Views: 0.3ms | ActiveRecord: 10.2ms | Allocations: 7812)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 04:28:26 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (5.5ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 112ms (Views: 11.4ms | ActiveRecord: 12.4ms | Allocations: 8980)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:28:27 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 5.1ms | ActiveRecord: 2.3ms | Allocations: 3848)
+
+
+Started DELETE "/courts/19/bookings/1" for 127.0.0.1 at 2021-06-20 04:28:40 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"19", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (0.4ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.5ms | ActiveRecord: 6.4ms | Allocations: 5189)
+
+
+Started DELETE "/courts/19/bookings/1" for 127.0.0.1 at 2021-06-20 04:28:42 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"19", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+Completed 404 Not Found in 10ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 2727)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:28:54 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"JEyaqRAAyNesz5-wBq_Atw\\\":{\\\"token\\\":\\\"$2a$10$2s1gJVWi7DBI1XSiZMiQj.PfqzAgloM.oDnN6eTFLobOfDUolAH4q\\\",\\\"expiry\\\":1625298821},\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703},\\\"gKLrqCKRfIOFt1Kf-wI53g\\\":{\\\"token\\\":\\\"$2a$10$nZxlnhLNMsDJJkdDtmc1wO5UQiFYFZ9OdNz9wppqxS3Da2.1xtedS\\\",\\\"expiry\\\":1625383734}}\""], ["updated_at", "2021-06-20 07:28:54.488005"], ["id", 1]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 447ms (Views: 0.3ms | ActiveRecord: 5.1ms | Allocations: 6956)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:28:55 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 90ms (Views: 5.0ms | ActiveRecord: 2.1ms | Allocations: 3557)
+
+
+Started DELETE "/courts/20/bookings/2" for 127.0.0.1 at 2021-06-20 04:31:52 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"20", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (0.4ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.5ms | ActiveRecord: 4.8ms | Allocations: 5067)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:32:07 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (4.7ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"o0MRHQafwxTXE0CRzFPqtQ\\\":{\\\"token\\\":\\\"$2a$10$L3..my7gHZiHPO4v9HinQeR8sDCNYDjp3D3Yi42EFZN9H8NRjzSN.\\\",\\\"expiry\\\":1625298823},\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703},\\\"gKLrqCKRfIOFt1Kf-wI53g\\\":{\\\"token\\\":\\\"$2a$10$nZxlnhLNMsDJJkdDtmc1wO5UQiFYFZ9OdNz9wppqxS3Da2.1xtedS\\\",\\\"expiry\\\":1625383734},\\\"9nq0mGI1Pn11E0mXT7f3mQ\\\":{\\\"token\\\":\\\"$2a$10$dm6FwDbYRF5wEukBdH45P.b8iAXaxy.tIHfFlDDzuGoQJ000hPugO\\\",\\\"expiry\\\":1625383927}}\""], ["updated_at", "2021-06-20 07:32:07.923752"], ["id", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 425ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 6956)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:32:09 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 87ms (Views: 3.6ms | ActiveRecord: 1.7ms | Allocations: 3474)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:32:19 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.7ms | ActiveRecord: 2.0ms | Allocations: 3454)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:32:24 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.0ms | ActiveRecord: 1.7ms | Allocations: 3454)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:32:57 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 3.6ms | ActiveRecord: 2.2ms | Allocations: 3454)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:33:41 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.8ms | ActiveRecord: 2.0ms | Allocations: 3457)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:33:55 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.3ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 20ms (Views: 8.1ms | ActiveRecord: 2.7ms | Allocations: 3454)
+
+
+Started DELETE "/courts/21/bookings/3" for 127.0.0.1 at 2021-06-20 04:33:59 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"21", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (1.7ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.7ms | ActiveRecord: 4.1ms | Allocations: 4984)
+
+
+Started DELETE "/courts/21/bookings/3" for 127.0.0.1 at 2021-06-20 04:40:03 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"21", "id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+Completed 404 Not Found in 25ms (Views: 0.3ms | ActiveRecord: 8.0ms | Allocations: 4688)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:40:16 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"Ib5lB1IU_YQ8zo0lICGPcw\\\":{\\\"token\\\":\\\"$2a$10$XGLxsFz.fvw/KDwx392jTu/QtpTZaSnouf4IQN6rZzZYOapiLl3lq\\\",\\\"expiry\\\":1625346574},\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703},\\\"gKLrqCKRfIOFt1Kf-wI53g\\\":{\\\"token\\\":\\\"$2a$10$nZxlnhLNMsDJJkdDtmc1wO5UQiFYFZ9OdNz9wppqxS3Da2.1xtedS\\\",\\\"expiry\\\":1625383734},\\\"9nq0mGI1Pn11E0mXT7f3mQ\\\":{\\\"token\\\":\\\"$2a$10$dm6FwDbYRF5wEukBdH45P.b8iAXaxy.tIHfFlDDzuGoQJ000hPugO\\\",\\\"expiry\\\":1625383927},\\\"4TX6JUR2mhx0Yzj-CzrK4A\\\":{\\\"token\\\":\\\"$2a$10$TkBXdPcZ6Hb9WeKpawgrx.G2La.MAyZNOqq7SdqyBl1uouUC5VqYe\\\",\\\"expiry\\\":1625384417}}\""], ["updated_at", "2021-06-20 07:40:17.218763"], ["id", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 453ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 6981)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:40:18 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 100ms (Views: 5.0ms | ActiveRecord: 2.8ms | Allocations: 3394)
+
+
+Started DELETE "/courts/22/bookings/4" for 127.0.0.1 at 2021-06-20 04:40:20 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"22", "id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (0.8ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 4.9ms | Allocations: 4902)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:44:28 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 24ms (Views: 6.6ms | ActiveRecord: 2.5ms | Allocations: 3287)
+
+
+Started DELETE "/courts/23/bookings/5" for 127.0.0.1 at 2021-06-20 04:44:31 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"23", "id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (2.8ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 5.2ms | Allocations: 4820)
+
+
+Started GET "/bookings/on-mine?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:44:37 -0300
+Processing by BookingsController#on_mine as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", bookings.description as booking_description, courts.id as court_id, courts.name as court_name, "bookings"."booker_id", "users"."first_name", "users"."last_name" FROM "bookings" INNER JOIN "users" ON "users"."id" = "bookings"."booker_id" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "courts"."administrator_id" = $1[0m  [["administrator_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 5.9ms | ActiveRecord: 2.4ms | Allocations: 3899)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:44:38 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.7ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 3.0ms | ActiveRecord: 1.9ms | Allocations: 3204)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 04:44:39 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.9ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 5.5ms | ActiveRecord: 2.5ms | Allocations: 4274)
+
+
+Started POST "/courts/11/bookings" for 127.0.0.1 at 2021-06-20 04:44:44 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"11", "date"=>"2021-06-19T08:00:00.000Z", "description"=>"444444444444"}, "court_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.6ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Create (4.2ms)[0m  [1m[32mINSERT INTO "bookings" ("booker_id", "court_id", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["booker_id", 1], ["court_id", 11], ["date", "2021-06-19 08:00:00"], ["description", "444444444444"], ["created_at", "2021-06-20 07:44:44.989623"], ["updated_at", "2021-06-20 07:44:44.989623"]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."id" != $2 AND "bookings"."date" = $3 LIMIT $4[0m  [["court_id", 11], ["id", 18], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 38ms (Views: 0.6ms | ActiveRecord: 8.2ms | Allocations: 8322)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:44:45 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 3.4ms | ActiveRecord: 2.1ms | Allocations: 3286)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 04:44:48 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (2.5ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 5.0ms | ActiveRecord: 3.3ms | Allocations: 4274)
+
+
+Started POST "/courts/11/bookings" for 127.0.0.1 at 2021-06-20 04:44:55 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"11", "date"=>"2021-06-19T08:00:00.000Z", "description"=>"ttttttttttttttttttttt"}, "court_id"=>"11"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 32ms (ActiveRecord: 5.9ms | Allocations: 6954)
+
+
+Started POST "/courts/11/bookings" for 127.0.0.1 at 2021-06-20 04:45:46 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"11", "date"=>"2021-06-19T09:00:00.000Z", "description"=>"sadasdfasd"}, "court_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.4ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 09:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Create (0.6ms)[0m  [1m[32mINSERT INTO "bookings" ("booker_id", "court_id", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["booker_id", 1], ["court_id", 11], ["date", "2021-06-19 09:00:00"], ["description", "sadasdfasd"], ["created_at", "2021-06-20 07:45:46.261371"], ["updated_at", "2021-06-20 07:45:46.261371"]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."id" != $2 AND "bookings"."date" = $3 LIMIT $4[0m  [["court_id", 11], ["id", 19], ["date", "2021-06-19 09:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 37ms (Views: 0.6ms | ActiveRecord: 10.3ms | Allocations: 7696)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:45:46 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.5ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 4.1ms | ActiveRecord: 1.5ms | Allocations: 3369)
+
+
+Started DELETE "/courts/11/bookings/19" for 127.0.0.1 at 2021-06-20 04:46:05 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"19"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (0.6ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 19]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 25ms (Views: 0.5ms | ActiveRecord: 6.0ms | Allocations: 4899)
+
+
+Started DELETE "/courts/11/bookings/19" for 127.0.0.1 at 2021-06-20 04:47:48 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+Completed 404 Not Found in 9ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 2480)
+
+
+Started GET "/bookings/on-mine?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:48:11 -0300
+Processing by BookingsController#on_mine as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", bookings.description as booking_description, courts.id as court_id, courts.name as court_name, "bookings"."booker_id", "users"."first_name", "users"."last_name" FROM "bookings" INNER JOIN "users" ON "users"."id" = "bookings"."booker_id" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "courts"."administrator_id" = $1[0m  [["administrator_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 4.7ms | ActiveRecord: 2.7ms | Allocations: 3712)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:48:12 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.9ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 16ms (Views: 4.2ms | ActiveRecord: 2.6ms | Allocations: 3286)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:54:52 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"xxwgAtDDehLFhrXjNNedHQ\\\":{\\\"token\\\":\\\"$2a$10$g9UWHxapgyzXX/ZfJiRe7OJxwaPl4i8huDIp5SK3xhfZYd4rgQLYW\\\",\\\"expiry\\\":1625364449},\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703},\\\"gKLrqCKRfIOFt1Kf-wI53g\\\":{\\\"token\\\":\\\"$2a$10$nZxlnhLNMsDJJkdDtmc1wO5UQiFYFZ9OdNz9wppqxS3Da2.1xtedS\\\",\\\"expiry\\\":1625383734},\\\"9nq0mGI1Pn11E0mXT7f3mQ\\\":{\\\"token\\\":\\\"$2a$10$dm6FwDbYRF5wEukBdH45P.b8iAXaxy.tIHfFlDDzuGoQJ000hPugO\\\",\\\"expiry\\\":1625383927},\\\"4TX6JUR2mhx0Yzj-CzrK4A\\\":{\\\"token\\\":\\\"$2a$10$TkBXdPcZ6Hb9WeKpawgrx.G2La.MAyZNOqq7SdqyBl1uouUC5VqYe\\\",\\\"expiry\\\":1625384417},\\\"DKniECiqV26-5p9cM6vJ2A\\\":{\\\"token\\\":\\\"$2a$10$AvFGrg/z0vVEIBf0kOYFCOGQAALnmAXTA31o/YLAhi8.OdHqyKv0K\\\",\\\"expiry\\\":1625385292}}\""], ["updated_at", "2021-06-20 07:54:52.906784"], ["id", 1]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 472ms (Views: 0.4ms | ActiveRecord: 16.2ms | Allocations: 9074)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:54:54 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (2.2ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 112ms (Views: 3.8ms | ActiveRecord: 3.6ms | Allocations: 3316)
+
+
+Started DELETE "/courts/11/bookings/18" for 127.0.0.1 at 2021-06-20 04:54:56 -0300
+Processing by BookingsController#destroy as HTML
+  Parameters: {"court_id"=>"11", "id"=>"18"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/bookings_controller.rb:56:in `p'
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:57:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mBooking Destroy (0.5ms)[0m  [1m[31mDELETE FROM "bookings" WHERE "bookings"."id" = $1[0m  [["id", 18]]
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:60:in `destroy'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 3.4ms | Allocations: 4824)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:55:09 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 3.0ms | ActiveRecord: 4.8ms | Allocations: 3204)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:55:34 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (1.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 3.4ms | ActiveRecord: 4.9ms | Allocations: 3204)
+
+
+Started POST "/api/v1/auth/sign_in" for 127.0.0.1 at 2021-06-20 04:55:38 -0300
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"ivan@ivan.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ivan@ivan.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+DEPRECATION WARNING: connection_config is deprecated and will be removed from Rails 6.2 (Use connection_db_config instead) (called from public_send at /home/divine/.rbenv/versions/3.0.0/lib/ruby/gems/3.0.0/gems/activesupport-6.1.3.1/lib/active_support/core_ext/object/try.rb:15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 AND "users"."provider" = $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["provider", "email"], ["LIMIT", 1]]
+[31mUnpermitted parameter: :session[0m
+[31mUnpermitted parameter: :session[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ivan@ivan.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "tokens" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["tokens", "\"{\\\"SHStNb8BIuIdH0ZEUlljQQ\\\":{\\\"token\\\":\\\"$2a$10$Zc/zOzvfeLAIW8KN8/G/6uH4i04MkgO41DBurvrT2nKvx9yN1ZnEu\\\",\\\"expiry\\\":1625372766},\\\"hev1gKOnMrfZJzRiM04sCA\\\":{\\\"token\\\":\\\"$2a$10$yI6YrOxvvegiSZOs0hSqwOGjOG059kwHfiqecT2ME6bzlH/dA5vxK\\\",\\\"expiry\\\":1625376709},\\\"bR6sTfetaMkmotKyDEjyGA\\\":{\\\"token\\\":\\\"$2a$10$nX4N5TiBuWkZ34e3tmnw4eV2bOqZd9C.u76DF/7zELlyhUaHxeKS.\\\",\\\"expiry\\\":1625377869},\\\"aeGGbcnLL_acnW5pXJGwNw\\\":{\\\"token\\\":\\\"$2a$10$mJLGHHK9GxhFzLfnKn9T.ObaeuDg2TXcSvhsB5.Q/Hstrh6twAWcy\\\",\\\"expiry\\\":1625379973},\\\"aIUTiaD0PiiJ9anHWVOb1w\\\":{\\\"token\\\":\\\"$2a$10$ikPcnUxmNaeileD3HQiNN.FVRFIKQMcSeBCG2UuNeZSuAbtlBxjPm\\\",\\\"expiry\\\":1625383703},\\\"gKLrqCKRfIOFt1Kf-wI53g\\\":{\\\"token\\\":\\\"$2a$10$nZxlnhLNMsDJJkdDtmc1wO5UQiFYFZ9OdNz9wppqxS3Da2.1xtedS\\\",\\\"expiry\\\":1625383734},\\\"9nq0mGI1Pn11E0mXT7f3mQ\\\":{\\\"token\\\":\\\"$2a$10$dm6FwDbYRF5wEukBdH45P.b8iAXaxy.tIHfFlDDzuGoQJ000hPugO\\\",\\\"expiry\\\":1625383927},\\\"4TX6JUR2mhx0Yzj-CzrK4A\\\":{\\\"token\\\":\\\"$2a$10$TkBXdPcZ6Hb9WeKpawgrx.G2La.MAyZNOqq7SdqyBl1uouUC5VqYe\\\",\\\"expiry\\\":1625384417},\\\"DKniECiqV26-5p9cM6vJ2A\\\":{\\\"token\\\":\\\"$2a$10$AvFGrg/z0vVEIBf0kOYFCOGQAALnmAXTA31o/YLAhi8.OdHqyKv0K\\\",\\\"expiry\\\":1625385292},\\\"DoPWRvR5RAtiHyII7pfVaA\\\":{\\\"token\\\":\\\"$2a$10$I0Tkzdn4xO0P7jQP9wah8eS277KRE1E0/TpXMgk0GO43wnt9hMjRa\\\",\\\"expiry\\\":1625385338}}\""], ["updated_at", "2021-06-20 07:55:38.745026"], ["id", 1]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 436ms (Views: 0.3ms | ActiveRecord: 9.5ms | Allocations: 6952)
+
+
+Started GET "/courts" for 127.0.0.1 at 2021-06-20 04:55:40 -0300
+Processing by CourtsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.8ms)[0m  [1m[34mSELECT courts.id, courts.name, address, description, users.first_name, users.last_name FROM "courts" INNER JOIN users ON users.id = courts.administrator_id[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 96ms (Views: 5.9ms | ActiveRecord: 1.6ms | Allocations: 4294)
+
+
+Started POST "/courts/11/bookings" for 127.0.0.1 at 2021-06-20 04:55:46 -0300
+Processing by BookingsController#create as HTML
+  Parameters: {"booking"=>{"courtId"=>"11", "date"=>"2021-06-19T08:00:00.000Z", "description"=>""}, "court_id"=>"11"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mCourt Load (0.7ms)[0m  [1m[34mSELECT "courts".* FROM "courts" WHERE "courts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."date" = $2 LIMIT $3[0m  [["court_id", 11], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mBooking Create (2.3ms)[0m  [1m[32mINSERT INTO "bookings" ("booker_id", "court_id", "date", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["booker_id", 1], ["court_id", 11], ["date", "2021-06-19 08:00:00"], ["description", ""], ["created_at", "2021-06-20 07:55:46.119955"], ["updated_at", "2021-06-20 07:55:46.119955"]]
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mBooking Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bookings" WHERE "bookings"."court_id" = $1 AND "bookings"."id" != $2 AND "bookings"."date" = $3 LIMIT $4[0m  [["court_id", 11], ["id", 20], ["date", "2021-06-19 08:00:00"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bookings_controller.rb:29:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 201 Created in 39ms (Views: 0.6ms | ActiveRecord: 8.6ms | Allocations: 7701)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:55:46 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.8ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 3.6ms | ActiveRecord: 2.6ms | Allocations: 3286)
+
+
+Started GET "/bookings/on-others?email=ivan@ivan.com" for 127.0.0.1 at 2021-06-20 04:55:55 -0300
+Processing by BookingsController#on_others as HTML
+  Parameters: {"email"=>"ivan@ivan.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."uid" = $1 LIMIT $2[0m  [["uid", "ivan@ivan.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@ivan.com"], ["LIMIT", 1]]
+  ↳ app/controllers/bookings_controller.rb:114:in `set_user'
+  [1m[36mBooking Load (0.6ms)[0m  [1m[34mSELECT "bookings"."id", "bookings"."date", "bookings"."description", courts.id as court_id, courts.name as courts_name FROM "bookings" INNER JOIN "courts" ON "courts"."id" = "bookings"."court_id" WHERE "bookings"."booker_id" = $1[0m  [["booker_id", 1]]
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 3.5ms | ActiveRecord: 1.7ms | Allocations: 3286)
+
+

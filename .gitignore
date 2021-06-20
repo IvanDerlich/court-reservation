@@ -31,3 +31,4 @@
 /config/master.key
 
 log/test.log
+log/development.log
