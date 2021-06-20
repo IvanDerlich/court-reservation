@@ -7,5 +7,6 @@ export const CLEAN_MESSAGES = 'Clean Messages Array';
 export const LOAD_ALL_COURTS = 'Load all Courts';
 export const LOAD_MY_COURTS = 'Load my Courts';
 export const DELETE_COURT = 'Delete a court';
+export const DELETE_BOOKING = 'Delete a booking';
 export const LOAD_BOOKINGS_ON_MY_COURTS = 'Load Bookings on my courts';
 export const LOAD_MY_BOOKINGS = 'Load My Bookings';

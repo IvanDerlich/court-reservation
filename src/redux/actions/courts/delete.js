@@ -2,15 +2,19 @@ import deleteCourtService from '../../services/courts/delete';
 import {
   errorCleanUpActionCreator,
   messagesCleanUpActionCreator,
+  errorMessageActionCreator,
   deleteCourt,
 } from '../creators';
 
-const createCourtAction = async (dispatch, headers, courtId) => {
+const deleteCourtAction = async (dispatch, headers, courtId) => {
   dispatch(errorCleanUpActionCreator());
   dispatch(messagesCleanUpActionCreator());
   const error = await deleteCourtService(headers, courtId);
-  dispatch(deleteCourt(courtId));
-  return error;
+  if (error === undefined) {
+    dispatch(deleteCourt(courtId));
+  } else {
+    dispatch(errorMessageActionCreator(error));
+  }
 };
 
-export default createCourtAction;
+export default deleteCourtAction;

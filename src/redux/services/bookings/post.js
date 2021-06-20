@@ -23,12 +23,12 @@ const postBookingService = async (headers, booking) => {
     headers,
   };
 
-  console.log('-----Inside Post Service------');
-  console.log('Headers: ', headers);
-  console.log('Booking', booking);
-  console.log('BOOKINGS_ENDPOINT: ', getBookingsEndport(courtId));
-  console.log('Data: ', data);
-  console.log('-------------');
+  // console.log('-----Inside Post Service------');
+  // console.log('Headers: ', headers);
+  // console.log('Booking', booking);
+  // console.log('BOOKINGS_ENDPOINT: ', getBookingsEndport(courtId));
+  // console.log('Data: ', data);
+  // console.log('-------------');
 
   try {
     await axios.post(

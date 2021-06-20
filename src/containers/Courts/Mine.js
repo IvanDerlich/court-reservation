@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DeleteButton from '@material-ui/icons/DeleteOutlined';
 
-import createCourtAction from '../../redux/actions/courts/delete';
+import deleteCourtAction from '../../redux/actions/courts/delete';
 import getMyCourtsAction from '../../redux/actions/courts/getMine';
 
 const useStyles = makeStyles({
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMyCourts: headers => getMyCourtsAction(dispatch, headers),
-  deleteCourt: (headers, id) => createCourtAction(dispatch, headers, id),
+  deleteCourt: (headers, courtId) => deleteCourtAction(dispatch, headers, courtId),
 });
 
 export default connect(

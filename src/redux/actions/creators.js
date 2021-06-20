@@ -10,6 +10,7 @@ import {
   LOAD_BOOKINGS_ON_MY_COURTS,
   LOAD_MY_BOOKINGS,
   DELETE_COURT,
+  DELETE_BOOKING,
 } from '../actionTypes';
 
 export const loginActionCreator = headers => ({
@@ -62,4 +63,9 @@ export const loadBookingsMine = bookingsMine => ({
 export const deleteCourt = courtId => ({
   type: DELETE_COURT,
   payload: { courtId },
+});
+
+export const deleteBookingActionCreator = bookingId => ({
+  type: DELETE_BOOKING,
+  payload: { bookingId },
 });

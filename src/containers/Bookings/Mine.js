@@ -12,7 +12,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
+import DeleteButton from '@material-ui/icons/DeleteOutlined';
 
+import deleteBookingAction from '../../redux/actions/bookings/delete';
 import getMyBookingsAction from '../../redux/actions/bookings/getMine';
 
 const useStyles = makeStyles({
@@ -25,10 +27,15 @@ const useStyles = makeStyles({
   spinner: {
     marginTop: 100,
   },
+  deleteButton: {
+    cursor: 'pointer',
+  },
 });
 
 /* eslint-disable react/no-unescaped-entities */
-function BookingsShowMine({ bookings, getMyBookings, headers }) {
+function BookingsShowMine({
+  bookings, getMyBookings, headers, deleteBooking,
+}) {
   const classes = useStyles();
 
   useEffect(() => {
@@ -50,14 +57,14 @@ function BookingsShowMine({ bookings, getMyBookings, headers }) {
           <TableRow className={classes.tableHead}>
             <TableCell>Court Name</TableCell>
             <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Descriptions</TableCell>
             <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {bookings.map(({
             id,
-            // court_id,
+            court_id,
             courts_name,
             date,
             description,
@@ -70,6 +77,12 @@ function BookingsShowMine({ bookings, getMyBookings, headers }) {
               </TableCell>
               <TableCell align="right">{date}</TableCell>
               <TableCell align="right">{ description }</TableCell>
+              <TableCell>
+                <DeleteButton
+                  className={classes.deleteButton}
+                  onClick={() => deleteBooking(headers, court_id, id)}
+                />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -83,6 +96,7 @@ BookingsShowMine.propTypes = {
   getMyBookings: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   headers: PropTypes.object.isRequired,
+  deleteBooking: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -92,6 +106,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getMyBookings: headers => getMyBookingsAction(dispatch, headers),
+  deleteBooking: (headers, courtId, bookingId) => deleteBookingAction(
+    dispatch, headers, courtId, bookingId,
+  ),
 });
 
 export default connect(
