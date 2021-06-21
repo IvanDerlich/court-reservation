@@ -2,9 +2,9 @@ import axios from 'axios';
 import { getBookingsEndport } from '../URLs';
 
 const deleteBookingService = async (headers, courtId, bookingId) => {
-  console.log(headers);
-  console.log(courtId);
-  console.log(bookingId);
+  // console.log(headers);
+  // console.log(courtId);
+  // console.log(bookingId);
   const config = {
     headers,
   };
