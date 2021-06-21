@@ -1,0 +1,29 @@
+html {
+  height: 100%;
+  text-align: center;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+}
+
+a:visited {
+  text-decoration: none;
+  color: rgb(56, 56, 56);
+}
+
+a:hover {
+  text-decoration: none;
+  color: chocolate;
+}
+
+a:active {
+  text-decoration: none;
+  color: aqua;
+}
