@@ -1,18 +1,18 @@
 # Seting up the client
 
-cd client
+    cd client
 
-npm i
+    npm i
 
-npm start
+    npm start
 
 
 # Seting up the server
 
-cd server
+    cd server
 
-bundle
+    bundle
 
-rails s
+    rails s
 
 
