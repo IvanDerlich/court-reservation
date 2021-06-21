@@ -1,4 +1,6 @@
-# Seting up the client
+## Setting up 
+
+### Client
 
     cd client
 
@@ -6,8 +8,7 @@
 
     npm start
 
-
-# Seting up the server
+### Server
 
     cd server
 
