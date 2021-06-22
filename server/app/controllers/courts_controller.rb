@@ -5,10 +5,10 @@ class CourtsController < ApplicationController
   before_action :authorized?, only: %i[update destroy]
   before_action :useful_content?, only: %i[create update]
 
-  def index  
+  def index
     courts = Court
       .select('courts.id, courts.name, address, description, users.first_name, users.last_name')
-      .joins('INNER JOIN users ON users.id = courts.administrator_id') 
+      .joins('INNER JOIN users ON users.id = courts.administrator_id')
     json_response(courts)
   end
 
@@ -17,12 +17,12 @@ class CourtsController < ApplicationController
   end
 
   def create
-    @court = Court.create!(court_params.merge({administrator_id: current_api_v1_user.id}))
+    @court = Court.create!(court_params.merge({ administrator_id: current_api_v1_user.id }))
     json_response(@court, :created)
   end
 
   def update
-    if @court.update(court_params.merge({administrator_id: current_api_v1_user.id}))
+    if @court.update(court_params.merge({ administrator_id: current_api_v1_user.id }))
       @court.save
       head :accepted
     else

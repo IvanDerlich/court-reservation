@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_api_v1_user!
   before_action :set_court, only: [:index]
   before_action :set_user, only: [:on_mine, :on_others]
-  before_action :set_court_booking, only: [:show, :update, :destroy]  
+  before_action :set_court_booking, only: [:show, :update, :destroy]
 
   # GET /courts/:court_id/bookings
   def index
@@ -16,16 +16,15 @@ class BookingsController < ApplicationController
 
   # POST /courts/:court_id/bookings
   def create
-
     court = Court.find(params[:booking][:courtId])
 
     booking = Booking.create(
       booker_id: current_api_v1_user.id,
-      court: court,      
+      court: court,
       date: params[:booking][:date],
       description: params[:booking][:description],
     )
-    
+
     if booking.save
       json_response(booking, :created)
     else
@@ -50,7 +49,7 @@ class BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    booking.destroy    
+    booking.destroy
     json_response(booking, 200)
   end
 
@@ -58,21 +57,21 @@ class BookingsController < ApplicationController
   def on_mine
     bookings = Booking
       .joins(:booker)
-      .joins(:court)      
+      .joins(:court)
       .select(
         # bookings
         'bookings.id',
-        'date',        
+        'date',
         'bookings.description as booking_description',
         # courts
         'courts.id as court_id',
-        'courts.name as court_name',        
+        'courts.name as court_name',
         # bookers
         'booker_id', # key from bookings
         'users.first_name',
         'users.last_name',
       )
-      .where(courts: {administrator_id: @user.id})
+      .where(courts: { administrator_id: @user.id })
     json_response(bookings)
   end
 
@@ -88,9 +87,9 @@ class BookingsController < ApplicationController
         # courts
         'courts.id as court_id',
         'courts.name as courts_name'
-      )      
+      )
       .where(booker_id: @user.id)
-    json_response(bookings)    
+    json_response(bookings)
   end
 
   private
@@ -103,7 +102,7 @@ class BookingsController < ApplicationController
     @court = Court.find(params[:court_id])
   end
 
-  def set_user    
+  def set_user
     @user = User.find_by(email: params[:email])
   end
 
