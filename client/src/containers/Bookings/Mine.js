@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -37,12 +37,14 @@ function BookingsShowMine({
   bookings, getMyBookings, headers, deleteBooking,
 }) {
   const classes = useStyles();
+  const [showSpinner, setShowSpinner] = useState(true);
 
   useEffect(() => {
     getMyBookings(headers);
+    setShowSpinner(false);
   }, []);
 
-  if (bookings.length < 1) {
+  if (showSpinner) {
     return (
       <CircularProgress
         id="sign-in-spinner"

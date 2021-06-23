@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,18 +23,23 @@ const useStyles = makeStyles({
   spinner: {
     marginTop: 100,
   },
+  hide: {
+    display: 'none',
+  },
 });
 
 function CourtsShowAll({
   courts, getAllCourts, headers,
 }) {
   const classes = useStyles();
+  const [showSpinner, setShowSpinner] = useState(true);
 
   useEffect(() => {
     getAllCourts(headers);
+    setShowSpinner(false);
   }, []);
 
-  if (courts.length < 1) {
+  if (showSpinner) {
     return (
       <CircularProgress
         id="sign-in-spinner"

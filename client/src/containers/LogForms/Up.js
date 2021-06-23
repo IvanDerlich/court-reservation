@@ -274,7 +274,6 @@ function SignUpForm({ signUp, logged }) {
 
 SignUpForm.propTypes = {
   signUp: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   logged: PropTypes.bool,
 };
 

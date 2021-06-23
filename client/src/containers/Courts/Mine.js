@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,12 +36,14 @@ function CourtsShowMine({
   courts, getMyCourts, headers, deleteCourt,
 }) {
   const classes = useStyles();
+  const [showSpinner, setShowSpinner] = useState(true);
 
   useEffect(() => {
     getMyCourts(headers);
+    setShowSpinner(false);
   }, []);
 
-  if (courts.length < 1) {
+  if (showSpinner) {
     return (
       <CircularProgress
         id="sign-in-spinner"
