@@ -1,0 +1,144 @@
+[33mcommit fe3d561d3adef404408d0cfa7d2742a8d48bb0ec[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mtests[m[33m)[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 22:12:50 2021 -0300
+
+    Tests: Deletion of user Incomplete
+
+[33mcommit 02c0ff85bb57ca58d421503302acbe3e3b51ed26[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 15:43:21 2021 -0300
+
+    Test: Extract authorization from login
+
+[33mcommit f8e89be7b2a26853705d5e630e64fe3187925b3c[m
+Merge: 924de2c b363457
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 14:47:45 2021 -0300
+
+    Merge branch 'master' of github.com:IvanDerlich/court-reservation
+
+[33mcommit 924de2c63c3fbd3112ed4a249253b52f5f5560ee[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 14:46:35 2021 -0300
+
+    Test passing: Logout
+
+[33mcommit b3634576c4f44d659f8413af73a2c89ea72ea060[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 14:46:35 2021 -0300
+
+    Ignore commit: small changes
+
+[33mcommit 3ba51791f23753e72a85bd281efd90488b1e05d5[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 13:33:16 2021 -0300
+
+    Test passing: Logout
+
+[33mcommit d576a281e8e3d413efd8d560bedbad8b2b7365e7[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Tue Apr 13 13:32:58 2021 -0300
+
+    Test passing: Logout
+
+[33mcommit f43b4b98711f0293923312db32911cab977a31fe[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Mon Apr 12 17:59:20 2021 -0300
+
+    Finish tests for successful registration
+
+[33mcommit 5e815685c816aa570afe3916aa8133b7e525fe4b[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Mon Apr 12 17:58:25 2021 -0300
+
+    Finish tests for successful registration
+
+[33mcommit 45db8a2a227b99d39840dfe2f1ec01882ed1e609[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Thu Apr 8 23:16:27 2021 -0300
+
+    Cleansed app from items, todo, contacts as models, controllers and specs
+
+[33mcommit c8ddeb392a9b1850e511ce010155fb187e396c45[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Thu Apr 8 22:25:30 2021 -0300
+
+    Email regitration and login working without tests
+
+[33mcommit a3e3b022dc5e9c8ba04659c86a565c6ea8f60c12[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Wed Apr 7 22:53:11 2021 -0300
+
+    Devise token auth migration run with no error, rails server run with no errors, tests have not been tried
+
+[33mcommit 3b0f09beb5441b47798beb0792e3295d51c71723[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Apr 3 01:49:36 2021 -0300
+
+    Remove devise and return to custom authentication
+
+[33mcommit 870a13758082a1425c409c8f882dccacb6c27e54[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Fri Apr 2 01:29:06 2021 -0300
+
+    Pass Sign in tests
+
+[33mcommit 77284e23f677b3eaf553fced24f8bfd9b9c93eae[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Thu Apr 1 19:54:26 2021 -0300
+
+    Pass all contacts API tests
+
+[33mcommit 66ec3b02226a9bc27e9fe8918212021e9fa83966[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Wed Mar 31 00:15:33 2021 -0300
+
+    Pass create test
+
+[33mcommit 9e8316cf3b8697d527f049a1c064153136c51a20[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Mon Mar 29 23:21:50 2021 -0300
+
+    Experiments running successful
+
+[33mcommit 191274919d89ade543bbb8be37d63af897c96f10[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Mon Mar 29 23:20:13 2021 -0300
+
+    Experiments on contacts successful
+
+[33mcommit 687cd8275606355fcbef7c335718c49129e309a3[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sun Mar 28 20:54:01 2021 -0300
+
+    Setup Cors
+
+[33mcommit 0d21ef21597a879b3a589223719d69bd128c8d99[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Mar 27 19:53:22 2021 -0300
+
+    CHECKPOINT Add controllers and requests tests
+
+[33mcommit 57a883b782603bba82c8e432913a06f6c68e41c6[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Mar 27 18:15:18 2021 -0300
+
+    Create two dummy models and make tests pass
+
+[33mcommit eefab6e351c28cd6407b652bbb3a804a074470c9[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Mar 27 18:04:44 2021 -0300
+
+    Install Rails API app with new command
+
+[33mcommit 13d23d1db44ce8d559b67ad088f4e32696417cb3[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Mar 27 18:02:25 2021 -0300
+
+    Start all over again
+
+[33mcommit bf1915bdeeb1731d9d9024dddbb7d96cf5f7c883[m
+Author: Ivan Derlich <e@ivanderlich.com>
+Date:   Sat Mar 27 17:59:37 2021 -0300
+
+    Initial commit
