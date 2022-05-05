@@ -1,24 +1,41 @@
-# README
+# Booking Court
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to:
+  - Create courts
+  - Book courts
 
-Things you may want to cover:
+## [Live Version](http://immense-journey-96355.herokuapp.com/)
 
-* Ruby version
+## Installation
 
-* System dependencies
+### Client
 
-* Configuration
+    cd client
 
-* Database creation
+    npm i
 
-* Database initialization
+    npm start
 
-* How to run the test suite
+### Server
 
-* Services (job queues, cache servers, search engines, etc.)
+    cd server
 
-* Deployment instructions
+    bundle
 
-* ...
+    rails s
+
+## Technologies used
+
+  - React
+  - Ruby on Rails
+  
+
+## Author
+
+[Ivan Derlich](https://www.ivanderlich.com)
+
+## Ackownledgments
+  
+- [Microverse](https://www.microverse.org/):   This project is part of the Microverse JavaScript curriculum! T
+- The builders of the technologies we take for granted while programming applications like this one.
+
